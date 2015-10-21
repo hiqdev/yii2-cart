@@ -1,0 +1,55 @@
+{
+    "name": "hiqdev/hipanel-module-cart",
+    "type": "yii2-extension",
+    "description": "Cart Plugin for HiPanel",
+    "keywords": [
+        "cart",
+        "hipanel",
+        "plugin"
+    ],
+    "homepage": "https://github.com/hiqdev/hipanel-module-cart",
+    "license": "BSD-3-Clause",
+    "support": {
+        "email": "support@hiqdev.com",
+        "source": "https://github.com/hiqdev/hipanel-module-dashboard",
+        "issues": "https://github.com/hiqdev/hipanel-module-dashboard/issues",
+        "wiki": "https://github.com/hiqdev/hipanel-module-dashboard/wiki",
+        "forum": "https://forum.hiqdev.com/hipanel"
+    },
+    "authors": [
+        {
+            "name": "Andrii Vasyliev",
+            "role": "Project lead",
+            "email": "sol@hiqdev.com",
+            "homepage": "https://hipanel.com/"
+        },
+        {
+            "name": "Dmitry Naumenko",
+            "role": "Lead backend developer",
+            "email": "silverfire@hiqdev.com",
+            "homepage": "http://silverfire.me/"
+        },
+        {
+            "name": "Andrey Klochok",
+            "role": "Lead frontend developer",
+            "email": "tafid@hiqdev.com",
+            "homepage": "https://hiqdev.com/"
+        },
+        {
+            "name": "Yuriy Myronchuk",
+            "role": "QA Lead",
+            "email": "bladeroot@hiqdev.com",
+            "homepage": "https://hiqdev.com/"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0",
+        "hiqdev/hipanel-core": "*",
+        "hiqdev/hipanel-module-client": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "hipanel\\modules\\cart\\": "src"
+        }
+    }
+}

@@ -1,0 +1,11 @@
+package:
+    name:           hipanel-module-cart
+    namespace:      hipanel\modules\cart
+    label:          CartModule
+    title:          Cart Plugin for HiPanel
+    type:           yii2-extension
+    keywords:       cart, hipanel, plugin
+
+require:
+    hiqdev/hidev-config:        "*"
+    hiqdev/hidev-config-php:    "*"
