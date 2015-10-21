@@ -3,6 +3,7 @@ hiqdev/hipanel-module-cart changelog
 
 ## Under development
 
+- Added basics
 
-## Development started 2015-08-14
+## Development started 2015-10-21
 

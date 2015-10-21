@@ -43,7 +43,6 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "~2.0",
         "hiqdev/hipanel-core": "*",
         "hiqdev/hipanel-module-client": "*"
     },
