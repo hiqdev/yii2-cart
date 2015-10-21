@@ -1,12 +1,12 @@
 <?php
 
 $header = <<<EOF
-Dashboard Plugin for HiPanel
+Cart Plugin for HiPanel
 
-@link      https://github.com/hiqdev/hipanel-module-dashboard
-@package   hipanel-module-dashboard
+@link      https://github.com/hiqdev/hipanel-module-cart
+@package   hipanel-module-cart
 @license   BSD-3-Clause
-@copyright Copyright (c) 2014-2015, HiQDev (https://hiqdev.com/)
+@copyright Copyright (c) 2015, HiQDev (https://hiqdev.com/)
 EOF;
 
 Symfony\CS\Fixer\Contrib\HeaderCommentFixer::setHeader($header);
@@ -35,7 +35,9 @@ return Symfony\CS\Config\Config::create()
     ->finder(
         Symfony\CS\Finder\DefaultFinder::create()
             ->in(__DIR__)
+            ->notPath('vendor')
             ->notPath('runtime')
+            ->notPath('web/assets')
             ->notPath('tests/unit/UnitTester.php')
     )
 ;
