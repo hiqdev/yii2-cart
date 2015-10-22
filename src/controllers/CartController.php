@@ -16,8 +16,8 @@ namespace hipanel\modules\cart\controllers;
  */
 class CartController extends \hipanel\base\Controller
 {
-    public function actionindex()
+    public function actionIndex()
     {
-        return $this->redirect(['index']);
+        return $this->render('index', []);
     }
 }

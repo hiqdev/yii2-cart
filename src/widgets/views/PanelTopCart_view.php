@@ -1,11 +1,12 @@
 <?php
 
 use \Yii;
+use yii\helpers\Html;
 
 ?>
 <!-- Notifications: style can be found in dropdown.less -->
 <li class="dropdown notifications-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <a  class="dropdown-toggle" data-toggle="dropdown">
         <i class="fa fa-shopping-cart  fa-lg"></i>
         <span class="label label-warning"><?= Yii::$app->cart->getCount(); ?></span>
     </a>
@@ -23,30 +24,30 @@ use \Yii;
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
                 <li>
-                    <a href="#"><i class="fa fa-server text-muted"></i> Some name for item</a>
+                    <a ><i class="fa fa-server text-muted"></i> Some name for item</a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a >
                         <i class="fa fa-globe text-muted"></i> Very long description here that may not fit into the page and may cause design problems
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a >
                         <i class="fa fa-globe text-muted"></i> 5 new members joined
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a>
                         <i class="fa fa-server text-muted"></i> 25 sales made
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a >
                         <i class="fa fa-server text-muted"></i> You changed your username
                     </a>
                 </li>
             </ul>
         </li>
-        <li class="footer"><a href="#"><?= Yii::t('app', 'View all') ?></a></li>
+        <li class="footer"><?= Html::a(Yii::t('app', 'View Cart'), '/cart/cart/index'); ?></li>
     </ul>
 </li>
