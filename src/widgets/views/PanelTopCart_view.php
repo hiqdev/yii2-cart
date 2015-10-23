@@ -24,26 +24,28 @@ use yii\helpers\Html;
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
                 <li>
-                    <a ><i class="fa fa-server text-muted"></i> Some name for item</a>
-                </li>
-                <li>
-                    <a >
-                        <i class="fa fa-globe text-muted"></i> Very long description here that may not fit into the page and may cause design problems
-                    </a>
-                </li>
-                <li>
-                    <a >
-                        <i class="fa fa-globe text-muted"></i> 5 new members joined
+                    <a>
+                        <i class="fa fa-server text-muted"></i> Start SSD | <span class="labale label-warning">&nbsp;purchase&nbsp;</span>
                     </a>
                 </li>
                 <li>
                     <a>
-                        <i class="fa fa-server text-muted"></i> 25 sales made
+                        <i class="fa fa-globe text-muted"></i> www.someoddname.com | <span class="labale label-warning">&nbsp;purchase&nbsp;</span>
                     </a>
                 </li>
                 <li>
-                    <a >
-                        <i class="fa fa-server text-muted"></i> You changed your username
+                    <a>
+                        <i class="fa fa-globe text-muted"></i> www.someoddandstupidandlongdomainname.com | <span class="labale label-success">&nbsp;renew&nbsp;</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-server text-muted"></i> OpenVZ Ultra | <span class="labale label-warning">&nbsp;purchase&nbsp;</span>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-server text-muted"></i> OpenVZ Mega | <span class="labale label-success">&nbsp;renew&nbsp;</span>
                     </a>
                 </li>
             </ul>
