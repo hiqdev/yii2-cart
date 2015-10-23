@@ -23,31 +23,15 @@ use yii\helpers\Html;
         <li>
             <!-- inner menu: contains the actual data -->
             <ul class="menu">
-                <li>
-                    <a>
-                        <i class="fa fa-server text-muted"></i> Start SSD | <span class="labale label-warning">&nbsp;purchase&nbsp;</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <i class="fa fa-globe text-muted"></i> www.someoddname.com | <span class="labale label-warning">&nbsp;purchase&nbsp;</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <i class="fa fa-globe text-muted"></i> www.someoddandstupidandlongdomainname.com | <span class="labale label-success">&nbsp;renew&nbsp;</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <i class="fa fa-server text-muted"></i> OpenVZ Ultra | <span class="labale label-warning">&nbsp;purchase&nbsp;</span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <i class="fa fa-server text-muted"></i> OpenVZ Mega | <span class="labale label-success">&nbsp;renew&nbsp;</span>
-                    </a>
-                </li>
+                <?php if (Yii::$app->cart->getCount() > 0) : ?>
+                    <?php foreach (Yii::$app->cart->getPositions() as $position) : ?>
+                        <li>
+                            <a>
+                                <?= $position->icon ?> <?= $position->name; ?> | <?= $position->description ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </ul>
         </li>
         <li class="footer"><?= Html::a(Yii::t('app', 'View Cart'), '/cart/cart/index'); ?></li>
