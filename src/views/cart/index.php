@@ -98,6 +98,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <!-- this row will not appear when printing -->
     <div class="row no-print">
-            <a href="invoice-print.html" target="_blank" class="btn btn-default"><i
+        <div class="col-xs-12">
+            <?= Html::a('<i class="fa fa-refresh"></i> ' . Yii::t('app', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
+            <button class="btn btn-success pull-right"><i
+                    class="fa fa-credit-card"></i> <?= Yii::t('app', 'Make oreder'); ?></button>
+        </div>
     </div>
 </section>
