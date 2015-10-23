@@ -26,9 +26,6 @@ class CartController extends \hipanel\base\Controller
     {
         $dataProvider = new ArrayDataProvider([
             'allModels' => Yii::$app->cart->getPositions(),
-            'sort' => [
-                'attributes' => ['id', 'name', 'period'],
-            ],
             'pagination' => [
                 'pageSize' => 10,
             ],

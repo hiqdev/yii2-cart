@@ -30,15 +30,29 @@ $this->params['breadcrumbs'][] = $this->title;
                 'dataProvider' => $dataProvider,
                 'layout' => "{items}\n{pager}",
                 'columns' => [
-                    'name',
+                    [
+                        'attribute' => 'name',
+                        'format' => 'raw',
+                        'value' => function ($model) {
+                            return $model->icon . ' ' . $model->name . ' ' . Html::tag('span', $model->description, ['class' => 'text-muted']);
+                        }
+                    ],
                     [
                         'class' => XEditableColumn::className(),
                         'attribute' => 'period',
+                        'pluginOptions' => [
+                            'type' => 'select',
+                            'source' => [
+                                '1' => '1 year',
+                                '2' => '2 year',
+                                '3' => '3 year',
+                            ],
+                        ],
                         'widgetOptions' => [
                             'scenario' => 'some-scenario',
                         ]
                     ],
-                    'description',
+                    'price',
                     'actions' => [
                         'class' => ActionColumn::className(),
                         'template' => '{remove}',
@@ -78,11 +92,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tbody>
                     <tr>
                         <th style="width:50%"><?= Yii::t('app', 'Subtotal') ?>:</th>
-                        <td>$250.30</td>
+                        <td>0</td>
                     </tr>
                     <tr>
                         <th><?= Yii::t('app', 'Discount') ?>:</th>
-                        <td>$5.80</td>
+                        <td>0</td>
                     </tr>
                     <tr>
                         <th><?= Yii::t('app', 'Total') ?>:</th>
@@ -100,8 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row no-print">
         <div class="col-xs-12">
             <?= Html::a('<i class="fa fa-refresh"></i> ' . Yii::t('app', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
-            <button class="btn btn-success pull-right"><i
-                    class="fa fa-credit-card"></i> <?= Yii::t('app', 'Make oreder'); ?></button>
+            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('app', 'Make oreder'), ['clear'], ['class' => 'btn btn-success pull-right']); ?>
         </div>
     </div>
 </section>
