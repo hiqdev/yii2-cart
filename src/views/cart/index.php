@@ -1,7 +1,6 @@
 <?php
 
-use hiqdev\xeditable\grid\XEditableColumn;
-use hiqdev\xeditable\widgets\XEditable;
+use hipanel\modules\cart\grid\QuantityColumn;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -30,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'dataProvider' => $dataProvider,
                 'layout' => "{items}\n{pager}",
                 'columns' => [
-                    'id',
+//                    'id',
                     [
                         'attribute' => 'name',
                         'format' => 'raw',
@@ -39,16 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                     ],
                     [
-                        'class' => XEditableColumn::className(),
-                        'attribute' => 'period',
-                        'pluginOptions' => [
-                            'type' => 'select',
-                            'source' => [
-                                '1' => '1 year',
-                                '2' => '2 year',
-                                '3' => '3 year',
-                            ],
-                        ],
+                        'class' => QuantityColumn::className(),
+                        'attribute' => 'quantity',
+                        'xEditableType' => 'select',
                         'widgetOptions' => [
                             'scenario' => 'some-scenario',
                         ]
