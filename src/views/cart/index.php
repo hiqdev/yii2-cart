@@ -30,6 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'dataProvider' => $dataProvider,
                 'layout' => "{items}\n{pager}",
                 'columns' => [
+                    'id',
                     [
                         'attribute' => 'name',
                         'format' => 'raw',
