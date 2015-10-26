@@ -44,7 +44,8 @@
     ],
     "require": {
         "hiqdev/hipanel-core": "*",
-        "hiqdev/hipanel-module-client": "*"
+        "hiqdev/hipanel-module-client": "*",
+        "omnilight/yii2-shopping-cart": "*"
     },
     "autoload": {
         "psr-4": {
