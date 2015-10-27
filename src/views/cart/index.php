@@ -39,11 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'class' => QuantityColumn::className(),
-                        'attribute' => 'quantity',
+//                        'class' => 'hiqdev\xeditable\grid\XEditableColumn',
                         'xEditableType' => 'select',
-                        'widgetOptions' => [
-                            'scenario' => 'some-scenario',
-                        ]
+                        'attribute' => 'quantity',
+                        'pluginOptions' => [
+                            'url' => 'set-description',
+                        ],
                     ],
                     'price',
                     'actions' => [
