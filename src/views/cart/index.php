@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xs-12">
             <h2 class="page-header">
                 <?= Yii::t('app', 'Your cart') ?>
-                <small class="pull-right">Date: 2/10/2014</small>
+                <small class="pull-right"><?= Yii::t('app', 'Date') ?>: <?= date('Y-m-d') ?></small>
             </h2>
         </div>
         <!-- /.col -->
@@ -107,7 +107,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row no-print">
         <div class="col-xs-12">
             <?= Html::a('<i class="fa fa-refresh"></i> ' . Yii::t('app', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
-            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('app', 'Make oreder'), ['clear'], ['class' => 'btn btn-success pull-right']); ?>
+            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('app', 'Make order'), ['clear'], ['class' => 'btn btn-success pull-right']); ?>
         </div>
     </div>
 </section>
