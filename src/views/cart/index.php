@@ -1,6 +1,7 @@
 <?php
 
 use hipanel\modules\cart\grid\QuantityColumn;
+use hipanel\modules\cart\widgets\QuantityCell;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -38,14 +39,18 @@ $this->params['breadcrumbs'][] = $this->title;
                         }
                     ],
                     [
-                        'class' => QuantityColumn::className(),
                         'attribute' => 'quantity',
-                        'xEditableType' => 'select',
-                        'widgetOptions' => [
-                            'scenario' => 'some-scenario',
-                        ]
+                        'value' => function($model, $key, $index, $column) {
+                            return QuantityCell::widget(['model' => $model]); //, 'type' => 'number'
+                        },
+                        'format' => 'raw'
                     ],
-                    'price',
+                    [
+                        'attribute' => 'price',
+                        'value' => function($model) {
+                            return $model->getCost();
+                        }
+                    ],
                     'actions' => [
                         'class' => ActionColumn::className(),
                         'template' => '{remove}',

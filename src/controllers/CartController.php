@@ -60,6 +60,22 @@ class CartController extends \hipanel\base\Controller
         throw new NotFoundHttpException();
     }
 
+    public function actionUpdateQuantity()
+    {
+        $request = Yii::$app->request;
+        $id = $request->post('id');
+        $quantity = $request->post('quantity');
+        if ($id && $quantity) {
+            $position = Yii::$app->cart->getPositionById($id);
+            if ($position) {
+                Yii::$app->cart->update($position, $quantity);
+                $this->redirect('index');
+            }
+        }
+
+        throw new NotFoundHttpException();
+    }
+
     public function actionClear()
     {
         Yii::$app->cart->removeAll();
