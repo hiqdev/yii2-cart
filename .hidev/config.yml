@@ -1,10 +1,13 @@
 package:
-    name:           hipanel-module-cart
-    namespace:      hipanel\modules\cart
-    label:          CartModule
-    title:          Cart Plugin for HiPanel
+    name:           yii2-cart
+    namespace:      hiqdev\yii2\cart
+    headline:       Yii2 Cart
+    title:          Cart module for yii2
     type:           yii2-extension
-    keywords:       cart, hipanel, plugin
+    keywords:       cart, yii2, extension
+    description:    |
+        [Yii2](http://yiiframework.com) extension providing shopping cart module.
+        Uses [omnilight/yii2-shopping-cart](https://github.com/omnilight/yii2-shopping-cart) for shopping cart abstraction.
 
 require:
     hiqdev/hidev-config:        "*"

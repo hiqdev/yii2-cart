@@ -1,5 +1,5 @@
-hiqdev/hipanel-module-cart changelog
-------------------------------------
+hiqdev/yii2-cart changelog
+--------------------------
 
 ## Under development
 

@@ -1,8 +1,13 @@
-hiqdev/hipanel-module-cart commits history
-------------------------------------------
+hiqdev/yii2-cart commits history
+--------------------------------
 
 ## Under development
 
+    - cbca0b2 2015-11-10 fix mistakes in sentences (bladeroot@gmail.com)
+    - 473b3fc 2015-10-28 Add change quantity functionality in cart index grid (andreyklochok@gmail.com)
+    - 1e49467 2015-10-27 Work at cart (andreyklochok@gmail.com)
+    - c041e59 2015-10-26 Add QuantityColumn (andreyklochok@gmail.com)
+    - faf5a2c 2015-10-26 getId redefine for Renewal (andreyklochok@gmail.com)
 - Added basics
     - 8e036f2 2015-10-23 Work at cart functionality (andreyklochok@gmail.com)
     - b678fd5 2015-10-23 Add top cart postions render (andreyklochok@gmail.com)

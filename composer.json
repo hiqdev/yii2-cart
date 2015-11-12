@@ -1,13 +1,13 @@
 {
-    "name": "hiqdev/hipanel-module-cart",
+    "name": "hiqdev/yii2-cart",
     "type": "yii2-extension",
-    "description": "Cart Plugin for HiPanel",
+    "description": "Cart module for yii2",
     "keywords": [
         "cart",
-        "hipanel",
-        "plugin"
+        "yii2",
+        "extension"
     ],
-    "homepage": "https://github.com/hiqdev/hipanel-module-cart",
+    "homepage": "https://github.com/hiqdev/yii2-cart",
     "license": "BSD-3-Clause",
     "support": {
         "email": "support@hiqdev.com",
@@ -49,7 +49,7 @@
     },
     "autoload": {
         "psr-4": {
-            "hipanel\\modules\\cart\\": "src"
+            "hiqdev\\yii2\\cart\\": "src"
         }
     }
 }
