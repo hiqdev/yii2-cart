@@ -1,6 +1,6 @@
 <?php
 
-namespace hipanel\modules\cart\grid;
+namespace hiqdev\yii2\cart\grid;
 
 use hiqdev\xeditable\grid\XEditableColumn;
 use hiqdev\xeditable\widgets\XEditable;

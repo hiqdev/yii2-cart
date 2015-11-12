@@ -1,6 +1,6 @@
 <?php
 
-namespace hipanel\modules\cart\widgets;
+namespace hiqdev\yii2\cart\widgets;
 
 use Yii;
 
@@ -23,9 +23,9 @@ class QuantityCell extends \yii\base\Widget
     public function run()
     {
         return $this->render('QuantityCell_view', [
-            'view' => $this->getView(),
+            'view'  => $this->getView(),
             'model' => $this->model,
-            'type' => $this->type ?: self::MODE_SELECT,
+            'type'  => $this->type ?: self::MODE_SELECT,
         ]);
     }
 

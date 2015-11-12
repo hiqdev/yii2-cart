@@ -1,7 +1,7 @@
 <?php
 
-use hipanel\modules\cart\grid\QuantityColumn;
-use hipanel\modules\cart\widgets\QuantityCell;
+use hiqdev\yii2\cart\grid\QuantityColumn;
+use hiqdev\yii2\cart\widgets\QuantityCell;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -98,7 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </tr>
                     <tr>
                         <th><?= Yii::t('app', 'Total') ?>:</th>
-                        <td><?= Yii::$app->cart->getCost(true); ?></td>
+                        <td><?= $cart->getCost(true) ?></td>
                     </tr>
                     </tbody>
                 </table>

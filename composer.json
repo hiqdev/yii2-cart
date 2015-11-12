@@ -43,8 +43,6 @@
         }
     ],
     "require": {
-        "hiqdev/hipanel-core": "*",
-        "hiqdev/hipanel-module-client": "*",
         "omnilight/yii2-shopping-cart": "*"
     },
     "autoload": {

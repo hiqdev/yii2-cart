@@ -9,55 +9,45 @@
  * @copyright Copyright (c) 2015, HiQDev (https://hiqdev.com/)
  */
 
-namespace hipanel\modules\cart\controllers;
-use hipanel\modules\domain\models\Domain;
-use hipanel\modules\domain\models\DomainProduct;
+namespace hiqdev\yii2\cart\controllers;
+
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\web\NotFoundHttpException;
-use yz\shoppingcart\ShoppingCart;
+use hiqdev\yii2\cart\Module;
 
 /**
  * Cart controller.
  */
-class CartController extends \hipanel\base\Controller
+class CartController extends \yii\web\Controller
 {
+    public function getCart()
+    {
+        return Module::getInstance()->getCart();
+    }
+
     public function actionIndex()
     {
         $dataProvider = new ArrayDataProvider([
-            'allModels' => Yii::$app->cart->getPositions(),
+            'allModels' => $this->getCart()->getPositions(),
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => 25,
             ],
         ]);
         return $this->render('index', [
+            'cart'         => $this->getCart(),
             'dataProvider' => $dataProvider,
         ]);
     }
 
     public function actionRemove($id)
     {
-        Yii::$app->cart->removeById($id);
+        $this->getCart()->removeById($id);
 
         if (Yii::$app->request->isAjax)
             Yii::$app->end();
 
         return $this->redirect(['index']);
-    }
-
-    public function actionAdd()
-    {
-        $cart = Yii::$app->cart;
-        $cart->removeAll();
-
-        $model = new DomainProduct([
-            'model' => Domain::find()->where(['login' => 'rubbertire'])->one()
-        ]);
-        if ($model) {
-            $cart->put($model, 1);
-            return $this->redirect(['index']);
-        }
-        throw new NotFoundHttpException();
     }
 
     public function actionUpdateQuantity()
@@ -66,9 +56,9 @@ class CartController extends \hipanel\base\Controller
         $id = $request->post('id');
         $quantity = $request->post('quantity');
         if ($id && $quantity) {
-            $position = Yii::$app->cart->getPositionById($id);
+            $position = $this->getCart()->getPositionById($id);
             if ($position) {
-                Yii::$app->cart->update($position, $quantity);
+                $this->getCart()->update($position, $quantity);
                 $this->redirect('index');
             }
         }
@@ -78,7 +68,7 @@ class CartController extends \hipanel\base\Controller
 
     public function actionClear()
     {
-        Yii::$app->cart->removeAll();
+        $this->getCart()->removeAll();
 
         if (Yii::$app->request->isAjax)
             Yii::$app->end();
