@@ -1,20 +1,20 @@
 <?php
 
 /*
- * Cart Plugin for HiPanel
+ * Cart module for yii2
  *
- * @link      https://github.com/hiqdev/hipanel-module-cart
- * @package   hipanel-module-cart
+ * @link      https://github.com/hiqdev/yii2-cart
+ * @package   yii2-cart
  * @license   BSD-3-Clause
- * @copyright Copyright (c) 2015, HiQDev (https://hiqdev.com/)
+ * @copyright Copyright (c) 2015, HiQDev (http://hiqdev.com/)
  */
 
 namespace hiqdev\yii2\cart\controllers;
 
+use hiqdev\yii2\cart\Module;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\web\NotFoundHttpException;
-use hiqdev\yii2\cart\Module;
 
 /**
  * Cart controller.
@@ -34,6 +34,7 @@ class CartController extends \yii\web\Controller
                 'pageSize' => 25,
             ],
         ]);
+
         return $this->render('index', [
             'cart'         => $this->getCart(),
             'dataProvider' => $dataProvider,
@@ -44,8 +45,9 @@ class CartController extends \yii\web\Controller
     {
         $this->getCart()->removeById($id);
 
-        if (Yii::$app->request->isAjax)
+        if (Yii::$app->request->isAjax) {
             Yii::$app->end();
+        }
 
         return $this->redirect(['index']);
     }
@@ -70,8 +72,9 @@ class CartController extends \yii\web\Controller
     {
         $this->getCart()->removeAll();
 
-        if (Yii::$app->request->isAjax)
+        if (Yii::$app->request->isAjax) {
             Yii::$app->end();
+        }
 
         return $this->redirect(['index']);
     }

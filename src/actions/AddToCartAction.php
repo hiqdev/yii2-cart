@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * Cart module for yii2
+ *
+ * @link      https://github.com/hiqdev/yii2-cart
+ * @package   yii2-cart
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2015, HiQDev (http://hiqdev.com/)
+ */
+
 namespace hiqdev\yii2\cart\actions;
 
 use hiqdev\hiart\Collection;
@@ -23,7 +32,7 @@ class AddToCartAction extends \yii\base\Action
         $cart = $this->getModule()->getCart();
         $request = Yii::$app->request;
         $collection = new Collection([
-            'model' => new $this->productClass
+            'model' => new $this->productClass(),
         ]);
 //        $data = $request->isPost ? $request->post() : $request->get();
 

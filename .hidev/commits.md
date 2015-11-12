@@ -3,6 +3,8 @@ hiqdev/yii2-cart commits history
 
 ## Under development
 
+    - 3dc05b9 2015-11-12 basically fixed (sol@hiqdev.com)
+    - 859bc0c 2015-11-12 redoing to yii2-cart (sol@hiqdev.com)
     - cbca0b2 2015-11-10 fix mistakes in sentences (bladeroot@gmail.com)
     - 473b3fc 2015-10-28 Add change quantity functionality in cart index grid (andreyklochok@gmail.com)
     - 1e49467 2015-10-27 Work at cart (andreyklochok@gmail.com)

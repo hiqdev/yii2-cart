@@ -1,6 +1,5 @@
 <?php
 
-use hiqdev\yii2\cart\grid\QuantityColumn;
 use hiqdev\yii2\cart\widgets\QuantityCell;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -36,20 +35,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'raw',
                         'value' => function ($model) {
                             return $model->icon . ' ' . $model->name . ' ' . Html::tag('span', $model->description, ['class' => 'text-muted']);
-                        }
+                        },
                     ],
                     [
                         'attribute' => 'quantity',
-                        'value' => function($model, $key, $index, $column) {
+                        'value' => function ($model, $key, $index, $column) {
                             return QuantityCell::widget(['model' => $model]); //, 'type' => 'number'
                         },
-                        'format' => 'raw'
+                        'format' => 'raw',
                     ],
                     [
                         'attribute' => 'price',
-                        'value' => function($model) {
+                        'value' => function ($model) {
                             return $model->getCost();
-                        }
+                        },
                     ],
                     'actions' => [
                         'class' => ActionColumn::className(),

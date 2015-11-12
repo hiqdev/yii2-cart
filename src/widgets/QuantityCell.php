@@ -1,8 +1,15 @@
 <?php
 
-namespace hiqdev\yii2\cart\widgets;
+/*
+ * Cart module for yii2
+ *
+ * @link      https://github.com/hiqdev/yii2-cart
+ * @package   yii2-cart
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2015, HiQDev (http://hiqdev.com/)
+ */
 
-use Yii;
+namespace hiqdev\yii2\cart\widgets;
 
 class QuantityCell extends \yii\base\Widget
 {

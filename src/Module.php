@@ -1,12 +1,12 @@
 <?php
 
 /*
- * Cart Plugin for HiPanel
+ * Cart module for yii2
  *
- * @link      https://github.com/hiqdev/hipanel-module-cart
- * @package   hipanel-module-cart
+ * @link      https://github.com/hiqdev/yii2-cart
+ * @package   yii2-cart
  * @license   BSD-3-Clause
- * @copyright Copyright (c) 2015, HiQDev (https://hiqdev.com/)
+ * @copyright Copyright (c) 2015, HiQDev (http://hiqdev.com/)
  */
 
 namespace hiqdev\yii2\cart;
@@ -42,7 +42,7 @@ class Module extends \yii\base\Module
 
     /**
      * Finds cart module.
-     * TODO think of how to find NOT by name
+     * TODO think of how to find NOT by name.
      */
     public static function getInstance()
     {
@@ -58,5 +58,4 @@ class Module extends \yii\base\Module
     {
         return '/' . $this->id . '/' . ($route ?: 'cart/index');
     }
-
 }
