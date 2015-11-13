@@ -13,8 +13,8 @@ use yii\helpers\Html;
         <?php if ($cart->count) : ?>
             <li class="header">
                 <div class="row">
-                    <div class="col-md-6"><?= Html::a(Yii::t('app', 'Your cart'), $widget->module->buildUrl()) ?>:</div>
-                    <div class="col-md-6 text-bold text-right"><?= Yii::t('app', 'Total') ?>: <?= $cart->formatCurrency($cart->total) ?></div>
+                    <div class="col-md-6"><?= Html::a(Yii::t('cart', 'Your cart'), $widget->module->buildUrl()) ?>:</div>
+                    <div class="col-md-6 text-bold text-right"><?= Yii::t('cart', 'Total') ?>: <?= $cart->formatCurrency($cart->total) ?></div>
                 </div>
             </li>
             <li>
@@ -28,11 +28,11 @@ use yii\helpers\Html;
                     <?php endforeach ?>
                 </ul>
             </li>
-            <li class="footer"><?= Html::a(Yii::t('app', 'View Cart'), $widget->module->buildUrl()) ?></li>
+            <li class="footer"><?= Html::a(Yii::t('cart', 'View Cart'), $widget->module->buildUrl()) ?></li>
         <?php else : ?>
             <li class="header">
                 <div class="row">
-                    <div class="col-md-6"><?= Yii::t('app', 'Your cart is empty') ?></div>
+                    <div class="col-md-6"><?= Yii::t('cart', 'Your cart is empty') ?></div>
                 </div>
             </li>
         <?php endif ?>

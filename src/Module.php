@@ -33,9 +33,22 @@ class Module extends \yii\base\Module
         parent::init();
         if (!$this->has('cart')) {
             $this->set('cart', [
-                'class' => 'hiqdev\yii2\cart\components\ShoppingCart',
+                'class' => 'hiqdev\yii2\cart\ShoppingCart',
             ]);
         }
+        $this->registerTranslations();
+    }
+
+    public function registerTranslations()
+    {
+        Yii::$app->i18n->translations['cart'] = [
+            'class'          => 'yii\i18n\PhpMessageSource',
+            'sourceLanguage' => 'en-US',
+            'basePath'       => '@hiqdev/yii2/cart/messages',
+            'fileMap'        => [
+                'merchant' => 'cart.php',
+            ],
+        ];
     }
 
     public static $name = 'cart';

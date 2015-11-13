@@ -44,13 +44,13 @@ class AddToCartAction extends \yii\base\Action
             foreach ($collection->models as $position) {
                 if (!$cart->hasPosition($position->getId())) {
                     $cart->put($position);
-                    Yii::$app->session->addFlash('success', Yii::t('app', 'Item is added to cart'));
+                    Yii::$app->session->addFlash('success', Yii::t('cart', 'Item has been added to cart'));
                 } else {
-                    Yii::$app->session->addFlash('warning', Yii::t('app', 'Item already exists in the cart'));
+                    Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item is in the cart already'));
                 }
             }
         } else {
-            Yii::$app->session->addFlash('warning', Yii::t('app', 'Item does not exists'));
+            Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item does not exists'));
         }
 
         if ($request->isAjax) {

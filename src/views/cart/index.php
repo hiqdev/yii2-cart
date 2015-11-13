@@ -5,7 +5,7 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-$this->title = Yii::t('app', 'Cart');
+$this->title = Yii::t('cart', 'Cart');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-xs-12">
             <h2 class="page-header">
-                <?= Yii::t('app', 'Your cart') ?>
-                <small class="pull-right"><?= Yii::t('app', 'Date') ?>: <?= date('Y-m-d') ?></small>
+                <?= Yii::t('cart', 'Your cart') ?>
+                <small class="pull-right"><?= Yii::t('cart', 'Date') ?>: <?= date('Y-m-d') ?></small>
             </h2>
         </div>
         <!-- /.col -->
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'name',
                         'format' => 'raw',
-                        'label' => ' ' . Yii::t('app', 'Description'),
+                        'label' => ' ' . Yii::t('cart', 'Description'),
                         'contentOptions' => ['style' => 'vertical-align: middle'],
                         'value' => function ($model) {
                             return $model->icon . ' ' . $model->name . ' ' . Html::tag('span', $model->description, ['class' => 'text-muted']);
@@ -98,15 +98,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <table class="table">
                     <tbody>
                     <tr>
-                        <th style="width:50%"><?= Yii::t('app', 'Subtotal') ?>:</th>
+                        <th style="width:50%"><?= Yii::t('cart', 'Subtotal') ?>:</th>
                         <td><?= $cart->formatCurrency($cart->subtotal) ?></td>
                     </tr>
                     <tr>
-                        <th><?= Yii::t('app', 'Discount') ?>:</th>
+                        <th><?= Yii::t('cart', 'Discount') ?>:</th>
                         <td><?= $cart->formatCurrency($cart->discount) ?></td>
                     </tr>
                     <tr style="font-size:130%">
-                        <th><?= Yii::t('app', 'Total') ?>:</th>
+                        <th><?= Yii::t('cart', 'Total') ?>:</th>
                         <td><b><?= $cart->formatCurrency($cart->total) ?></b></td>
                     </tr>
                     </tbody>
@@ -120,8 +120,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- this row will not appear when printing -->
     <div class="row no-print">
         <div class="col-xs-12">
-            <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('app', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
-            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('app', 'Make order'), ['clear'], ['class' => 'btn btn-success pull-right']); ?>
+            <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('cart', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
+            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), ['clear'], ['class' => 'btn btn-success pull-right']); ?>
         </div>
     </div>
 </section>

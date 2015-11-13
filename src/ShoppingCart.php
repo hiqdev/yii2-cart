@@ -1,6 +1,6 @@
 <?php
 
-namespace hiqdev\yii2\cart\components;
+namespace hiqdev\yii2\cart;
 
 use Yii;
 
