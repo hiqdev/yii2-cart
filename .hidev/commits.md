@@ -3,6 +3,8 @@ hiqdev/yii2-cart commits history
 
 ## Under development
 
+- Added translations
+    - eba9f25 2015-11-13 added translations (sol@hiqdev.com)
 - Added local ShoppingCart component
     - c2454e4 2015-11-13 added local ShoppingCart component with currency formatting and used all over (sol@hiqdev.com)
 - Changed: redone to yii2-cart
@@ -10,6 +12,7 @@ hiqdev/yii2-cart commits history
     - 3dc05b9 2015-11-12 basically fixed (sol@hiqdev.com)
     - 859bc0c 2015-11-12 redoing to yii2-cart (sol@hiqdev.com)
 - Added basics
+    - bd6c9ed 2015-11-13 + terms of use checkbox (not finished) (sol@hiqdev.com)
     - cbca0b2 2015-11-10 fix mistakes in sentences (bladeroot@gmail.com)
     - 473b3fc 2015-10-28 Add change quantity functionality in cart index grid (andreyklochok@gmail.com)
     - 1e49467 2015-10-27 Work at cart (andreyklochok@gmail.com)
