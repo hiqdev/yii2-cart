@@ -45,5 +45,5 @@ return [
     'Item is in the cart already'   => 'Товар уже в корзине',
     'Item does not exist'           => 'Такого товара нет',
     'I have read and agree to the'  => 'Я прочел и согласен с',
-    'terms of use'                  => 'условиями предостовления услуг',
+    'terms of use'                  => 'условиями предоставления услуг',
 ];

@@ -119,9 +119,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <!-- this row will not appear when printing -->
     <div class="row no-print">
-        <div class="col-xs-12">
+        <div class="col-xs-4">
             <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('cart', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
-            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), ['clear'], ['class' => 'btn btn-success pull-right']); ?>
         </div>
+        <div class="col-xs-8"><span class="pull-right">
+            <?php if ($module->termsPage) : ?>
+                <label>
+                    <input type="checkbox">
+                    <?= Yii::t('cart', 'I have read and agree to the') ?> <?= Html::a(Yii::t('cart', 'terms of use'), $module->termsPage) ?>
+                </label> &nbsp; &nbsp;
+            <?php endif ?>
+            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), ['clear'], ['class' => 'btn btn-success']); ?>
+        </span></div>
     </div>
 </section>

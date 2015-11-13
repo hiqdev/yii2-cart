@@ -36,6 +36,7 @@ class CartController extends \yii\web\Controller
 
         return $this->render('index', [
             'cart'         => $this->getCart(),
+            'module'       => $this->module,
             'dataProvider' => $dataProvider,
         ]);
     }

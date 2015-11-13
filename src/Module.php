@@ -28,14 +28,17 @@ use Yii;
  */
 class Module extends \yii\base\Module
 {
+    const CART = 'cart';
+
     public function init()
     {
         parent::init();
-        if (!$this->has('cart')) {
-            $this->set('cart', [
+        if (!$this->has(CART)) {
+            $this->set(CART, [
                 'class' => 'hiqdev\yii2\cart\ShoppingCart',
             ]);
         }
+        $this->get(CART)->module = $this;
         $this->registerTranslations();
     }
 
@@ -64,11 +67,16 @@ class Module extends \yii\base\Module
 
     public function getCart()
     {
-        return $this->get('cart');
+        return $this->get(CART);
     }
 
     public function buildUrl($route = null)
     {
         return '/' . $this->id . '/' . ($route ?: 'cart/index');
     }
+
+    /**
+     * Link to the terms of use page.
+     */
+    public $termsPage;
 }

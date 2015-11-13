@@ -6,6 +6,11 @@ use Yii;
 
 class ShoppingCart extends \yz\shoppingcart\ShoppingCart
 {
+    /**
+     * The cart module.
+     */
+    public $module;
+
     public $currency = 'usd';
 
     public function getCount()
