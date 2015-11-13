@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * Cart module for yii2
+ *
+ * @link      https://github.com/hiqdev/yii2-cart
+ * @package   yii2-cart
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2015, HiQDev (http://hiqdev.com/)
+ */
+
 namespace hiqdev\yii2\cart;
 
 use Yii;
@@ -24,6 +33,7 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
         foreach ($this->_positions as $position) {
             $count += $position->getQuantity();
         }
+
         return $count;
     }
 
@@ -46,5 +56,4 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     {
         return Yii::$app->formatter->format($sum, ['currency', $currency ?: $this->currency]);
     }
-
 }
