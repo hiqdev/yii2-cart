@@ -33,7 +33,7 @@ class Module extends \yii\base\Module
         parent::init();
         if (!$this->has('cart')) {
             $this->set('cart', [
-                'class' => 'yz\shoppingcart\ShoppingCart',
+                'class' => 'hiqdev\yii2\cart\components\ShoppingCart',
             ]);
         }
     }

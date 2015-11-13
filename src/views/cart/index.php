@@ -29,10 +29,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 'dataProvider' => $dataProvider,
                 'layout' => "{items}\n{pager}",
                 'columns' => [
-//                    'id',
+                    [
+                        'attribute' => 'no',
+                        'label' => '#',
+                        'value' => function ($model) { static $no;return ++$no; },
+                        'headerOptions' => ['width' => '4%', 'style' => 'text-align: center'],
+                        'contentOptions' => ['style' => 'text-align: center; vertical-align: middle;'],
+                    ],
                     [
                         'attribute' => 'name',
                         'format' => 'raw',
+                        'label' => ' ' . Yii::t('app', 'Description'),
+                        'contentOptions' => ['style' => 'vertical-align: middle'],
                         'value' => function ($model) {
                             return $model->icon . ' ' . $model->name . ' ' . Html::tag('span', $model->description, ['class' => 'text-muted']);
                         },
@@ -46,17 +54,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute' => 'price',
-                        'value' => function ($model) {
-                            return $model->getCost();
+                        'contentOptions' => ['style' => 'vertical-align: middle;white-space: nowrap;'],
+                        'value' => function ($model) use ($cart) {
+                            return $cart->formatCurrency($model->cost);
                         },
                     ],
                     'actions' => [
                         'class' => ActionColumn::className(),
                         'template' => '{remove}',
+                        'headerOptions' => ['width' => '4%'],
                         'contentOptions' => ['style' => 'text-align: center; vertical-align: middle;'],
                         'buttons' => [
                             'remove' => function ($url, $model, $key) {
-                                return Html::a('<span aria-hidden="true" style="font-size: 2rem;">&times;</span>', ['remove', 'id' => $model['id']]);
+                                return Html::a('<i class="fa fa-times text-danger"></i>', ['remove', 'id' => $model['id']]);
                             },
                         ],
                     ],
@@ -89,15 +99,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tbody>
                     <tr>
                         <th style="width:50%"><?= Yii::t('app', 'Subtotal') ?>:</th>
-                        <td>0</td>
+                        <td><?= $cart->formatCurrency($cart->subtotal) ?></td>
                     </tr>
                     <tr>
                         <th><?= Yii::t('app', 'Discount') ?>:</th>
-                        <td>0</td>
+                        <td><?= $cart->formatCurrency($cart->discount) ?></td>
                     </tr>
-                    <tr>
+                    <tr style="font-size:130%">
                         <th><?= Yii::t('app', 'Total') ?>:</th>
-                        <td><?= $cart->getCost(true) ?></td>
+                        <td><b><?= $cart->formatCurrency($cart->total) ?></b></td>
                     </tr>
                     </tbody>
                 </table>
@@ -110,7 +120,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- this row will not appear when printing -->
     <div class="row no-print">
         <div class="col-xs-12">
-            <?= Html::a('<i class="fa fa-refresh"></i> ' . Yii::t('app', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
+            <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('app', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
             <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('app', 'Make order'), ['clear'], ['class' => 'btn btn-success pull-right']); ?>
         </div>
     </div>

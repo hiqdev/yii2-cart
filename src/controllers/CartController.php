@@ -11,7 +11,6 @@
 
 namespace hiqdev\yii2\cart\controllers;
 
-use hiqdev\yii2\cart\Module;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\web\NotFoundHttpException;
@@ -23,7 +22,7 @@ class CartController extends \yii\web\Controller
 {
     public function getCart()
     {
-        return Module::getInstance()->getCart();
+        return $this->module->getCart();
     }
 
     public function actionIndex()
