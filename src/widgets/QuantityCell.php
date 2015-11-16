@@ -30,10 +30,18 @@ class QuantityCell extends \yii\base\Widget
     public function run()
     {
         return $this->render('QuantityCell_view', [
-            'view'  => $this->getView(),
-            'model' => $this->model,
-            'type'  => $this->type ?: self::MODE_SELECT,
+            'view'   => $this->getView(),
+            'model'  => $this->model,
+            'widget' => $this,
         ]);
+    }
+
+    /**
+     * Select is default mode.
+     */
+    public function isSelectMode()
+    {
+        return $this->type !== self::MODE_NUMBER && method_exists($this->model, 'getQuantityOptions');
     }
 
     public function registerClientScript()

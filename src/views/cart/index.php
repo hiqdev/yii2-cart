@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'contentOptions' => ['style' => 'text-align: center; vertical-align: middle;'],
                         'buttons' => [
                             'remove' => function ($url, $model, $key) {
-                                return Html::a('<i class="fa fa-times text-danger"></i>', ['remove', 'id' => $model['id']]);
+                                return Html::a('<i class="fa fa-times text-danger"></i>', ['remove', 'id' => $model->id]);
                             },
                         ],
                     ],
