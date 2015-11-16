@@ -33,12 +33,12 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-        if (!$this->has(CART)) {
-            $this->set(CART, [
+        if (!$this->has(static::CART)) {
+            $this->set(static::CART, [
                 'class' => 'hiqdev\yii2\cart\ShoppingCart',
             ]);
         }
-        $this->get(CART)->module = $this;
+        $this->get(static::CART)->module = $this;
         $this->registerTranslations();
     }
 
@@ -67,7 +67,7 @@ class Module extends \yii\base\Module
 
     public function getCart()
     {
-        return $this->get(CART);
+        return $this->get(static::CART);
     }
 
     public function buildUrl($route = null)
