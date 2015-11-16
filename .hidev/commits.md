@@ -3,6 +3,7 @@ hiqdev/yii2-cart commits history
 
 ## Under development
 
+    - 8baf894 2015-11-13 php-cs-fixed (sol@hiqdev.com)
 - Added translations
     - eba9f25 2015-11-13 added translations (sol@hiqdev.com)
 - Added local ShoppingCart component
