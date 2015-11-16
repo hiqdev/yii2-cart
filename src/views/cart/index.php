@@ -98,16 +98,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 <table class="table">
                     <tbody>
                     <tr>
-                        <th style="width:50%"><?= Yii::t('cart', 'Subtotal') ?>:</th>
-                        <td><?= $cart->formatCurrency($cart->subtotal) ?></td>
+                        <th style="width:30%"><?= Yii::t('cart', 'Subtotal') ?>:</th>
+                        <td style="width:30%" align="right"><?= $cart->formatCurrency($cart->subtotal) ?></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <th><?= Yii::t('cart', 'Discount') ?>:</th>
-                        <td><?= $cart->formatCurrency($cart->discount) ?></td>
+                        <td align="right"><?= $cart->formatCurrency($cart->discount) ?></td>
+                        <td></td>
                     </tr>
-                    <tr style="font-size:130%">
+                    <tr style="font-size:130%;font-weight:bold">
                         <th><?= Yii::t('cart', 'Total') ?>:</th>
-                        <td><b><?= $cart->formatCurrency($cart->total) ?></b></td>
+                        <td align="right"><?= $cart->formatCurrency($cart->total) ?></td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>

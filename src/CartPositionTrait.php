@@ -31,7 +31,8 @@ trait CartPositionTrait
         return [
             'model_id'    => Yii::t('cart', 'ID'),
             'name'        => Yii::t('cart', 'Name'),
-            'quantity'    => Yii::t('cart', 'Name'),
+            'price'       => Yii::t('cart', 'Price'),
+            'quantity'    => Yii::t('cart', 'Quantity'),
             'description' => Yii::t('cart', 'Description'),
         ];
     }
