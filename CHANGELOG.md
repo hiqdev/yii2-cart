@@ -3,8 +3,8 @@ hiqdev/yii2-cart changelog
 
 ## Under development
 
+- Added local ShoppingCart components
 - Added translations
-- Added local ShoppingCart component
 - Changed: redone to yii2-cart
 - Added basics
 

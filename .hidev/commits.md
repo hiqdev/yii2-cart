@@ -3,11 +3,13 @@ hiqdev/yii2-cart commits history
 
 ## Under development
 
+- Added local ShoppingCart components
+    - a37e935 2015-11-16 + CartPosition Trait and Interface (sol@hiqdev.com)
+    - b291ca2 2015-11-16 minor fixes (sol@hiqdev.com)
     - 8baf894 2015-11-13 php-cs-fixed (sol@hiqdev.com)
+    - c2454e4 2015-11-13 added local ShoppingCart component with currency formatting and used all over (sol@hiqdev.com)
 - Added translations
     - eba9f25 2015-11-13 added translations (sol@hiqdev.com)
-- Added local ShoppingCart component
-    - c2454e4 2015-11-13 added local ShoppingCart component with currency formatting and used all over (sol@hiqdev.com)
 - Changed: redone to yii2-cart
     - 879a12c 2015-11-12 php-cs-fixed (sol@hiqdev.com)
     - 3dc05b9 2015-11-12 basically fixed (sol@hiqdev.com)
