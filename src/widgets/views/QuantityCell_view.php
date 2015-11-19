@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-\yii\helpers\VarDumper::dump($model->quantity, 10, true);
 ?>
 
 <?= Html::beginForm('update-quantity', 'post', ['id' => $model->id]) ?>

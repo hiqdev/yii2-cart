@@ -127,12 +127,20 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="col-xs-8"><span class="pull-right">
             <?php if ($module->termsPage) : ?>
+                <?php \hiqdev\assets\icheck\iCheckAsset::register($this) ?>
+                <?php $this->registerJs("
+                        jQuery('input').iCheck({
+                            checkboxClass: 'icheckbox_minimal-blue',
+                            radioClass: 'iradio_minimal'
+                        }).on('ifToggled', function() {
+                            jQuery('#make-order-button').toggleClass('disabled');
+                        });"); ?>
                 <label>
-                    <input type="checkbox">
-                    <?= Yii::t('cart', 'I have read and agree to the') ?> <?= Html::a(Yii::t('cart', 'terms of use'), $module->termsPage) ?>
+                    <input type="checkbox" id="term-of-use">
+                    &nbsp;<?= Yii::t('cart', 'I have read and agree to the') ?> <?= Html::a(Yii::t('cart', 'terms of use'), $module->termsPage) ?>
                 </label> &nbsp; &nbsp;
             <?php endif ?>
-            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), ['clear'], ['class' => 'btn btn-success']); ?>
+            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), ['clear'], ['id' => 'make-order-button', 'class' => ($module->termsPage) ? 'btn btn-success disabled' : 'btn btn-success']); ?>
         </span></div>
     </div>
 </section>
