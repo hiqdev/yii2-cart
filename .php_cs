@@ -1,7 +1,7 @@
 <?php
 
 $header = <<<EOF
-Cart module for yii2
+Cart module for Yii2
 
 @link      https://github.com/hiqdev/yii2-cart
 @package   yii2-cart

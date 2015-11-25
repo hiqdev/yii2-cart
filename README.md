@@ -1,10 +1,11 @@
 Yii2 Cart
 =========
 
-**Cart module for yii2**
+**Cart module for Yii2**
 
 [![Latest Stable Version](https://poser.pugx.org/hiqdev/yii2-cart/v/stable)](//packagist.org/packages/hiqdev/yii2-cart)
 [![Total Downloads](https://poser.pugx.org/hiqdev/yii2-cart/downloads)](//packagist.org/packages/hiqdev/yii2-cart)
+[![Build Status](https://img.shields.io/travis/hiqdev/yii2-cart.svg)](http://travis-ci.org/hiqdev/yii2-cart)
 [![Dependency Status](https://www.versioneye.com/php/hiqdev:yii2-cart/dev-master/badge.svg)](https://www.versioneye.com/php/hiqdev:yii2-cart/dev-master)
 
 [Yii2](http://yiiframework.com) extension providing shopping cart module.
@@ -16,7 +17,7 @@ The preferred way to install this yii2-extension is through [composer](http://ge
 
 Either run
 
-```
+```sh
 php composer.phar require "hiqdev/yii2-cart"
 ```
 

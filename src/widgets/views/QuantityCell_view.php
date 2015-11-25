@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+
 ?>
 
 <?= Html::beginForm('update-quantity', 'post', ['id' => $model->id]) ?>

@@ -3,6 +3,9 @@ hiqdev/yii2-cart commits history
 
 ## Under development
 
+    - 59e0dca 2015-11-19 Add toggled chebox on the checkout page (andreyklochok@gmail.com)
+    - 8684813 2015-11-19 Replace $model->quantity to $model->getQuantity() !?!?!? (andreyklochok@gmail.com)
+    - 0a0f955 2015-11-16 Module.php - fixed syntax error (d.naumenko.a@gmail.com)
 - Added local ShoppingCart components
     - 9ded1e8 2015-11-16 php-cs-fixed (sol@hiqdev.com)
     - 670eca8 2015-11-16 fixed minor issues (sol@hiqdev.com)
