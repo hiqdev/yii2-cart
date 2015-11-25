@@ -4,6 +4,7 @@ hiqdev/yii2-cart commits history
 ## Under development
 
 - Added testing and Travis CI
+    - f96a35a 2015-11-25 php-cs-fixed (sol@hiqdev.com)
     - 95e1f6b 2015-11-25 added testing and Travis CI (sol@hiqdev.com)
 - Added local ShoppingCart components
     - 59e0dca 2015-11-19 Add toggled checkbox on the checkout page (andreyklochok@gmail.com)
