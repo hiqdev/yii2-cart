@@ -1,9 +1,18 @@
 <?php
 
+/*
+ * Cart module for Yii2
+ *
+ * @link      https://github.com/hiqdev/yii2-cart
+ * @package   yii2-cart
+ * @license   BSD-3-Clause
+ * @copyright Copyright (c) 2015, HiQDev (http://hiqdev.com/)
+ */
+
 namespace hiqdev\yii2\cart\tests\unit;
 
-use hiqdev\yii2\cart\CartPositionTrait;
 use hiqdev\yii2\cart\CartPositionInterface;
+use hiqdev\yii2\cart\CartPositionTrait;
 
 class FakeCartPosition extends \yii\base\Object implements CartPositionInterface
 {
@@ -25,6 +34,6 @@ class FakeCartPosition extends \yii\base\Object implements CartPositionInterface
 
     public function getCost($withDiscount = true)
     {
-        return $this->price*$this->quantity - ($withDiscount ? $this->discount*$this->quantity : 0);
+        return $this->price * $this->quantity - ($withDiscount ? $this->discount * $this->quantity : 0);
     }
 }
