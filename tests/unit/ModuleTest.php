@@ -56,4 +56,8 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(ShoppingCart::className(), $this->object->getCart());
         $this->assertSame(Yii::$app->getModule('cart')->get('cart'), $this->object->cart);
     }
+    public function testBuildUrl()
+    {
+        $this->assertStringEndsWith('/cart/cart/index', $this->object->buildUrl());
+    }
 }
