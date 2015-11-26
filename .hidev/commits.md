@@ -3,8 +3,10 @@ hiqdev/yii2-cart commits history
 
 ## Under development
 
-    - 890a509 2015-11-26 + testBuildUrl (sol@hiqdev.com)
 - Added testing and Travis CI
+    - 592d76b 2015-11-26 php-cs-fixed (sol@hiqdev.com)
+    - d5222e4 2015-11-26 added more tests and coverage (sol@hiqdev.com)
+    - 890a509 2015-11-26 + testBuildUrl (sol@hiqdev.com)
     - f96a35a 2015-11-25 php-cs-fixed (sol@hiqdev.com)
     - 95e1f6b 2015-11-25 added testing and Travis CI (sol@hiqdev.com)
 - Added local ShoppingCart components
