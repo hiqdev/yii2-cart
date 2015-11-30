@@ -14,6 +14,7 @@ namespace hiqdev\yii2\cart\tests\unit;
 use hiqdev\yii2\cart\Module;
 use hiqdev\yii2\cart\ShoppingCart;
 use Yii;
+use yii\helpers\Url;
 use yii\web\Application;
 
 /**
@@ -58,10 +59,10 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
     }
     public function testCreateUrl()
     {
-        $this->assertSame('/cart/cart/index',     $this->object->createUrl());
-        $this->assertSame('/cart/cart/something', $this->object->createUrl('something'));
-        $this->assertSame('/cart/cart/order?a=b', $this->object->createUrl(['order', 'a' => 'b']));
-        $this->assertSame('/cart/test/order?a=b', $this->object->createUrl(['test/order', 'a' => 'b']));
+        $this->assertSame(Url::to('/cart/cart/index'),             $this->object->createUrl());
+        $this->assertSame(Url::to('/cart/cart/something'),         $this->object->createUrl('something'));
+        $this->assertSame(Url::to(['/cart/cart/order', 'a' => 2]), $this->object->createUrl(['order', 'a' => 2]));
+        $this->assertSame(Url::to(['/cart/test/order', 'a' => 2]), $this->object->createUrl(['test/order', 'a' => 2]));
     }
 
     protected $methods = 'a and b';
