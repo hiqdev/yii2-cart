@@ -13,7 +13,7 @@ use yii\helpers\Html;
         <?php if ($cart->count) : ?>
             <li class="header">
                 <div class="row">
-                    <div class="col-md-4"><?= Html::a(Yii::t('cart', 'Cart'), $widget->module->buildUrl()) ?>:</div>
+                    <div class="col-md-4"><?= Html::a(Yii::t('cart', 'Cart'), $widget->module->createUrl()) ?>:</div>
                     <div class="col-md-8 text-bold text-right"><?= Yii::t('cart', 'Total') ?>: <?= $cart->formatCurrency($cart->total) ?></div>
                 </div>
             </li>
@@ -28,7 +28,7 @@ use yii\helpers\Html;
                     <?php endforeach ?>
                 </ul>
             </li>
-            <li class="footer"><?= Html::a(Yii::t('cart', 'View Cart'), $widget->module->buildUrl()) ?></li>
+            <li class="footer"><?= Html::a(Yii::t('cart', 'View Cart'), $widget->module->createUrl()) ?></li>
         <?php else : ?>
             <li class="header">
                 <div class="row">

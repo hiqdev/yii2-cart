@@ -56,8 +56,21 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(ShoppingCart::className(), $this->object->getCart());
         $this->assertSame(Yii::$app->getModule('cart')->get('cart'), $this->object->cart);
     }
-    public function testBuildUrl()
+    public function testCreateUrl()
     {
-        $this->assertStringEndsWith('/cart/cart/index', $this->object->buildUrl());
+        $this->assertSame('/cart/cart/index',     $this->object->createUrl());
+        $this->assertSame('/cart/cart/something', $this->object->createUrl('something'));
+        $this->assertSame('/cart/cart/order?a=b', $this->object->createUrl(['order', 'a' => 'b']));
+        $this->assertSame('/cart/test/order?a=b', $this->object->createUrl(['test/order', 'a' => 'b']));
+    }
+
+    protected $methods = 'a and b';
+
+    public function testPaymentMethods()
+    {
+        $this->object->setPaymentMethods($this->methods);
+        $this->assertSame($this->methods, $this->object->getPaymentMethods());
+        $this->object->setPaymentMethods(function () { return $this->methods; });
+        $this->assertSame($this->methods, $this->object->getPaymentMethods());
     }
 }

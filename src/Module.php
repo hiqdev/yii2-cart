@@ -13,6 +13,7 @@ namespace hiqdev\yii2\cart;
 
 use Closure;
 use Yii;
+use yii\helpers\Url;
 
 /**
  * Cart Module.
@@ -71,9 +72,11 @@ class Module extends \yii\base\Module
         return $this->get(static::CART);
     }
 
-    public function buildUrl($route = null)
+    public function createUrl($route = null)
     {
-        return '/' . $this->id . '/' . ($route ?: 'cart/index');
+        $params = is_array($route) ? $route : [$route];
+        $params[0] = '/' . $this->id . '/' . (strpos($params[0], '/') !== false ? $params[0] : 'cart/' . ($params[0] ?: 'index'));
+        return Url::toRoute($params);
     }
 
     /**
