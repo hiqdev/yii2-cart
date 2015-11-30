@@ -10,6 +10,7 @@ hiqdev/yii2-cart commits history
     - f96a35a 2015-11-25 php-cs-fixed (sol@hiqdev.com)
     - 95e1f6b 2015-11-25 added testing and Travis CI (sol@hiqdev.com)
 - Added local ShoppingCart components
+    - 0561eda 2015-11-30 added parametrization of payment methods (sol@hiqdev.com)
     - 59e0dca 2015-11-19 Add toggled checkbox on the checkout page (andreyklochok@gmail.com)
     - 8684813 2015-11-19 Replace `$model->quantity` to `$model->getQuantity()` !?!?!? (andreyklochok@gmail.com)
     - 0a0f955 2015-11-16 Module.php - fixed syntax error (d.naumenko.a@gmail.com)
