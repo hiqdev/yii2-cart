@@ -11,6 +11,7 @@
 
 namespace hiqdev\yii2\cart;
 
+use Closure;
 use Yii;
 
 /**
@@ -79,4 +80,16 @@ class Module extends \yii\base\Module
      * Link to the terms of use page.
      */
     public $termsPage;
+
+    protected $_paymentMethods;
+
+    public function setPaymentMethods($value)
+    {
+        $this->_paymentMethods = $value;
+    }
+
+    public function getPaymentMethods()
+    {
+        return $this->_paymentMethods instanceof Closure ? call_user_func($this->_paymentMethods) : $this->_paymentMethods;
+    }
 }
