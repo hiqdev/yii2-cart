@@ -4,6 +4,7 @@ hiqdev/yii2-cart commits history
 ## Under development
 
 - Added testing and Travis CI
+    - dea6779 2015-11-30 redone createUrl <- buildUrl (sol@hiqdev.com)
     - 592d76b 2015-11-26 php-cs-fixed (sol@hiqdev.com)
     - d5222e4 2015-11-26 added more tests and coverage (sol@hiqdev.com)
     - 890a509 2015-11-26 + testBuildUrl (sol@hiqdev.com)
