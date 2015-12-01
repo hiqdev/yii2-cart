@@ -4,7 +4,8 @@ hiqdev/yii2-cart commits history
 ## Under development
 
 - Added configration options to Module
-    - c916a79 2015-12-01 added  option to Module (sol@hiqdev.com)
+    - 3435f56 2015-12-01 + `orderButton` parameter (sol@hiqdev.com)
+    - c916a79 2015-12-01 added `orderPage` option to Module (sol@hiqdev.com)
     - baeab52 2015-11-30 fixed testCreateUrl (sol@hiqdev.com)
     - 0561eda 2015-11-30 added parametrization of payment methods (sol@hiqdev.com)
     - 59e0dca 2015-11-19 Add toggled checkbox on the checkout page (andreyklochok@gmail.com)
