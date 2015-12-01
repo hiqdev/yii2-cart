@@ -89,6 +89,18 @@ class Module extends \yii\base\Module
      */
     public $orderPage = ['order'];
 
+    protected $_orderButton;
+
+    public function setOrderButton($value)
+    {
+        $this->_orderButton = $value;
+    }
+
+    public function getOrderButton()
+    {
+        return $this->_orderButton instanceof Closure ? call_user_func($this->_orderButton, $this) : $this->_orderButton;
+    }
+
     protected $_paymentMethods;
 
     public function setPaymentMethods($value)
@@ -98,6 +110,6 @@ class Module extends \yii\base\Module
 
     public function getPaymentMethods()
     {
-        return $this->_paymentMethods instanceof Closure ? call_user_func($this->_paymentMethods) : $this->_paymentMethods;
+        return $this->_paymentMethods instanceof Closure ? call_user_func($this->_paymentMethods, $this) : $this->_paymentMethods;
     }
 }
