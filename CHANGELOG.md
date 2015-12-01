@@ -3,6 +3,7 @@ hiqdev/yii2-cart changelog
 
 ## Under development
 
+- Added configration options to Module
 - Added testing and Travis CI
 - Added local ShoppingCart components
 - Added translations

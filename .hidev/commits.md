@@ -3,6 +3,12 @@ hiqdev/yii2-cart commits history
 
 ## Under development
 
+- Added configration options to Module
+    - c916a79 2015-12-01 added  option to Module (sol@hiqdev.com)
+    - baeab52 2015-11-30 fixed testCreateUrl (sol@hiqdev.com)
+    - 0561eda 2015-11-30 added parametrization of payment methods (sol@hiqdev.com)
+    - 59e0dca 2015-11-19 Add toggled checkbox on the checkout page (andreyklochok@gmail.com)
+    - 8684813 2015-11-19 Replace `$model->quantity` to `$model->getQuantity()` !?!?!? (andreyklochok@gmail.com)
 - Added testing and Travis CI
     - dea6779 2015-11-30 redone createUrl <- buildUrl (sol@hiqdev.com)
     - 592d76b 2015-11-26 php-cs-fixed (sol@hiqdev.com)
@@ -11,9 +17,6 @@ hiqdev/yii2-cart commits history
     - f96a35a 2015-11-25 php-cs-fixed (sol@hiqdev.com)
     - 95e1f6b 2015-11-25 added testing and Travis CI (sol@hiqdev.com)
 - Added local ShoppingCart components
-    - 0561eda 2015-11-30 added parametrization of payment methods (sol@hiqdev.com)
-    - 59e0dca 2015-11-19 Add toggled checkbox on the checkout page (andreyklochok@gmail.com)
-    - 8684813 2015-11-19 Replace `$model->quantity` to `$model->getQuantity()` !?!?!? (andreyklochok@gmail.com)
     - 0a0f955 2015-11-16 Module.php - fixed syntax error (d.naumenko.a@gmail.com)
     - 9ded1e8 2015-11-16 php-cs-fixed (sol@hiqdev.com)
     - 670eca8 2015-11-16 fixed minor issues (sol@hiqdev.com)
