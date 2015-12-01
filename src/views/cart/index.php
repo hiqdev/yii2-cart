@@ -130,7 +130,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     &nbsp;<?= Yii::t('cart', 'I have read and agree to the') ?> <?= Html::a(Yii::t('cart', 'terms of use'), $module->termsPage) ?>
                 </label> &nbsp; &nbsp;
             <?php endif ?>
-            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), ['clear'], ['id' => 'make-order-button', 'class' => ($module->termsPage) ? 'btn btn-success disabled' : 'btn btn-success']); ?>
+            <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, ['id' => 'make-order-button', 'class' => ($module->termsPage) ? 'btn btn-success disabled' : 'btn btn-success']); ?>
         </span></div>
     </div>
 </section>

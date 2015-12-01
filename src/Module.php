@@ -80,9 +80,14 @@ class Module extends \yii\base\Module
     }
 
     /**
-     * Link to the terms of use page.
+     * Route to the terms of use page, suitable for Url::to().
      */
     public $termsPage;
+
+    /**
+     * Route to the order page, suitable for Url::to().
+     */
+    public $orderPage = ['order'];
 
     protected $_paymentMethods;
 
