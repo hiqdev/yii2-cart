@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-xs-12">
             <h2 class="page-header">
-                <?= Yii::t('cart', 'Your cart') ?>
+                <i class="fa fa-shopping-cart"></i> &nbsp;
+                <?= Yii::t('cart', 'Your order') ?>: &nbsp; <?= $cart->count ?> <?= Yii::t('cart', 'postitions') ?>
                 <small class="pull-right"><?= Yii::t('cart', 'Date') ?>: <?= date('Y-m-d') ?></small>
             </h2>
         </div>
-        <!-- /.col -->
     </div>
 
     <!-- Table row -->
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xs-12 table-responsive">
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
-                'layout' => "{items}\n{pager}",
+                'layout' => "{items}",
                 'columns' => [
                     [
                         'attribute' => 'no',
@@ -73,9 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]); ?>
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 
     <div class="row">
         <!-- accepted payments column -->
@@ -84,6 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <!-- /.col -->
         <div class="col-xs-6">
+            <p class="lead"><?= Yii::t('cart', 'Amount due') ?>:</p>
             <div class="table-responsive">
                 <table class="table">
                     <tbody>
