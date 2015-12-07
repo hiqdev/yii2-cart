@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xs-12">
             <h2 class="page-header">
                 <i class="fa fa-shopping-cart"></i> &nbsp;
-                <?= Yii::t('cart', 'Your order') ?>: &nbsp; <?= $cart->count ?> <?= Yii::t('cart', 'postitions') ?>
+                <?= Yii::t('cart', 'Your order') ?>: &nbsp; <?= Yii::t('cart', '{0, plural, one{# position} other{# positions}}', $cart->count) ?>
                 <small class="pull-right"><?= Yii::t('cart', 'Date') ?>: <?= date('Y-m-d') ?></small>
             </h2>
         </div>
