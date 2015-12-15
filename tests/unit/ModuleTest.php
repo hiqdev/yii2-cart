@@ -37,6 +37,12 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
                     'class' => Module::className(),
                 ],
             ],
+            'components' => [
+                'urlManager' => [
+                    'enablePrettyUrl' => true,
+                    'showScriptName'  => false,
+                ],
+            ],
         ]);
         $this->object = Yii::$app->getModule('cart');
     }
@@ -57,21 +63,30 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(ShoppingCart::className(), $this->object->getCart());
         $this->assertSame(Yii::$app->getModule('cart')->get('cart'), $this->object->cart);
     }
+
     public function testCreateUrl()
     {
-        $this->assertSame(Url::to('/cart/cart/index'),             $this->object->createUrl());
-        $this->assertSame(Url::to('/cart/cart/something'),         $this->object->createUrl('something'));
-        $this->assertSame(Url::to(['/cart/cart/order', 'a' => 2]), $this->object->createUrl(['order', 'a' => 2]));
-        $this->assertSame(Url::to(['/cart/test/order', 'a' => 2]), $this->object->createUrl(['test/order', 'a' => 2]));
+        $this->assertStringEndsWith(Url::to('/cart/cart/index'),             $this->object->createUrl());
+        $this->assertStringEndsWith(Url::to('/cart/cart/something'),         $this->object->createUrl('something'));
+        $this->assertStringEndsWith(Url::to(['/cart/cart/order', 'a' => 2]), $this->object->createUrl(['order', 'a' => 2]));
+        $this->assertStringEndsWith(Url::to(['/cart/test/order', 'a' => 2]), $this->object->createUrl(['test/order', 'a' => 2]));
     }
 
-    protected $methods = 'a and b';
+    protected $testString = 'a and b';
+
+    public function testOrderButton()
+    {
+        $this->object->setOrderButton($this->testString);
+        $this->assertSame($this->testString, $this->object->getOrderButton());
+        $this->object->setOrderButton(function () { return $this->testString; });
+        $this->assertSame($this->testString, $this->object->getOrderButton());
+    }
 
     public function testPaymentMethods()
     {
-        $this->object->setPaymentMethods($this->methods);
-        $this->assertSame($this->methods, $this->object->getPaymentMethods());
-        $this->object->setPaymentMethods(function () { return $this->methods; });
-        $this->assertSame($this->methods, $this->object->getPaymentMethods());
+        $this->object->setPaymentMethods($this->testString);
+        $this->assertSame($this->testString, $this->object->getPaymentMethods());
+        $this->object->setPaymentMethods(function () { return $this->testString; });
+        $this->assertSame($this->testString, $this->object->getPaymentMethods());
     }
 }
