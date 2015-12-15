@@ -11,4 +11,4 @@ package:
 
 require:
     hiqdev/hidev-php:    "*"
-    hiqdev/hidev-hiqdev: "*"
+    hiqdev/hidev-vendor: "*"
