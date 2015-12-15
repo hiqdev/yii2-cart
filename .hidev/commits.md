@@ -4,6 +4,7 @@ hiqdev/yii2-cart commits history
 ## Under development
 
 - Added configration options to Module
+    - 5cc02b9 2015-12-15 added test for get/setOrderButton (sol@hiqdev.com)
     - 213c03b 2015-12-15 fixed travis and tests (sol@hiqdev.com)
     - 112713c 2015-12-04 + Amount due (sol@hiqdev.com)
     - 3435f56 2015-12-01 + `orderButton` parameter (sol@hiqdev.com)
