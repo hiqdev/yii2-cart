@@ -27,23 +27,35 @@ use yii\helpers\Url;
  *     ],
  * ],
  * ```
+ * @package hiqdev\yii2\cart
  */
 class Module extends \yii\base\Module
 {
-    const CART = 'cart';
+    /**
+     * Cart component ID
+     */
+    const CART_COMPONENT_ID = 'cart';
 
+    /**
+     * {@inheritdoc}
+     * @throws \yii\base\InvalidConfigException
+     */
     public function init()
     {
         parent::init();
-        if (!$this->has(static::CART)) {
-            $this->set(static::CART, [
+        if (!$this->has(static::CART_COMPONENT_ID)) {
+            $this->set(static::CART_COMPONENT_ID, [
                 'class' => 'hiqdev\yii2\cart\ShoppingCart',
             ]);
         }
-        $this->get(static::CART)->module = $this;
+        $this->get(static::CART_COMPONENT_ID)->module = $this;
         $this->registerTranslations();
     }
 
+    /**
+     * Registers translations
+     * @void
+     */
     public function registerTranslations()
     {
         Yii::$app->i18n->translations['cart'] = [
@@ -56,6 +68,9 @@ class Module extends \yii\base\Module
         ];
     }
 
+    /**
+     * @var string the module name
+     */
     public static $name = 'cart';
 
     /**
@@ -67,9 +82,13 @@ class Module extends \yii\base\Module
         return Yii::$app->getModule(static::$name);
     }
 
+    /**
+     * @return null|\yz\shoppingcart\ShoppingCart|ShoppingCart
+     * @throws \yii\base\InvalidConfigException
+     */
     public function getCart()
     {
-        return $this->get(static::CART);
+        return $this->get(static::CART_COMPONENT_ID);
     }
 
     public function createUrl($route = null)
@@ -80,12 +99,12 @@ class Module extends \yii\base\Module
     }
 
     /**
-     * Route to the terms of use page, suitable for Url::to().
+     * @var string|array route to the terms of use page, suitable for Url::to().
      */
     public $termsPage;
 
     /**
-     * Route to the order page, suitable for Url::to().
+     * @var string|array route to the order page, suitable for Url::to().
      */
     public $orderPage = ['order'];
 
