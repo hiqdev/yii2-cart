@@ -27,12 +27,11 @@ use yii\helpers\Url;
  *     ],
  * ],
  * ```
- * @package hiqdev\yii2\cart
  */
 class Module extends \yii\base\Module
 {
     /**
-     * Cart component ID
+     * Cart component ID.
      */
     const CART_COMPONENT_ID = 'cart';
 
@@ -53,7 +52,7 @@ class Module extends \yii\base\Module
     }
 
     /**
-     * Registers translations
+     * Registers translations.
      * @void
      */
     public function registerTranslations()
@@ -83,8 +82,8 @@ class Module extends \yii\base\Module
     }
 
     /**
-     * @return null|\yz\shoppingcart\ShoppingCart|ShoppingCart
      * @throws \yii\base\InvalidConfigException
+     * @return null|\yz\shoppingcart\ShoppingCart|ShoppingCart
      */
     public function getCart()
     {

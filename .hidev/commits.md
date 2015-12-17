@@ -13,7 +13,8 @@ hiqdev/yii2-cart commits history
     - 0561eda 2015-11-30 added parametrization of payment methods (sol@hiqdev.com)
     - 59e0dca 2015-11-19 Add toggled checkbox on the checkout page (andreyklochok@gmail.com)
     - 8684813 2015-11-19 Replace `$model->quantity` to `$model->getQuantity()` !?!?!? (andreyklochok@gmail.com)
-- Added testing and Travis CI
+- Added phpdocs, testing and Travis CI
+    - 374c80c 2015-12-16 Added PHPDoc, refactoring (d.naumenko.a@gmail.com)
     - dea6779 2015-11-30 redone createUrl <- buildUrl (sol@hiqdev.com)
     - 592d76b 2015-11-26 php-cs-fixed (sol@hiqdev.com)
     - d5222e4 2015-11-26 added more tests and coverage (sol@hiqdev.com)
