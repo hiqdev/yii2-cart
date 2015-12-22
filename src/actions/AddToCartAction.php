@@ -11,6 +11,7 @@
 
 namespace hiqdev\yii2\cart\actions;
 
+use hipanel\modules\domain\models\Domain;
 use hiqdev\hiart\Collection;
 use hiqdev\yii2\cart\Module;
 use Yii;
@@ -34,13 +35,12 @@ class AddToCartAction extends \yii\base\Action
         $model = new $this->productClass();
         $collection = new Collection();
         $collection->setModel($model);
-//        $data = $request->isPost ? $request->post() : $request->get();
 
         if ($this->bulkLoad) {
             $data = [];
             $selection = $request->post('selection');
             foreach ($selection as $id) {
-                $data[$id] = [reset($collection->first->primaryKey()) => $id];
+                $data[$id] = [reset($model->primaryKey()) => $id];
             }
         } else {
             $data = [$request->post() ?: $request->get()];
