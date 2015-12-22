@@ -31,12 +31,18 @@ class AddToCartAction extends \yii\base\Action
         $data = null;
         $cart = $this->getModule()->getCart();
         $request = Yii::$app->request;
-        $collection = new Collection([
-            'model' => new $this->productClass(),
-        ]);
+        $model = new $this->productClass();
+        $collection = new Collection();
+        $collection->setModel($model);
 //        $data = $request->isPost ? $request->post() : $request->get();
 
-        if (!$this->bulkLoad) {
+        if ($this->bulkLoad) {
+            $data = [];
+            $selection = $request->post('selection');
+            foreach ($selection as $id) {
+                $data[$id] = [reset($collection->first->primaryKey()) => $id];
+            }
+        } else {
             $data = [$request->post() ?: $request->get()];
         }
 
