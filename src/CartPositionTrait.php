@@ -12,6 +12,7 @@
 namespace hiqdev\yii2\cart;
 
 use Yii;
+use yii\base\Model;
 
 /**
  * CartPositionTrait trait.

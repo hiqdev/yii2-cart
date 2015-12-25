@@ -31,6 +31,11 @@ use yii\helpers\Url;
 class Module extends \yii\base\Module
 {
     /**
+     * @var array array of the options that will be passed to [[set]]
+     */
+    public $shoppingCartOptions = [];
+
+    /**
      * Cart component ID.
      */
     const CART_COMPONENT_ID = 'cart';
@@ -43,9 +48,9 @@ class Module extends \yii\base\Module
     {
         parent::init();
         if (!$this->has(static::CART_COMPONENT_ID)) {
-            $this->set(static::CART_COMPONENT_ID, [
+            $this->set(static::CART_COMPONENT_ID, array_merge([
                 'class' => 'hiqdev\yii2\cart\ShoppingCart',
-            ]);
+            ], $this->shoppingCartOptions));
         }
         $this->get(static::CART_COMPONENT_ID)->module = $this;
         $this->registerTranslations();
