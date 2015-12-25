@@ -11,10 +11,20 @@
 
 namespace hiqdev\yii2\cart;
 
+use hipanel\modules\finance\cart\AbstractCartPosition;
 use Yii;
 
+/**
+ * Class ShoppingCart
+ * @property AbstractCartPosition[] $positions
+ */
 class ShoppingCart extends \yz\shoppingcart\ShoppingCart
 {
+    /**
+     * @var AbstractCartPosition[]
+     */
+    protected $_positions;
+
     /**
      * The cart module.
      */
@@ -22,6 +32,9 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
 
     public $currency = 'usd';
 
+    /**
+     * @return integer
+     */
     public function getCount()
     {
         return count($this->_positions);
