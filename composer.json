@@ -45,9 +45,19 @@
     "require": {
         "omnilight/yii2-shopping-cart": "*"
     },
+    "require-dev": {
+        "minii/web": "*@dev",
+        "minii/i18n": "*@dev",
+        "minii/helpers": "*@dev"
+    },
     "autoload": {
         "psr-4": {
             "hiqdev\\yii2\\cart\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "hiqdev\\yii2\\cart\\tests\\": "tests"
         }
     }
 }
