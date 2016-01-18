@@ -3,6 +3,11 @@ hiqdev/yii2-cart commits history
 
 ## Under development
 
+    - 904f2b6 2015-12-25 Module - added shoppingCartOptions property (d.naumenko.a@gmail.com)
+    - 8982a03 2015-12-25 ShoppingCart - PHPDocs improved (d.naumenko.a@gmail.com)
+    - 06670cf 2015-12-25 CartController::actionUpdateQuantity - fixed broken redirect (d.naumenko.a@gmail.com)
+    - 69b9a1f 2015-12-22 Add bulk Renewal (andreyklochok@gmail.com)
+    - 9820938 2015-12-22 Some changes (andreyklochok@gmail.com)
 - Added configration options to Module
     - 5cc02b9 2015-12-15 added test for get/setOrderButton (sol@hiqdev.com)
     - 213c03b 2015-12-15 fixed travis and tests (sol@hiqdev.com)

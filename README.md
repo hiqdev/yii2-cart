@@ -6,6 +6,8 @@ Yii2 Cart
 [![Latest Stable Version](https://poser.pugx.org/hiqdev/yii2-cart/v/stable)](https://packagist.org/packages/hiqdev/yii2-cart)
 [![Total Downloads](https://poser.pugx.org/hiqdev/yii2-cart/downloads)](https://packagist.org/packages/hiqdev/yii2-cart)
 [![Build Status](https://img.shields.io/travis/hiqdev/yii2-cart.svg)](https://travis-ci.org/hiqdev/yii2-cart)
+[![Code Coverage](https://scrutinizer-ci.com/g/hiqdev/yii2-cart/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/hiqdev/yii2-cart/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/hiqdev/yii2-cart/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/hiqdev/yii2-cart/?branch=master)
 [![Dependency Status](https://www.versioneye.com/php/hiqdev:yii2-cart/dev-master/badge.svg)](https://www.versioneye.com/php/hiqdev:yii2-cart/dev-master)
 
 [Yii2](http://yiiframework.com) extension providing shopping cart module.
@@ -34,4 +36,4 @@ to the require section of your composer.json.
 This project is released under the terms of the BSD-3-Clause [license](LICENSE).
 Read more [here](http://choosealicense.com/licenses/bsd-3-clause).
 
-Copyright © 2015, HiQDev (http://hiqdev.com/)
+Copyright © 2015-2016, HiQDev (http://hiqdev.com/)

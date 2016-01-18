@@ -6,7 +6,7 @@
  * @link      https://github.com/hiqdev/yii2-cart
  * @package   yii2-cart
  * @license   BSD-3-Clause
- * @copyright Copyright (c) 2015, HiQDev (http://hiqdev.com/)
+ * @copyright Copyright (c) 2015-2016, HiQDev (http://hiqdev.com/)
  */
 
 namespace hiqdev\yii2\cart;
@@ -15,7 +15,7 @@ use hipanel\modules\finance\cart\AbstractCartPosition;
 use Yii;
 
 /**
- * Class ShoppingCart
+ * Class ShoppingCart.
  * @property AbstractCartPosition[] $positions
  */
 class ShoppingCart extends \yz\shoppingcart\ShoppingCart

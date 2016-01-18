@@ -6,12 +6,11 @@
  * @link      https://github.com/hiqdev/yii2-cart
  * @package   yii2-cart
  * @license   BSD-3-Clause
- * @copyright Copyright (c) 2015, HiQDev (http://hiqdev.com/)
+ * @copyright Copyright (c) 2015-2016, HiQDev (http://hiqdev.com/)
  */
 
 namespace hiqdev\yii2\cart\actions;
 
-use hipanel\modules\domain\models\Domain;
 use hiqdev\hiart\Collection;
 use hiqdev\yii2\cart\Module;
 use Yii;
