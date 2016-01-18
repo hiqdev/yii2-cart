@@ -43,7 +43,8 @@
         }
     ],
     "require": {
-        "omnilight/yii2-shopping-cart": "*"
+        "omnilight/yii2-shopping-cart": "*",
+        "hiqdev/yii2-hiart": "*"
     },
     "require-dev": {
         "minii/web": "*@dev",
