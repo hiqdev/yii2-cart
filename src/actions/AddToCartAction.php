@@ -12,27 +12,39 @@
 namespace hiqdev\yii2\cart\actions;
 
 use hiqdev\hiart\Collection;
-use hiqdev\yii2\cart\Module;
+use hiqdev\yii2\cart\CartPositionInterface;
+use hiqdev\yii2\cart\Module as CartModule;
 use Yii;
 
 class AddToCartAction extends \yii\base\Action
 {
+    /**
+     * @var CartPositionInterface The class for new product
+     */
     public $productClass;
 
+    /**
+     * @var boolean whether the action expects bulk models load using `selection`
+     */
     public $bulkLoad = false;
 
-    public function getModule()
+    /**
+     * Returns the cart module
+     * @return CartModule
+     */
+    public function getCartModule()
     {
-        return Module::getInstance();
+        return CartModule::getInstance();
     }
 
     public function run()
     {
         $data = null;
-        $cart = $this->getModule()->getCart();
+        $cart = $this->getCartModule()->getCart();
         $request = Yii::$app->request;
-        $model = new $this->productClass();
-        $collection = new Collection();
+        /** @var CartPositionInterface $model */
+        $model = Yii::createObject($this->productClass);
+        $collection = new Collection(); // TODO: drop dependency
         $collection->setModel($model);
 
         if ($this->bulkLoad) {
@@ -47,6 +59,7 @@ class AddToCartAction extends \yii\base\Action
 
         if ($collection->load($data) && $collection->validate()) {
             foreach ($collection->models as $position) {
+                /** @var CartPositionInterface $position */
                 if (!$cart->hasPosition($position->getId())) {
                     $cart->put($position);
                     Yii::$app->session->addFlash('success', Yii::t('cart', 'Item has been added to cart'));
@@ -55,13 +68,14 @@ class AddToCartAction extends \yii\base\Action
                 }
             }
         } else {
-            Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item does not exists'));
+            Yii::$app->session->addFlash('warning', Yii::t('cart', 'Failed to add item to the cart'));
+            Yii::warning('Failed to add item to the cart', 'cart');
         }
 
         if ($request->isAjax) {
             Yii::$app->end();
-        } else {
-            return $this->controller->redirect($request->referrer);
         }
+
+        return $this->controller->redirect($request->referrer ?: $this->controller->goHome());
     }
 }
