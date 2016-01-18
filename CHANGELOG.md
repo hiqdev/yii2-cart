@@ -3,6 +3,7 @@ hiqdev/yii2-cart changelog
 
 ## Under development
 
+- Added bulk renewal
 - Added configration options to Module
 - Added phpdocs, testing and Travis CI
 - Added local ShoppingCart components
