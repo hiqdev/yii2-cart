@@ -29,7 +29,7 @@ class AddToCartAction extends \yii\base\Action
     public $bulkLoad = false;
 
     /**
-     * Returns the cart module
+     * Returns the cart module.
      * @return CartModule
      */
     public function getCartModule()

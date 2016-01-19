@@ -4,6 +4,8 @@ hiqdev/yii2-cart commits history
 ## Under development
 
 - Added bulk renewal
+    - 053f3e8 2016-01-18 AddToCartAction - code style fixes, PHPDoc updates (d.naumenko.a@gmail.com)
+    - 9e490cd 2016-01-18 Added HiArt dependency (must be removed later) (d.naumenko.a@gmail.com)
     - 41c1aaa 2016-01-18 fixed build (sol@hiqdev.com)
     - bc1ccf9 2016-01-18 fixed build (sol@hiqdev.com)
     - 904f2b6 2015-12-25 Module - added shoppingCartOptions property (d.naumenko.a@gmail.com)
