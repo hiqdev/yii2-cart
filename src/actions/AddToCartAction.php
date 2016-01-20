@@ -47,17 +47,14 @@ class AddToCartAction extends \yii\base\Action
         $collection = new Collection(); // TODO: drop dependency
         $collection->setModel($model);
 
-        if ($this->bulkLoad) {
-            $data = [];
-            $selection = $request->post('selection');
-            foreach ($selection as $id) {
-                $data[$id] = [reset($model->primaryKey()) => $id];
-            }
-        } else {
+        if (!$this->bulkLoad) {
             $data = [$request->post() ?: $request->get()];
+            $collection->load($data);
+        } else {
+            $collection->load();
         }
 
-        if ($collection->load($data) && $collection->validate()) {
+        if ($collection->validate()) {
             foreach ($collection->models as $position) {
                 /** @var CartPositionInterface $position */
                 if (!$cart->hasPosition($position->getId())) {
