@@ -21,14 +21,14 @@ use yii\helpers\Html;
                 <ul class="menu">
                     <?php foreach ($cart->positions as $position) : ?>
                         <li>
-                            <a>
+                            <a href="<?= $widget->module->createUrl() ?>">
                                 <?= $position->icon ?> <?= $position->name ?> <?= Html::tag('span', $position->description, ['class' => 'text-muted']) ?>
                             </a>
                         </li>
                     <?php endforeach ?>
                 </ul>
             </li>
-            <li class="footer"><?= Html::a(Yii::t('cart', 'View Cart'), $widget->module->createUrl()) ?></li>
+            <li class="footer"><?= Html::a(Yii::t('cart', 'View cart'), $widget->module->createUrl()) ?></li>
         <?php else : ?>
             <li class="header">
                 <div class="row">
