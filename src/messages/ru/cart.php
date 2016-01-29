@@ -50,4 +50,7 @@ return [
     'I have read and agree to the'  => 'Я прочел и согласен с',
     'terms of use'                  => 'условиями предоставления услуг',
     '{0, plural, one{# position} other{# positions}}' => '{0, plural, one{# позиция} few{# позиции} other{# позиций}}',
+    'Order execution'               => 'Выполнение заказа',
+    'Operations performed'          => 'Выполненные операции',
+    'Operations failed'             => 'Не удалось выполнить',
 ];
