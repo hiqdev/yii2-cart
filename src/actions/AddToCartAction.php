@@ -61,7 +61,7 @@ class AddToCartAction extends \yii\base\Action
                     $cart->put($position);
                     Yii::$app->session->addFlash('success', Yii::t('cart', 'Item has been added to cart'));
                 } else {
-                    Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item is in the cart already'));
+                    Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item is already in the cart'));
                 }
             }
         } else {
