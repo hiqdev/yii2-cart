@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'name',
                         'format' => 'raw',
-                        'label' => ' ' . Yii::t('cart', 'Description'),
+                        'label' => Yii::t('cart', 'Description'),
                         'contentOptions' => ['style' => 'vertical-align: middle'],
                         'value' => function ($model) {
                             return $model->icon . ' ' . $model->name . ' ' . Html::tag('span', $model->description, ['class' => 'text-muted']);
@@ -47,6 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute' => 'quantity',
+                        'label' => Yii::t('cart', 'Quantity'),
                         'value' => function ($model, $key, $index, $column) {
                             return QuantityCell::widget(['model' => $model]); //, 'type' => 'number'
                         },
@@ -54,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute' => 'price',
+                        'label' => Yii::t('cart', 'Price'),
                         'contentOptions' => ['style' => 'vertical-align: middle;white-space: nowrap;'],
                         'value' => function ($model) use ($cart) {
                             return $cart->formatCurrency($model->cost);
