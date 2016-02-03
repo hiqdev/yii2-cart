@@ -3,6 +3,12 @@ hiqdev/yii2-cart commits history
 
 ## Under development
 
+- Fixed minor issues
+    - 4e45fbb 2016-02-03 + labels (sol@hiqdev.com)
+    - d5758fb 2016-02-03 Add topcart action for topcart widget render by action (andreyklochok@gmail.com)
+    - df76673 2016-02-02 AddToCartAction - spelling fix (d.naumenko.a@gmail.com)
+    - 5b375c2 2016-01-29 added tranlations (sol@hiqdev.com)
+    - a5b966e 2016-01-20 AddToCartAction - fixed load bulk load of structured data (d.naumenko.a@gmail.com)
 - Added bulk renewal
     - 053f3e8 2016-01-18 AddToCartAction - code style fixes, PHPDoc updates (d.naumenko.a@gmail.com)
     - 9e490cd 2016-01-18 Added HiArt dependency (must be removed later) (d.naumenko.a@gmail.com)

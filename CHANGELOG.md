@@ -3,6 +3,7 @@ hiqdev/yii2-cart changelog
 
 ## Under development
 
+- Fixed minor issues
 - Added bulk renewal
 - Added configration options to Module
 - Added phpdocs, testing and Travis CI
