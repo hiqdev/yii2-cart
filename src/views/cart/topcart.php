@@ -1,0 +1,1 @@
+<?php print \hiqdev\yii2\cart\widgets\PanelTopCart::widget(); ?>

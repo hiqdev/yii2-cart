@@ -12,6 +12,7 @@
 namespace hiqdev\yii2\cart\controllers;
 
 use hiqdev\yii2\cart\ShoppingCart;
+use hiqdev\yii2\cart\widgets\PanelTopCart;
 use Yii;
 use yii\data\ArrayDataProvider;
 use yii\web\NotFoundHttpException;
@@ -45,6 +46,13 @@ class CartController extends \yii\web\Controller
             'module'       => $this->module,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionTopcart()
+    {
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('topcart');
+        }
     }
 
     public function actionRemove($id)
