@@ -23,7 +23,7 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     /**
      * @var AbstractCartPosition[]
      */
-    protected $_positions;
+    protected $_positions = [];
 
     /**
      * The cart module.
