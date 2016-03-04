@@ -37,6 +37,7 @@ return [
     'Your order'                    => 'Ваш заказ',
     'Price'                         => 'Цена',
     'Quantity'                      => 'Количество',
+    'Notes'                         => 'Примечания',
     'Description'                   => 'Описание',
     'Subtotal'                      => 'Промежуточный итог',
     'Discount'                      => 'Скидка',
