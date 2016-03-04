@@ -1,13 +1,13 @@
 package:
     type:           yii2-extension
     name:           yii2-cart
-    namespace:      hiqdev\yii2\cart
-    headline:       Yii2 Cart
     title:          Cart module for Yii2
+    headline:       Yii2 Cart
     keywords:       cart, yii2, extension
-    year:           2015
+    namespace:      hiqdev\yii2\cart
     description:    |
         [Yii2](http://yiiframework.com) extension providing shopping cart module.
+
         Uses [omnilight/yii2-shopping-cart](https://github.com/omnilight/yii2-shopping-cart) for shopping cart abstraction.
 
 require:

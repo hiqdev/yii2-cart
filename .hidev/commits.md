@@ -4,6 +4,7 @@ hiqdev/yii2-cart commits history
 ## Under development
 
 - Fixed minor issues
+    - ffc4e1c 2016-03-04 translation (sol@hiqdev.com)
     - 2a44a12 2016-02-04 fixed default Cart `_positions` to be [] <- null (sol@hiqdev.com)
     - 4e45fbb 2016-02-03 + labels (sol@hiqdev.com)
     - d5758fb 2016-02-03 Add topcart action for topcart widget render by action (andreyklochok@gmail.com)

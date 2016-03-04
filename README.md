@@ -11,6 +11,7 @@ Yii2 Cart
 [![Dependency Status](https://www.versioneye.com/php/hiqdev:yii2-cart/dev-master/badge.svg)](https://www.versioneye.com/php/hiqdev:yii2-cart/dev-master)
 
 [Yii2](http://yiiframework.com) extension providing shopping cart module.
+
 Uses [omnilight/yii2-shopping-cart](https://github.com/omnilight/yii2-shopping-cart) for shopping cart abstraction.
 
 ## Installation
