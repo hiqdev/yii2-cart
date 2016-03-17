@@ -71,4 +71,9 @@ trait CartPositionTrait
     {
         return $this->description;
     }
+
+    public function getModel()
+    {
+        return $this->_model;
+    }
 }
