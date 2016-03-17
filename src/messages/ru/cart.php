@@ -54,4 +54,5 @@ return [
     'Order execution'               => 'Выполнение заказа',
     'Operations performed'          => 'Выполненные операции',
     'Operations failed'             => 'Не удалось выполнить',
+    'No available payment methods'  => 'Нет доступных способов оплаты',
 ];
