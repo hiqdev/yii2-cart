@@ -69,4 +69,19 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     {
         return Yii::$app->formatter->format($sum, ['currency', $currency ?: $this->currency]);
     }
+
+    /**
+     * Checks whether any of cart positions has error in `id` attribute
+     * @return boolean
+     */
+    public function hasErrors()
+    {
+        foreach ($this->_positions as $position) {
+            if ($position->hasErrors('id')) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
