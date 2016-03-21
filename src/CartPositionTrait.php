@@ -13,9 +13,11 @@ namespace hiqdev\yii2\cart;
 
 use Yii;
 use yii\base\Model;
+use yii\grid\GridView;
 
 /**
- * CartPositionTrait trait.
+ * CartPositionTrait trait
+ * It is intended to use this trait in classes, that extends [[Model]]
  */
 trait CartPositionTrait
 {
@@ -55,6 +57,19 @@ trait CartPositionTrait
             'quantity',
             'description',
         ];
+    }
+
+    /**
+     * This closure will be called in [[GridView::rowOptions]]
+     *
+     * @param integer $key the key value associated with the current data model
+     * @param integer $index the zero-based index of the data model in the model array returned by [[dataProvider]]
+     * @param GridView $grid the GridView object
+     * @return array
+     */
+    public function getRowOptions($key, $index, $grid)
+    {
+        return [];
     }
 
     public function getIcon()
