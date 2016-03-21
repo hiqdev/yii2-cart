@@ -8,6 +8,10 @@ use yii\helpers\Html;
 $this->title = Yii::t('cart', 'Cart');
 $this->params['breadcrumbs'][] = $this->title;
 
+/**
+ * @var \yii\data\ActiveDataProvider $dataProvider
+ * @var \hiqdev\yii2\cart\ShoppingCart $cart
+ */
 ?>
 
 <section class="invoice">
@@ -17,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2 class="page-header">
                 <i class="fa fa-shopping-cart"></i> &nbsp;
                 <?= Yii::t('cart', 'Your order') ?>: &nbsp; <?= Yii::t('cart', '{0, plural, one{# position} other{# positions}}', $cart->count) ?>
-                <small class="pull-right"><?= Yii::t('cart', 'Date') ?>: <?= date('Y-m-d') ?></small>
+                <small class="pull-right"><?= Yii::t('cart', 'Date') ?>: <?= Yii::$app->formatter->asDate(new DateTime()) ?></small>
             </h2>
         </div>
     </div>
@@ -25,9 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- Table row -->
     <div class="row">
         <div class="col-xs-12 table-responsive">
-            <?= GridView::widget([
+            <?php
+            echo GridView::widget([
                 'dataProvider' => $dataProvider,
                 'layout' => '{items}',
+                'rowOptions' => function ($model, $key, $index, $grid) {
+                    return $model->getRowOptions($key, $index, $grid);
+                },
                 'columns' => [
                     [
                         'attribute' => 'no',
