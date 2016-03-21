@@ -54,19 +54,25 @@ class AddToCartAction extends \yii\base\Action
             $collection->load();
         }
 
-        if ($collection->validate()) {
-            foreach ($collection->models as $position) {
-                /** @var CartPositionInterface $position */
-                if (!$cart->hasPosition($position->getId())) {
-                    $cart->put($position);
-                    Yii::$app->session->addFlash('success', Yii::t('cart', 'Item has been added to cart'));
-                } else {
-                    Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item is already in the cart'));
+        foreach ($collection->models as $position) {
+            /** @var CartPositionInterface $position */
+            if (!$position->validate()) {
+                $error = $collection->getFirstError();
+                if (empty($error)) {
+                    $error = Yii::t('cart', 'Failed to add item to the cart');
                 }
+                Yii::$app->session->addFlash('warning', $error);
+                Yii::warning('Failed to add item to cart', 'cart');
+
+                continue;
             }
-        } else {
-            Yii::$app->session->addFlash('warning', Yii::t('cart', 'Failed to add item to the cart'));
-            Yii::warning('Failed to add item to the cart', 'cart');
+
+            if (!$cart->hasPosition($position->getId())) {
+                $cart->put($position);
+                Yii::$app->session->addFlash('success', Yii::t('cart', 'Item has been added to cart'));
+            } else {
+                Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item is already in the cart'));
+            }
         }
 
         if ($request->isAjax) {
