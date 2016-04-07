@@ -23,7 +23,7 @@ use yii\helpers\Url;
  * ```php
  * 'modules' => [
  *     'cart' => [
- *         'class'  => 'hiqdev\cart\Module',
+ *         'class'  => 'hiqdev\yii2\cart\Module',
  *     ],
  * ],
  * ```
