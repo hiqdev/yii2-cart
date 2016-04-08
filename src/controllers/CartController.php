@@ -14,6 +14,7 @@ namespace hiqdev\yii2\cart\controllers;
 use hiqdev\yii2\cart\ShoppingCart;
 use hiqdev\yii2\cart\widgets\PanelTopCart;
 use Yii;
+use yii\base\ViewContextInterface;
 use yii\data\ArrayDataProvider;
 use yii\web\NotFoundHttpException;
 
@@ -22,7 +23,7 @@ use yii\web\NotFoundHttpException;
  *
  * @property ShoppingCart $cart The shopping cart instance
  */
-class CartController extends \yii\web\Controller
+class CartController extends \yii\web\Controller implements ViewContextInterface
 {
     /**
      * @return ShoppingCart
@@ -91,5 +92,14 @@ class CartController extends \yii\web\Controller
         }
 
         return $this->redirect(['index']);
+    }
+
+    public function getViewPath()
+    {
+        if ($this->getCart()->module->viewPath) {
+            return Yii::getAlias($this->getCart()->module->viewPath . DIRECTORY_SEPARATOR . 'cart');
+        }
+
+        return parent::getViewPath();
     }
 }
