@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'label' => Yii::t('cart', 'Description'),
                         'contentOptions' => ['style' => 'vertical-align: middle'],
                         'value' => function ($model) {
-                            return $model->icon . ' ' . $model->name . ' ' . Html::tag('span', $model->description, ['class' => 'text-muted']);
+                            return $model->renderDescription();
                         },
                     ],
                     [

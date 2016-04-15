@@ -14,6 +14,7 @@ namespace hiqdev\yii2\cart;
 use Yii;
 use yii\base\Model;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /**
  * CartPositionTrait trait
@@ -85,6 +86,11 @@ trait CartPositionTrait
     public function getDescription()
     {
         return $this->description;
+    }
+
+    public function renderDescription()
+    {
+        return $this->getIcon() . ' ' . $this->getName() . ' ' . Html::tag('span', $this->getDescription(), ['class' => 'text-muted']);
     }
 
     public function getModel()
