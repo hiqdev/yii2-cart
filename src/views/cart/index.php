@@ -136,7 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         });"); ?>
                 <label>
                     <input type="checkbox" id="term-of-use">
-                    &nbsp;<?= Yii::t('cart', 'I have read and agree to the') ?> <?= Html::a(Yii::t('cart', 'terms of use'), $module->termsPage) ?>
+                    &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Html::a(Yii::t('cart', 'terms of use'), $module->termsPage)]) ?>
                 </label> &nbsp; &nbsp;
             <?php endif ?>
             <?php if ($module->orderButton) : ?>
