@@ -46,11 +46,6 @@
         "omnilight/yii2-shopping-cart": "*",
         "hiqdev/yii2-hiart": "*"
     },
-    "require-dev": {
-        "minii/web": "*@dev",
-        "minii/i18n": "*@dev",
-        "minii/helpers": "*@dev"
-    },
     "autoload": {
         "psr-4": {
             "hiqdev\\yii2\\cart\\": "src"
@@ -60,5 +55,11 @@
         "psr-4": {
             "hiqdev\\yii2\\cart\\tests\\": "tests"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }
