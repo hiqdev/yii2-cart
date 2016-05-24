@@ -56,4 +56,5 @@ return [
     'Operations failed' => 'Не удалось выполнить',
     'No available payment methods' => 'Нет доступных способов оплаты',
     'Place order' => 'Заказать',
+    'Pending operations' => 'Ожидает выполнения',
 ];
