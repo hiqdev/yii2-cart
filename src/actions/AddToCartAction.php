@@ -29,6 +29,16 @@ class AddToCartAction extends \yii\base\Action
     public $bulkLoad = false;
 
     /**
+     * @var bool whether client should be redirected to the cart in case of success item adding
+     */
+    public $redirectToCart = false;
+
+    /**
+     * @var bool whether any errors occurred during save
+     */
+    protected $hasErrors = false;
+
+    /**
      * Returns the cart module.
      * @return CartModule
      */
@@ -57,6 +67,7 @@ class AddToCartAction extends \yii\base\Action
         foreach ($collection->models as $position) {
             /** @var CartPositionInterface $position */
             if (!$position->validate()) {
+                $this->hasErrors = true;
                 $error = $collection->getFirstError();
                 if (empty($error)) {
                     $error = Yii::t('cart', 'Failed to add item to the cart');
@@ -75,10 +86,25 @@ class AddToCartAction extends \yii\base\Action
             }
         }
 
+    }
+
+    protected function afterRun()
+    {
+        $this->ensureBehaviors();
+        if ($this->hasEventHandlers('afterAction')) {
+            return true;
+        }
+
+        $request = Yii::$app->request;
+
         if ($request->isAjax) {
             Yii::$app->end();
         }
 
-        return $this->controller->redirect($request->referrer ?: $this->controller->goHome());
+        if ($this->redirectToCart && !$this->hasErrors) {
+            return $this->controller->redirect('@cart');
+        } else {
+            return $this->controller->redirect($request->referrer ?: $this->controller->goHome());
+        }
     }
 }
