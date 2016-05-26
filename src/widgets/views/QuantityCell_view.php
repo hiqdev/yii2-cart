@@ -2,9 +2,14 @@
 
 use yii\helpers\Html;
 
+/**
+ * @var \hiqdev\yii2\cart\CartPositionInterface $model
+ * @var \hiqdev\yii2\cart\widgets\QuantityCell $widget
+ */
+
 ?>
 
-<?= Html::beginForm('update-quantity', 'post', ['id' => $model->id]) ?>
+<?= Html::beginForm('@cart/update-quantity', 'post', ['id' => $model->id]) ?>
 
 <?= Html::hiddenInput('id', $model->id) ?>
 <?php $quantityOptions = $model->getQuantityOptions(); ?>
