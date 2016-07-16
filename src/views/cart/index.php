@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         },
                     ],
                     'actions' => [
-                        'class' => ActionColumn::className(),
+                        'class' => ActionColumn::class,
                         'template' => '{remove}',
                         'headerOptions' => ['width' => '4%'],
                         'contentOptions' => ['style' => 'text-align: center; vertical-align: middle;'],

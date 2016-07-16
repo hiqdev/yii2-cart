@@ -34,7 +34,7 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
             'basePath' => dirname(dirname(__DIR__)),
             'modules'  => [
                 'cart' => [
-                    'class' => Module::className(),
+                    'class' => Module::class,
                 ],
             ],
             'components' => [
@@ -54,13 +54,13 @@ class ModuleTest extends \PHPUnit_Framework_TestCase
     public function testGetInstance()
     {
         $module = Module::getInstance();
-        $this->assertInstanceOf(Module::className(), $module);
+        $this->assertInstanceOf(Module::class, $module);
         $this->assertSame($this->object, $module);
     }
 
     public function testGetCart()
     {
-        $this->assertInstanceOf(ShoppingCart::className(), $this->object->getCart());
+        $this->assertInstanceOf(ShoppingCart::class, $this->object->getCart());
         $this->assertSame(Yii::$app->getModule('cart')->get('cart'), $this->object->cart);
     }
 

@@ -33,7 +33,7 @@ class ShoppingCartTest extends \PHPUnit_Framework_TestCase
     {
         $this->object = new ShoppingCart();
         $product = Yii::createObject([
-            'class'    => FakeCartPosition::className(),
+            'class'    => FakeCartPosition::class,
             'id'       => $this->id,
             'price'    => $this->price,
             'discount' => $this->discount,
