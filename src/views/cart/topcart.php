@@ -1,1 +1,6 @@
-<?php print \hiqdev\yii2\cart\widgets\PanelTopCart::widget(); ?>
+<?php
+
+use hiqdev\yii2\cart\widgets\PanelTopCart;
+
+?>
+<?= PanelTopCart::widget() ?>

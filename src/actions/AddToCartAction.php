@@ -85,7 +85,6 @@ class AddToCartAction extends \yii\base\Action
                 Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item is already in the cart'));
             }
         }
-
     }
 
     protected function afterRun()

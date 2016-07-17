@@ -18,7 +18,7 @@ use yii\helpers\Html;
 
 /**
  * CartPositionTrait trait
- * It is intended to use this trait in classes, that extends [[Model]]
+ * It is intended to use this trait in classes, that extends [[Model]].
  */
 trait CartPositionTrait
 {
@@ -61,7 +61,7 @@ trait CartPositionTrait
     }
 
     /**
-     * This closure will be called in [[GridView::rowOptions]]
+     * This closure will be called in [[GridView::rowOptions]].
      *
      * @param integer $key the key value associated with the current data model
      * @param integer $index the zero-based index of the data model in the model array returned by [[dataProvider]]

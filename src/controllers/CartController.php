@@ -12,7 +12,6 @@
 namespace hiqdev\yii2\cart\controllers;
 
 use hiqdev\yii2\cart\ShoppingCart;
-use hiqdev\yii2\cart\widgets\PanelTopCart;
 use Yii;
 use yii\base\ViewContextInterface;
 use yii\data\ArrayDataProvider;

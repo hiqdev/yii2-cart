@@ -71,7 +71,7 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     }
 
     /**
-     * Checks whether any of cart positions has error in `id` attribute
+     * Checks whether any of cart positions has error in `id` attribute.
      * @return boolean
      */
     public function hasErrors()

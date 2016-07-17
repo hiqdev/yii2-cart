@@ -1,5 +1,6 @@
 <?php
 
+use hiqdev\assets\icheck\iCheckAsset;
 use hiqdev\yii2\cart\widgets\QuantityCell;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -8,10 +9,8 @@ use yii\helpers\Html;
 $this->title = Yii::t('cart', 'Cart');
 $this->params['breadcrumbs'][] = $this->title;
 
-/**
- * @var \yii\data\ActiveDataProvider $dataProvider
- * @var \hiqdev\yii2\cart\ShoppingCart $cart
- */
+/** @var \yii\data\ActiveDataProvider $dataProvider */
+/** @var \hiqdev\yii2\cart\ShoppingCart $cart */
 ?>
 
 <section class="invoice">
@@ -126,7 +125,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="col-xs-8"><span class="pull-right">
             <?php if ($module->termsPage) : ?>
-                <?php \hiqdev\assets\icheck\iCheckAsset::register($this) ?>
+                <?php iCheckAsset::register($this) ?>
                 <?php $this->registerJs("
                         jQuery('input').iCheck({
                             checkboxClass: 'icheckbox_minimal-blue',
