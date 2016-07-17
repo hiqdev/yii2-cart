@@ -10,6 +10,3 @@ package:
 
         Uses [omnilight/yii2-shopping-cart](https://github.com/omnilight/yii2-shopping-cart) for shopping cart abstraction.
 
-require:
-    hiqdev/hidev-php:    "*"
-    hiqdev/hidev-vendor: "*"
