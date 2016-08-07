@@ -99,6 +99,7 @@ class Module extends \yii\base\Module
     {
         $params = is_array($route) ? $route : [$route];
         $params[0] = '/' . $this->id . '/' . (strpos($params[0], '/') !== false ? $params[0] : 'cart/' . ($params[0] ?: 'index'));
+
         return Url::toRoute($params);
     }
 

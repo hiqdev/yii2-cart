@@ -75,6 +75,7 @@ class CartController extends \yii\web\Controller implements ViewContextInterface
             $position = $this->getCart()->getPositionById($id);
             if ($position) {
                 $this->getCart()->update($position, $quantity);
+
                 return $this->redirect('index');
             }
         }

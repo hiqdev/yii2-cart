@@ -39,7 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'no',
                         'label' => '#',
-                        'value' => function ($model) { static $no;return ++$no; },
+                        'value' => function ($model) {
+                            static $no;
+
+                            return ++$no;
+                        },
                         'headerOptions' => ['width' => '4%', 'style' => 'text-align: center'],
                         'contentOptions' => ['style' => 'text-align: center; vertical-align: middle;'],
                     ],
