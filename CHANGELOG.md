@@ -1,7 +1,7 @@
-hiqdev/yii2-cart changelog
---------------------------
+hiqdev/yii2-cart
+----------------
 
-## Under development
+## [Under development]
 
 - Fixed minor issues
 - Added bulk renewal
@@ -12,5 +12,4 @@ hiqdev/yii2-cart changelog
 - Changed: redone to yii2-cart
 - Added basics
 
-## Development started 2015-10-21
-
+## [Development started] - 2015-10-21
