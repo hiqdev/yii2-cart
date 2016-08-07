@@ -10,3 +10,8 @@ package:
 
         Uses [omnilight/yii2-shopping-cart](https://github.com/omnilight/yii2-shopping-cart) for shopping cart abstraction.
 
+        Provides:
+
+        - controller with: items adding, updating and deleting
+        - widget to display cart menu
+        - grid quantity column

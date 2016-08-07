@@ -14,6 +14,12 @@ Yii2 Cart
 
 Uses [omnilight/yii2-shopping-cart](https://github.com/omnilight/yii2-shopping-cart) for shopping cart abstraction.
 
+Provides:
+
+- controller with: items adding, updating and deleting
+- widget to display cart menu
+- grid quantity column
+
 ## Installation
 
 The preferred way to install this yii2-extension is through [composer](http://getcomposer.org/download/).
