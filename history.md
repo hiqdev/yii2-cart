@@ -3,15 +3,18 @@ hiqdev/yii2-cart
 
 ## [Under development]
 
+- Fixed build
+    - [f7b9c92] 2016-08-07 csfixed [sol@hiqdev.com]
+    - [56e6197] 2016-08-07 redone bumping with `chkipper` [sol@hiqdev.com]
+    - [e49fc09] 2016-08-07 add package description [sol@hiqdev.com]
     - [eb0aff7] 2016-07-17 fixed build [sol@hiqdev.com]
     - [e59e85b] 2016-07-17 fixed tests [sol@hiqdev.com]
     - [7961e9e] 2016-07-17 csfixed [sol@hiqdev.com]
+- Fixed bugs
     - [47689f5] 2016-07-16 csfixed [sol@hiqdev.com]
     - [bd63684] 2016-05-26 Fixed updating of item quantity in cart [d.naumenko.a@gmail.com]
     - [5857422] 2016-05-25 Added AddToCartAction::redirectToCart property [d.naumenko.a@gmail.com]
-    - [29354ed] 2016-05-24 Updated translations [d.naumenko.a@gmail.com]
     - [cf4e1ed] 2016-05-20 Removed minii from composer.json [d.naumenko.a@gmail.com]
-    - [e315640] 2016-04-18 translation [sol@hiqdev.com]
     - [5377886] 2016-04-15 Implemented CartPositionTrait::renderDescription() instead of concatenation in GridView [d.naumenko.a@gmail.com]
     - [89e7978] 2016-04-08 Add to CartController implements ViewContextInterface [andreyklochok@gmail.com]
     - [d3e1ad9] 2016-04-07 Fix usage help [andreyklochok@gmail.com]
@@ -19,18 +22,22 @@ hiqdev/yii2-cart
     - [808461d] 2016-03-21 Added ShoppingCart::hasErrors() method [d.naumenko.a@gmail.com]
     - [a1afb99] 2016-03-21 CartPositionTrait - added getRowOptions method [d.naumenko.a@gmail.com]
     - [32a4471] 2016-03-21 Updated QuantityCell view to render result of Position::getQuantityOptions() if value is a string [d.naumenko.a@gmail.com]
-    - [3b159ac] 2016-03-21 Updated translations [d.naumenko.a@gmail.com]
     - [d9b14cf] 2016-03-21 AddToCartAction updated to be able to handle both errored and ok positions [d.naumenko.a@gmail.com]
-    - [fe44f81] 2016-03-17 Updated translations [d.naumenko.a@gmail.com]
     - [fb24a32] 2016-03-17 CartPositionTrait - added getModel() method [d.naumenko.a@gmail.com]
-- Fixed minor issues
-    - [ffc4e1c] 2016-03-04 translation [sol@hiqdev.com]
     - [2a44a12] 2016-02-04 fixed default Cart `_positions` to be [] <- null [sol@hiqdev.com]
     - [4e45fbb] 2016-02-03 + labels [sol@hiqdev.com]
     - [d5758fb] 2016-02-03 Add topcart action for topcart widget render by action [andreyklochok@gmail.com]
     - [df76673] 2016-02-02 AddToCartAction - spelling fix [d.naumenko.a@gmail.com]
-    - [5b375c2] 2016-01-29 added tranlations [sol@hiqdev.com]
     - [a5b966e] 2016-01-20 AddToCartAction - fixed load bulk load of structured data [d.naumenko.a@gmail.com]
+- Fixed translation
+    - [29354ed] 2016-05-24 Updated translations [d.naumenko.a@gmail.com]
+    - [e315640] 2016-04-18 translation [sol@hiqdev.com]
+    - [3b159ac] 2016-03-21 Updated translations [d.naumenko.a@gmail.com]
+    - [fe44f81] 2016-03-17 Updated translations [d.naumenko.a@gmail.com]
+    - [ffc4e1c] 2016-03-04 translation [sol@hiqdev.com]
+    - [5b375c2] 2016-01-29 added tranlations [sol@hiqdev.com]
+    - [b42d164] 2015-12-07 translations [sol@hiqdev.com]
+    - [eba9f25] 2015-11-13 added translations [sol@hiqdev.com]
 - Added bulk renewal
     - [053f3e8] 2016-01-18 AddToCartAction - code style fixes, PHPDoc updates [d.naumenko.a@gmail.com]
     - [9e490cd] 2016-01-18 Added HiArt dependency (must be removed later) [d.naumenko.a@gmail.com]
@@ -67,9 +74,6 @@ hiqdev/yii2-cart
     - [b291ca2] 2015-11-16 minor fixes [sol@hiqdev.com]
     - [8baf894] 2015-11-13 php-cs-fixed [sol@hiqdev.com]
     - [c2454e4] 2015-11-13 added local ShoppingCart component with currency formatting and used all over [sol@hiqdev.com]
-- Added translations
-    - [b42d164] 2015-12-07 translations [sol@hiqdev.com]
-    - [eba9f25] 2015-11-13 added translations [sol@hiqdev.com]
 - Changed: redone to yii2-cart
     - [879a12c] 2015-11-12 php-cs-fixed [sol@hiqdev.com]
     - [3dc05b9] 2015-11-12 basically fixed [sol@hiqdev.com]
@@ -174,3 +178,6 @@ hiqdev/yii2-cart
 [d9b14cf]: https://github.com/hiqdev/yii2-cart/commit/d9b14cf
 [fe44f81]: https://github.com/hiqdev/yii2-cart/commit/fe44f81
 [fb24a32]: https://github.com/hiqdev/yii2-cart/commit/fb24a32
+[56e6197]: https://github.com/hiqdev/yii2-cart/commit/56e6197
+[e49fc09]: https://github.com/hiqdev/yii2-cart/commit/e49fc09
+[f7b9c92]: https://github.com/hiqdev/yii2-cart/commit/f7b9c92
