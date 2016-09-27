@@ -57,4 +57,6 @@ return [
     'No available payment methods' => 'Нет доступных способов оплаты',
     'Place order' => 'Заказать',
     'Pending operations' => 'Ожидает выполнения',
+    'Checkout' => 'Оформление заказа',
+    'I have read and agree to the' => 'Я прочитал и согласен с',
 ];
