@@ -13,11 +13,11 @@ namespace hiqdev\yii2\cart\widgets;
 
 use hiqdev\yii2\cart\Module;
 
-class PanelTopCart extends \yii\base\Widget
+class CartTeaser extends \yii\base\Widget
 {
     public function run()
     {
-        return $this->render('PanelTopCart_view', [
+        return $this->render('CartTeaser', [
             'widget' => $this,
             'view'   => $this->getView(),
             'cart'   => $this->getModule()->getCart(),

@@ -1,6 +1,6 @@
 <?php
 
-use hiqdev\yii2\cart\widgets\PanelTopCart;
+use hiqdev\yii2\cart\widgets\CartTeaser;
 
 ?>
-<?= PanelTopCart::widget() ?>
+<?= CartTeaser::widget() ?>
