@@ -3,8 +3,8 @@
 return [
     'components' => [
         'themeManager' => [
-            'widgetPaths' => [
-                'cart' => '@hiqdev/yii2/cart/widgets/views',
+            'pathMap' => [
+                '@hiqdev/yii2/cart/widgets/views' => '$themedWidgetPaths',
             ],
         ],
     ],
