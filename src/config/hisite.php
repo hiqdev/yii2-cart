@@ -5,6 +5,7 @@ return [
         'themeManager' => [
             'pathMap' => [
                 '@hiqdev/yii2/cart/widgets/views' => '$themedWidgetPaths',
+                '@hiqdev/yii2/cart/views' => '$themedViewPaths',
             ],
         ],
     ],
