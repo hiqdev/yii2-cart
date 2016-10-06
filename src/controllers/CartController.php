@@ -12,6 +12,7 @@
 namespace hiqdev\yii2\cart\controllers;
 
 use hiqdev\yii2\cart\ShoppingCart;
+use hiqdev\yii2\cart\widgets\CartTeaser;
 use Yii;
 use yii\base\ViewContextInterface;
 use yii\data\ArrayDataProvider;
@@ -42,8 +43,8 @@ class CartController extends \yii\web\Controller implements ViewContextInterface
         ]);
 
         return $this->render('index', [
-            'cart'         => $this->getCart(),
-            'module'       => $this->module,
+            'cart' => $this->getCart(),
+            'module' => $this->module,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -51,8 +52,10 @@ class CartController extends \yii\web\Controller implements ViewContextInterface
     public function actionTopcart()
     {
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('topcart');
+            return $this->renderAjax('topcart', ['widgetClass' => CartTeaser::class]);
         }
+
+        Yii::$app->end();
     }
 
     public function actionRemove($id)
