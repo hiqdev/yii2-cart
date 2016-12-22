@@ -22,6 +22,7 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
 {
     /**
      * @var AbstractCartPosition[]
+     * TODO make local AbstractCartPosition
      */
     protected $_positions = [];
 
