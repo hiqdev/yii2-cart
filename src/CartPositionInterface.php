@@ -25,4 +25,6 @@ interface CartPositionInterface extends \yz\shoppingcart\CartPositionInterface
     public function getName();
 
     public function getDescription();
+
+    public function getQuantityOptions();
 }
