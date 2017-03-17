@@ -13,6 +13,7 @@ namespace hiqdev\yii2\cart\actions;
 
 use hiqdev\hiart\Collection;
 use hiqdev\yii2\cart\CartPositionInterface;
+use hiqdev\yii2\cart\ImmutableQuantityInterface;
 use hiqdev\yii2\cart\Module as CartModule;
 use Yii;
 
@@ -50,7 +51,6 @@ class AddToCartAction extends \yii\base\Action
     public function run()
     {
         $data = null;
-        $cart = $this->getCartModule()->getCart();
         $request = Yii::$app->request;
         /** @var CartPositionInterface $model */
         $model = Yii::createObject($this->productClass);
@@ -77,14 +77,28 @@ class AddToCartAction extends \yii\base\Action
 
                 continue;
             }
-
-            if (!$cart->hasPosition($position->getId())) {
-                $cart->put($position);
+            if ($this->putPositionToCart($position)) {
                 Yii::$app->session->addFlash('success', Yii::t('cart', 'Item has been added to cart'));
             } else {
                 Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item is already in the cart'));
             }
+
         }
+    }
+
+    protected function putPositionToCart($position)
+    {
+        $cart = $this->getCartModule()->getCart();
+        if (!$cart->hasPosition($position->getId())) {
+            $cart->put($position);
+            return true;
+        }
+        if ($position instanceof ImmutableQuantityInterface) {
+            return false;
+        }
+        $cart->put($position);
+
+        return true;
     }
 
     protected function afterRun()
