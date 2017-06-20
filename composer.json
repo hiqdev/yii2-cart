@@ -61,7 +61,7 @@
     },
     "extra": {
         "config-plugin": {
-            "hisite": "src/config/hisite.php"
+            "web": "src/config/web.php"
         }
     },
     "repositories": [
