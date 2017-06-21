@@ -19,8 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-xs-12">
             <h2 class="page-header">
                 <i class="fa fa-shopping-cart"></i> &nbsp;
-                <?= Yii::t('cart', 'Your order') ?>: &nbsp; <?= Yii::t('cart', '{0, plural, one{# position} other{# positions}}', $cart->count) ?>
-                <small class="pull-right"><?= Yii::t('cart', 'Date') ?>: <?= Yii::$app->formatter->asDate(new DateTime()) ?></small>
+                <?= Yii::t('cart', 'Your order') ?>:
+                &nbsp; <?= Yii::t('cart', '{0, plural, one{# position} other{# positions}}', $cart->count) ?>
+                <small class="pull-right"><?= Yii::t('cart', 'Date') ?>
+                    : <?= Yii::$app->formatter->asDate(new DateTime()) ?></small>
             </h2>
         </div>
     </div>
@@ -128,10 +130,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('cart', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
         </div>
         <div class="col-xs-8"><span class="pull-right">
-            <?php if ($module->termsPage) : ?>
                 <?php iCheckAsset::register($this) ?>
                 <?php $this->registerJs("
                         $('input').iCheck('uncheck');
+                        jQuery('#make-order-button').toggleClass('disabled');
                         jQuery('input').iCheck({
                             checkboxClass: 'icheckbox_minimal-blue',
                             radioClass: 'iradio_minimal'
@@ -146,12 +148,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Yii::t('cart', 'terms of use')]) ?>
                     <?php endif; ?>
                 </label> &nbsp; &nbsp;
-            <?php endif ?>
-            <?php if ($module->orderButton) : ?>
-                <?= $module->orderButton ?>
-            <?php else : ?>
-                <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, ['id' => 'make-order-button', 'class' => ($module->termsPage) ? 'btn btn-success disabled' : 'btn btn-success']); ?>
-            <?php endif ?>
+                <?php if ($module->orderButton) : ?>
+                    <?= $module->orderButton ?>
+                <?php else : ?>
+                    <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, ['id' => 'make-order-button', 'class' => ($module->termsPage) ? 'btn btn-success disabled' : 'btn btn-success']); ?>
+                <?php endif ?>
         </span></div>
     </div>
 </section>
