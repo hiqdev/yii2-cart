@@ -131,6 +131,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php if ($module->termsPage) : ?>
                 <?php iCheckAsset::register($this) ?>
                 <?php $this->registerJs("
+                        $('input').iCheck('uncheck');
                         jQuery('input').iCheck({
                             checkboxClass: 'icheckbox_minimal-blue',
                             radioClass: 'iradio_minimal'
@@ -139,7 +140,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         });"); ?>
                 <label>
                     <input type="checkbox" id="term-of-use">
-                    &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Html::a(Yii::t('cart', 'terms of use'), $module->termsPage)]) ?>
+                    <?php if ($module->termsPage != '') : ?>
+                        &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Html::a(Yii::t('cart', 'terms of use'), $module->termsPage)]) ?>
+                    <?php else: ?>
+                        &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Yii::t('cart', 'terms of use')]) ?>
+                    <?php endif; ?>
                 </label> &nbsp; &nbsp;
             <?php endif ?>
             <?php if ($module->orderButton) : ?>
