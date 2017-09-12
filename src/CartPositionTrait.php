@@ -18,17 +18,25 @@ use yii\helpers\Html;
 
 /**
  * CartPositionTrait trait
- * It is intended to use this trait in classes, that extends [[Model]].
+ * It is intended to be used in classes implementing [[CartPositionInterface]].
+ * Holds:
+ * - object (model) and ID.
+ * - name and description
+ * Provides:
+ * - icon with getIcon() to be redefined in childs
  */
 trait CartPositionTrait
 {
     use \yz\shoppingcart\CartPositionTrait;
 
     /**
-     * @var Model
+     * @var Model object being put in cart
      */
     protected $_model;
 
+    /**
+     * @var string|int ID of object being put in cart
+     */
     protected $_id;
 
     public function rules()
