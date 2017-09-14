@@ -11,6 +11,7 @@
 
 namespace hiqdev\yii2\cart\actions;
 
+use hipanel\modules\finance\cart\AbstractCartPosition;
 use hiqdev\hiart\Collection;
 use hiqdev\yii2\cart\CartPositionInterface;
 use hiqdev\yii2\cart\ImmutableQuantityInterface;
@@ -65,7 +66,7 @@ class AddToCartAction extends \yii\base\Action
         }
 
         foreach ($collection->models as $position) {
-            /** @var CartPositionInterface $position */
+            /** @var CartPositionInterface|AbstractCartPosition $position */
             if (!$position->validate()) {
                 $this->hasErrors = true;
                 $error = $collection->getFirstError();
@@ -77,28 +78,15 @@ class AddToCartAction extends \yii\base\Action
 
                 continue;
             }
-            if ($this->putPositionToCart($position)) {
-                Yii::$app->session->addFlash('success', Yii::t('cart', 'Item has been added to cart'));
-            } else {
-                Yii::$app->session->addFlash('warning', Yii::t('cart', 'Item is already in the cart'));
-            }
-
         }
+
+        $this->putPositionsToCart($collection->models);
     }
 
-    protected function putPositionToCart($position)
+    protected function putPositionsToCart($positions)
     {
         $cart = $this->getCartModule()->getCart();
-        if (!$cart->hasPosition($position->getId())) {
-            $cart->put($position);
-            return true;
-        }
-        if ($position instanceof ImmutableQuantityInterface) {
-            return false;
-        }
-        $cart->put($position);
-
-        return true;
+        $cart->putPositions($positions);
     }
 
     protected function afterRun()
