@@ -13,6 +13,7 @@ namespace hiqdev\yii2\cart;
 
 use hipanel\modules\finance\cart\AbstractCartPosition;
 use Yii;
+use yz\shoppingcart\CartActionEvent;
 
 /**
  * Class ShoppingCart.
@@ -84,5 +85,32 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
         }
 
         return false;
+    }
+
+    /**
+     * @param CartPositionInterface[] $positions
+     */
+    public function putPositions($positions)
+    {
+        foreach ($positions as $position) {
+            if (isset($this->_positions[$position->getId()])) {
+                if ($position instanceof ImmutableQuantityInterface) {
+                    continue;
+                }
+                $existingPosition = $this->_positions[$position->getId()];
+                $existingPosition->setQuantity($existingPosition->getQuantity() + 1);
+            } else {
+                if ($position->getQuantity() <= 0) {
+                    $position->setQuantity(1);
+                }
+                $this->_positions[$position->getId()] = $position;
+            }
+        }
+
+        $this->trigger(self::EVENT_CART_CHANGE, new CartActionEvent([
+            'action' => CartActionEvent::ACTION_POSITION_PUT,
+        ]));
+        if ($this->storeInSession)
+            $this->saveToSession();
     }
 }
