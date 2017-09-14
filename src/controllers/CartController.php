@@ -37,9 +37,7 @@ class CartController extends \yii\web\Controller implements ViewContextInterface
     {
         $dataProvider = new ArrayDataProvider([
             'allModels' => $this->getCart()->getPositions(),
-            'pagination' => [
-                'pageSize' => 25,
-            ],
+            'pagination' => false
         ]);
 
         return $this->render('index', [
