@@ -104,8 +104,10 @@ class AddToCartAction extends \yii\base\Action
 
         if ($this->redirectToCart && !$this->hasErrors) {
             return $this->controller->redirect('@cart');
+        } elseif (isset($request->referrer)) {
+            return $this->controller->redirect($request->referrer);
         } else {
-            return $this->controller->redirect($request->referrer ?: $this->controller->goHome());
+            return $this->controller->goHome();
         }
     }
 }
