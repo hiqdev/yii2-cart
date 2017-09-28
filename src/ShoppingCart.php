@@ -73,6 +73,21 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     }
 
     /**
+     * Sets cart from serialized string
+     * @param string $serialized
+     */
+    public function setSerialized($serialized)
+    {
+        try {
+            parent::setSerialized($serialized);
+        } catch (\Exception $e) {
+            Yii::error('Failed to unserlialize cart: ' . $e->getMessage(), __METHOD__);
+            $this->_positions = [];
+            $this->saveToSession();
+        }
+    }
+
+    /**
      * Checks whether any of cart positions has error in `id` attribute.
      * @return boolean
      */
