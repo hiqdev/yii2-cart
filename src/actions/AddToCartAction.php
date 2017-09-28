@@ -14,7 +14,6 @@ namespace hiqdev\yii2\cart\actions;
 use hipanel\modules\finance\cart\AbstractCartPosition;
 use hiqdev\hiart\Collection;
 use hiqdev\yii2\cart\CartPositionInterface;
-use hiqdev\yii2\cart\ImmutableQuantityInterface;
 use hiqdev\yii2\cart\Module as CartModule;
 use Yii;
 
