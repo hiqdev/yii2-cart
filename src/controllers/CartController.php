@@ -81,7 +81,7 @@ class CartController extends \yii\web\Controller implements ViewContextInterface
             }
         }
 
-        throw new NotFoundHttpException();
+        throw new NotFoundHttpException('Either position ID or Quantity is not set');
     }
 
     public function actionClear()
