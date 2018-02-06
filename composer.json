@@ -61,7 +61,8 @@
     },
     "extra": {
         "config-plugin": {
-            "web": "src/config/web.php"
+            "web": "src/config/web.php",
+            "params": "src/config/params.php"
         }
     },
     "repositories": [

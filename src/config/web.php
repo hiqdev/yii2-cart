@@ -19,8 +19,9 @@ return [
         ],
     ],
     'modules' => [
-        'cart' => [
+        'cart' => array_filter([
             'class' => \hiqdev\yii2\cart\Module::class,
-        ],
+            'termsPage' => $params['cart.termsPage'],
+        ]),
     ],
 ];
