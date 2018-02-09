@@ -151,7 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if ($module->orderButton) : ?>
                     <?= $module->orderButton ?>
                 <?php else : ?>
-                    <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, ['id' => 'make-order-button', 'class' => ($module->termsPage) ? 'btn btn-success disabled' : 'btn btn-success']); ?>
+                    <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, ['id' => 'make-order-button', 'class' => 'btn btn-success']); ?>
                 <?php endif ?>
         </span></div>
     </div>
