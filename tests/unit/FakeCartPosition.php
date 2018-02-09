@@ -14,7 +14,7 @@ namespace hiqdev\yii2\cart\tests\unit;
 use hiqdev\yii2\cart\CartPositionInterface;
 use hiqdev\yii2\cart\CartPositionTrait;
 
-class FakeCartPosition extends \yii\base\Object implements CartPositionInterface
+class FakeCartPosition extends \yii\base\BaseObject implements CartPositionInterface
 {
     use CartPositionTrait;
 
