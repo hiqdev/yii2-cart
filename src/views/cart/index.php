@@ -133,7 +133,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php iCheckAsset::register($this) ?>
                 <?php $this->registerJs("
                         $('input').iCheck('uncheck');
-                        jQuery('#make-order-button').toggleClass('disabled');
+                        jQuery('#make-order-button').addClass('disabled');
                         jQuery('input').iCheck({
                             checkboxClass: 'icheckbox_minimal-blue',
                             radioClass: 'iradio_minimal'
