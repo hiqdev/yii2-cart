@@ -133,7 +133,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php iCheckAsset::register($this) ?>
                 <?php $this->registerJs("
                         $('input').iCheck('uncheck');
-                        jQuery('#make-order-button').toggleClass('disabled');
+                        jQuery('#make-order-button').addClass('disabled');
                         jQuery('input').iCheck({
                             checkboxClass: 'icheckbox_minimal-blue',
                             radioClass: 'iradio_minimal'
@@ -151,7 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if ($module->orderButton) : ?>
                     <?= $module->orderButton ?>
                 <?php else : ?>
-                    <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, ['id' => 'make-order-button', 'class' => ($module->termsPage) ? 'btn btn-success disabled' : 'btn btn-success']); ?>
+                    <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, ['id' => 'make-order-button', 'class' => 'btn btn-success']); ?>
                 <?php endif ?>
         </span></div>
     </div>
