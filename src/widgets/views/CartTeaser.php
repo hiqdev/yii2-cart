@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 ?>
-<a class="dropdown-toggle" data-toggle="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">
     <i class="fa fa-shopping-cart fa-lg"></i>
     <span class="label label-<?= $cart->count ? 'warning' : 'default' ?>"><?= count($cart->positions) ?></span>
 </a>
