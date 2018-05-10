@@ -3,10 +3,12 @@
 namespace hiqdev\yii2\cart;
 
 /**
- * Should be used to prevent position quantity modification
- * Interface ImmutableQuantityInterface
+ * Interface ImmutableQuantityInterface should be used to prevent position quantity modification.
+ * In difference to DontIncrementQuantityWhenAlreadyInCart, this interface also prohibits manual
+ * quantity modification.
+ * 
  * @package hiqdev\yii2\cart
  */
-interface ImmutableQuantityInterface
+interface ImmutableQuantityInterface extends DontIncrementQuantityWhenAlreadyInCart
 {
 }
