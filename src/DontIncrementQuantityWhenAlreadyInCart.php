@@ -3,8 +3,10 @@
 namespace hiqdev\yii2\cart;
 
 /**
- * Should be used to prevent position quantity modification
- * Interface DontIncrementQuantityWhenAlreadyInCart
+ * Interface DontIncrementQuantityWhenAlreadyInCart should be used to 
+ * prevent automatic position quantity incrementation, when the same
+ * position already exists in the cart.
+ *
  * @package hiqdev\yii2\cart
  */
 interface DontIncrementQuantityWhenAlreadyInCart
