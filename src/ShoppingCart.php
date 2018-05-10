@@ -109,7 +109,7 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     {
         foreach ($positions as $position) {
             if (isset($this->_positions[$position->getId()])) {
-                if ($position instanceof ImmutableQuantityInterface || $position instanceof DontIncrementQuantityWhenAlreadyInCart) {
+                if ($position instanceof DontIncrementQuantityWhenAlreadyInCart) {
                     continue;
                 }
                 $existingPosition = $this->_positions[$position->getId()];
