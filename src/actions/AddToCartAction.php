@@ -64,6 +64,7 @@ class AddToCartAction extends \yii\base\Action
             $collection->load();
         }
 
+        $positions = [];
         foreach ($collection->models as $position) {
             /** @var CartPositionInterface|AbstractCartPosition $position */
             if (!$position->validate()) {
@@ -77,9 +78,11 @@ class AddToCartAction extends \yii\base\Action
 
                 continue;
             }
+
+            $positions[] = $position;
         }
 
-        $this->putPositionsToCart($collection->models);
+        $this->putPositionsToCart($positions);
     }
 
     protected function putPositionsToCart($positions)
