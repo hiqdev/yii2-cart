@@ -36,4 +36,8 @@ class FakeCartPosition extends \yii\base\BaseObject implements CartPositionInter
     {
         return $this->price * $this->quantity - ($withDiscount ? $this->discount * $this->quantity : 0);
     }
+
+    public function getQuantityOptions() {
+        return [];
+    }
 }

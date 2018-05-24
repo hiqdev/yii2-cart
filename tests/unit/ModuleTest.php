@@ -20,7 +20,7 @@ use yii\web\Application;
 /**
  * Module test suite.
  */
-class ModuleTest extends \PHPUnit_Framework_TestCase
+class ModuleTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var Module
