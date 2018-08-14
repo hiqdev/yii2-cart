@@ -1,6 +1,6 @@
 <?php
 
-use hiqdev\assets\icheck\iCheckAsset;
+use hipanel\assets\CheckboxStyleAsset;
 use hiqdev\yii2\cart\widgets\QuantityCell;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -130,18 +130,15 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('cart', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
         </div>
         <div class="col-xs-8"><span class="pull-right">
-                <?php iCheckAsset::register($this) ?>
+                <?php CheckboxStyleAsset::register($this) ?>
                 <?php $this->registerJs("
-                        $('input').iCheck('uncheck');
+                        jQuery('#term-of-use').attr('checked', false);
                         jQuery('#make-order-button').addClass('disabled');
-                        jQuery('input').iCheck({
-                            checkboxClass: 'icheckbox_minimal-blue',
-                            radioClass: 'iradio_minimal'
-                        }).on('ifToggled', function() {
+                        jQuery('#term-of-use').on('click', function() {
                             jQuery('#make-order-button').toggleClass('disabled');
                         });"); ?>
                 <label>
-                    <input type="checkbox" id="term-of-use">
+                    <input class="option-input" type="checkbox" id="term-of-use">
                     <?php if ($module->termsPage != '') : ?>
                         &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Html::a(Yii::t('cart', 'terms of use'), $module->termsPage)]) ?>
                     <?php else: ?>
