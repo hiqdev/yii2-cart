@@ -1,6 +1,6 @@
 <?php
 
-use hiqdev\themes\adminlte\CheckboxStyleAsset;
+use hipanel\assets\CheckboxStyleAsset;
 use hiqdev\yii2\cart\widgets\QuantityCell;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
