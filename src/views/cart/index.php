@@ -1,6 +1,6 @@
 <?php
 
-use hiqdev\themes\adminlte\CheckboxStyleAsset;
+use hipanel\assets\CheckboxStyleAsset;
 use hiqdev\yii2\cart\widgets\QuantityCell;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -130,7 +130,9 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('cart', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
         </div>
         <div class="col-xs-8"><span class="pull-right">
-                <?php CheckboxStyleAsset::register($this) ?>
+                <?php if (class_exists('CheckboxStyleAsset')) : ?>
+                    <?php CheckboxStyleAsset::register($this) ?>
+                <?php endif ?>
                 <?php $this->registerJs("
                         jQuery('#term-of-use').attr('checked', false);
                         jQuery('#make-order-button').addClass('disabled');
