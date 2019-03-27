@@ -9,6 +9,7 @@ use yii\helpers\Html;
 $this->title = Yii::t('cart', 'Cart');
 $this->params['breadcrumbs'][] = $this->title;
 
+/** @var \yii\web\View $this */
 /** @var \yii\data\ActiveDataProvider $dataProvider */
 /** @var \hiqdev\yii2\cart\ShoppingCart $cart */
 ?>
@@ -127,7 +128,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- this row will not appear when printing -->
     <div class="row no-print">
         <div class="col-xs-4">
-            <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('cart', 'Clear cart'), ['clear'], ['class' => 'btn btn-default']); ?>
+            <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('cart', 'Clear cart'), ['clear'], [
+                'class' => 'btn btn-default',
+                'data-ga-clear' => true,
+            ]); ?>
         </div>
         <div class="col-xs-8"><span class="pull-right">
                 <?php if (class_exists('CheckboxStyleAsset')) : ?>
@@ -150,8 +154,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if ($module->orderButton) : ?>
                     <?= $module->orderButton ?>
                 <?php else : ?>
-                    <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, ['id' => 'make-order-button', 'class' => 'btn btn-success']); ?>
+                    <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, [
+                        'id' => 'make-order-button',
+                        'class' => 'btn btn-success',
+                        'data-ga-confirm' => true,
+                    ]); ?>
                 <?php endif ?>
         </span></div>
     </div>
 </section>
+
+<?php
+    $this->registerJS(<<<JS
+    hipanel.googleAnalytics($('[data-ga-confirm]'), {
+        'category': 'cart',
+        'action': 'confirm'
+    });
+    hipanel.googleAnalytics($('[data-ga-clear]'), {
+        'category': 'cart',
+        'action': 'clear'
+    });
+JS
+);
