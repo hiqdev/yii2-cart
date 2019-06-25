@@ -93,11 +93,6 @@ class AddToCartAction extends \yii\base\Action
 
     protected function afterRun()
     {
-        $this->ensureBehaviors();
-        if ($this->hasEventHandlers('afterAction')) {
-            return true;
-        }
-
         $request = Yii::$app->request;
 
         if ($request->isAjax) {
