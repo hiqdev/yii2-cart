@@ -133,34 +133,38 @@ $this->params['breadcrumbs'][] = $this->title;
                 'data-ga-clear' => true,
             ]); ?>
         </div>
-        <div class="col-xs-8"><span class="pull-right">
-                <?php if (class_exists('CheckboxStyleAsset')) : ?>
-                    <?php CheckboxStyleAsset::register($this) ?>
-                <?php endif ?>
-                <?php $this->registerJs("
-                        jQuery('#term-of-use').attr('checked', false);
-                        jQuery('#make-order-button').addClass('disabled');
-                        jQuery('#term-of-use').on('click', function() {
-                            jQuery('#make-order-button').toggleClass('disabled');
-                        });"); ?>
-                <label>
-                    <input class="option-input" type="checkbox" id="term-of-use">
-                    <?php if ($module->termsPage != '') : ?>
-                        &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Html::a(Yii::t('cart', 'terms of use'), $module->termsPage)]) ?>
-                    <?php else: ?>
-                        &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Yii::t('cart', 'terms of use')]) ?>
-                    <?php endif; ?>
-                </label> &nbsp; &nbsp;
-                <?php if ($module->orderButton) : ?>
-                    <?= $module->orderButton ?>
-                <?php else : ?>
-                    <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, [
-                        'id' => 'make-order-button',
-                        'class' => 'btn btn-success',
-                        'data-ga-confirm' => true,
-                    ]); ?>
-                <?php endif ?>
-        </span></div>
+        <?php if (!empty($cart->positions)) : ?>
+            <div class="col-xs-8">
+                <span class="pull-right">
+                    <?php if (class_exists('CheckboxStyleAsset')) : ?>
+                        <?php CheckboxStyleAsset::register($this) ?>
+                    <?php endif ?>
+                    <?php $this->registerJs("
+                            jQuery('#term-of-use').attr('checked', false);
+                            jQuery('#make-order-button').addClass('disabled');
+                            jQuery('#term-of-use').on('click', function() {
+                                jQuery('#make-order-button').toggleClass('disabled');
+                            });"); ?>
+                    <label>
+                        <input class="option-input" type="checkbox" id="term-of-use">
+                        <?php if ($module->termsPage != '') : ?>
+                            &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Html::a(Yii::t('cart', 'terms of use'), $module->termsPage)]) ?>
+                        <?php else: ?>
+                            &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Yii::t('cart', 'terms of use')]) ?>
+                        <?php endif; ?>
+                    </label> &nbsp; &nbsp;
+                    <?php if ($module->orderButton) : ?>
+                        <?= $module->orderButton ?>
+                    <?php else : ?>
+                        <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, [
+                            'id' => 'make-order-button',
+                            'class' => 'btn btn-success',
+                            'data-ga-confirm' => true,
+                        ]); ?>
+                    <?php endif ?>
+                </span>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
 
