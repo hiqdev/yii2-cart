@@ -12,8 +12,9 @@ use yii\helpers\Html;
         <li class="header">
             <div class="row">
                 <div class="col-md-4"><?= Html::a(Yii::t('cart', 'Cart'), $widget->module->createUrl()) ?>:</div>
-                <div class="col-md-8 text-bold text-right"><?= Yii::t('cart', 'Total') ?>
-                    : <?= $cart->formatCurrency($cart->total) ?></div>
+                <div class="col-md-8 text-bold text-right">
+                    <?= Yii::t('cart', 'Total') ?> : <?= $cart->formatCurrency($cart->total) ?>
+                </div>
             </div>
         </li>
         <li>

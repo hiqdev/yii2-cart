@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'label' => Yii::t('cart', 'Price'),
                         'contentOptions' => ['style' => 'vertical-align: middle;white-space: nowrap;'],
                         'value' => function ($model) use ($cart) {
-                            return $cart->formatCurrency($model->cost);
+                            return $cart->formatCurrency($model->cost, $model->currency);
                         },
                     ],
                     'actions' => [

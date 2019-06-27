@@ -32,8 +32,6 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
      */
     public $module;
 
-    public $currency = 'usd';
-
     /**
      * @return integer
      */
@@ -69,7 +67,7 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
 
     public function formatCurrency($sum, $currency = null)
     {
-        return Yii::$app->formatter->format($sum, ['currency', $currency ?: $this->currency]);
+        return Yii::$app->formatter->format($sum, ['currency', $currency ?? $this->getCurrency()]);
     }
 
     /**
@@ -127,5 +125,14 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
         ]));
         if ($this->storeInSession)
             $this->saveToSession();
+    }
+
+    public function getCurrency(): ?string
+    {
+        if (!empty($this->_positions)) {
+            return reset($this->_positions)->currency;
+        }
+
+        return null;
     }
 }

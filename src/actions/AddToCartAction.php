@@ -12,6 +12,7 @@
 namespace hiqdev\yii2\cart\actions;
 
 use hipanel\modules\finance\cart\AbstractCartPosition;
+use hipanel\modules\finance\cart\ErrorMultiCurrencyException;
 use hiqdev\hiart\Collection;
 use hiqdev\yii2\cart\CartPositionInterface;
 use hiqdev\yii2\cart\Module as CartModule;
@@ -82,7 +83,11 @@ class AddToCartAction extends \yii\base\Action
             $positions[] = $position;
         }
 
-        $this->putPositionsToCart($positions);
+        try {
+            $this->putPositionsToCart($positions);
+        } catch (ErrorMultiCurrencyException $exception) {
+            Yii::$app->getSession()->setFlash('error', $exception->getMessage());
+        }
     }
 
     protected function putPositionsToCart($positions)

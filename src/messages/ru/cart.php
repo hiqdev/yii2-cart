@@ -59,4 +59,5 @@ return [
     'Pending operations' => 'Ожидает выполнения',
     'Checkout' => 'Оформление заказа',
     'I have read and agree to the' => 'Я прочитал и согласен с',
+    'Sorry, but now it is impossible to add the position with different currencies to the cart. Pay the current order to add this item to the cart.' => 'Просим прощение но сейчас невозможно добавить позиции с разными валютами в корзину. Оплатите текущий заказ для того что добавить в корзину этот товар.',
 ];
