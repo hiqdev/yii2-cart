@@ -127,7 +127,7 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
             $this->saveToSession();
     }
 
-    public function getCurrency(): string
+    public function getCurrency(): ?string
     {
         if (!empty($this->_positions)) {
             return reset($this->_positions)->currency;
