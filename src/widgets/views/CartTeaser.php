@@ -20,9 +20,10 @@ use yii\helpers\Html;
         <li>
             <ul class="menu">
                 <?php foreach ($cart->positions as $position) : ?>
+                    <?php /** @var \hiqdev\yii2\cart\CartPositionTrait $position */ ?>
                     <li>
                         <a href="<?= $widget->module->createUrl() ?>">
-                            <?= $position->icon ?> <?= $position->name ?> <?= Html::tag('span', $position->description, ['class' => 'text-muted']) ?>
+                            <?= $position->renderDescription() ?>
                         </a>
                     </li>
                 <?php endforeach ?>
