@@ -56,6 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'label' => Yii::t('cart', 'Description'),
                         'contentOptions' => ['style' => 'vertical-align: middle'],
                         'value' => function ($model) {
+                            /** @var \hiqdev\yii2\cart\CartPositionTrait $model */
                             return $model->renderDescription();
                         },
                     ],
