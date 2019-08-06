@@ -70,5 +70,8 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         }
-    ]
+    ],
+    "suggest": {
+        "hiqdev/yii2-hiart": "To use pre-defined actions"
+    }
 }
