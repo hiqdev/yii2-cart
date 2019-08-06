@@ -11,6 +11,7 @@
 
 namespace hiqdev\yii2\cart\controllers;
 
+use hiqdev\yii2\cart\NotPurchasableException;
 use hiqdev\yii2\cart\ShoppingCart;
 use hiqdev\yii2\cart\widgets\CartTeaser;
 use Yii;
@@ -58,7 +59,12 @@ class CartController extends \yii\web\Controller implements ViewContextInterface
 
     public function actionRemove($id)
     {
-        $this->getCart()->removeById($id);
+        try {
+            $this->getCart()->removeById($id);
+        } catch (NotPurchasableException $exception) {
+            Yii::$app->getSession()->setFlash('error', $exception->getMessage());
+            $exception->resolve();
+        }
 
         if (Yii::$app->request->isAjax) {
             Yii::$app->end();
@@ -75,7 +81,12 @@ class CartController extends \yii\web\Controller implements ViewContextInterface
         if ($id && $quantity) {
             $position = $this->getCart()->getPositionById($id);
             if ($position) {
-                $this->getCart()->update($position, $quantity);
+                try {
+                    $this->getCart()->update($position, $quantity);
+                } catch (NotPurchasableException $exception) {
+                    Yii::$app->getSession()->setFlash('error', $exception->getMessage());
+                    $exception->resolve();
+                }
 
                 return $this->redirect('index');
             }
