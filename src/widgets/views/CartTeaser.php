@@ -36,7 +36,7 @@ use yii\helpers\Html;
                 <?php endforeach ?>
             </ul>
         </li>
-        <li class="footer"><?=  Html::a(Yii::t('cart', 'Clear cart'), ['clear']) ?></li>
+        <li class="footer"><?= Html::a(Yii::t('cart', 'Clear cart'), ['clear']) ?></li>
         <li class="footer"><?= Html::a(Yii::t('cart', 'View cart'), $widget->module->createUrl()) ?></li>
     <?php else : ?>
         <li class="header">
