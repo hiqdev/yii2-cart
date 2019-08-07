@@ -29,14 +29,14 @@ use yii\helpers\Html;
                                 </a>
                             </div>
                             <div class="col-lg-2">
-                                <?= Html::a('<i class="fa fa-times text-danger"></i>', ['remove', 'id' => $positionKey]) ?>
+                                <?= Html::a('<i class="fa fa-times text-danger"></i>', ['@cart/remove', 'id' => $positionKey]) ?>
                             </div>
                         </div>
                     </li>
                 <?php endforeach ?>
             </ul>
         </li>
-        <li class="footer"><?= Html::a(Yii::t('cart', 'Clear cart'), ['clear']) ?></li>
+        <li class="footer"><?= Html::a(Yii::t('cart', 'Clear cart'), ['@cart/clear']) ?></li>
         <li class="footer"><?= Html::a(Yii::t('cart', 'View cart'), $widget->module->createUrl()) ?></li>
     <?php else : ?>
         <li class="header">
