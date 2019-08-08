@@ -22,7 +22,7 @@ border-bottom: none;
 .cart-item {
     width: 245px;
 }
-.cart-remove>i {
+.cart-remove > i {
     width: 12px !important;
     color: grey;
 }
