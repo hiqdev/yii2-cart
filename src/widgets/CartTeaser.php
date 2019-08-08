@@ -36,17 +36,18 @@ class CartTeaser extends \yii\base\Widget
 
         $this->getView()->registerJs(<<<JS
 $('.cart-remove, .cart-clear, .cart-remove > .fa').on('click', function(event) {
-    var url = event.target.dataset.action || $(this).parent().attr('data-action');
+    var url = event.target.dataset.action || $(this).parent().data('action');
     $.ajax({
         url: url,
         type: 'POST',
         cache: false,
-        success: function () {
-            document.location.reload(true);
-        },
         error: function() {
             hipanel.notify.error('$errorMessage');
         }
+    });
+    hipanel.updateCart(function() {
+        $('.dropdown.notifications-cart a.dropdown-toggle').attr('aria-expanded', true);
+        $("li.dropdown.notifications-menu.notifications-cart").addClass('open');
     });
 });
 JS
