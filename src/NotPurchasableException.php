@@ -14,7 +14,7 @@ abstract class NotPurchasableException extends Exception
     protected $position;
 
     /**
-     * @var ShoppingCart
+     * @var ShoppingCart|null
      */
     protected $cart;
 
