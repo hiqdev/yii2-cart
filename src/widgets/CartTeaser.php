@@ -36,7 +36,6 @@ $('.cart-remove, .cart-clear, .cart-remove > .fa').on('click', function(event) {
     var url = event.target.dataset.action;
     (url === undefined) ? (url = $(this).parent().attr('data-action')) : 0;
     $.ajax({
-        headers: { 'X-CSRF-Token' : $('meta[name*=token]').attr('content') },
         url: url,
         type: 'POST',
         cache: false,
