@@ -2,6 +2,31 @@
 
 use yii\helpers\Html;
 
+/**
+ * @var \hiqdev\yii2\cart\ShoppingCart $cart
+ * @var \hiqdev\yii2\cart\widgets\CartTeaser $widget
+ * @var \yii\web\View $this
+ */
+
+$this->registerCss(<<<CSS
+.navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a {
+border-bottom: none;
+}
+.cert-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #f4f4f4;
+}
+.cert-item {
+    width: 245px;
+}
+.cert-delete>i {
+    width: 12px !important;
+}
+CSS
+);
+
 ?>
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
     <i class="fa fa-shopping-cart fa-lg"></i>
@@ -21,17 +46,9 @@ use yii\helpers\Html;
             <ul class="menu">
                 <?php foreach ($cart->positions as $positionKey => $position) : ?>
                     <?php /** @var \hiqdev\yii2\cart\CartPositionTrait $position */ ?>
-                    <li>
-                        <div class="row">
-                            <div class="col-lg-10">
-                                <a href="<?= $widget->module->createUrl() ?>">
-                                    <?= $position->renderDescription() ?>
-                                </a>
-                            </div>
-                            <div class="col-lg-2">
-                                <?= Html::a('<i class="fa fa-times text-danger"></i>', ['@cart/remove', 'id' => $positionKey]) ?>
-                            </div>
-                        </div>
+                    <li class="cert-row">
+                        <?= Html::a($position->renderDescription(), [$widget->module->createUrl(), 'id' => $positionKey], ['class' => 'cert-item']) ?>
+                        <?= Html::a('<i class="fa fa-times text-danger"></i>', ['@cart/remove', 'id' => $positionKey], ['class' => 'cert-delete']) ?>
                     </li>
                 <?php endforeach ?>
             </ul>
