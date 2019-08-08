@@ -30,7 +30,7 @@ class CartTeaser extends \yii\base\Widget
         return Module::getInstance();
     }
 
-    public function registerCartClearJs()
+    public function registerCartClearJs(): void
     {
         $errorMessage = Yii::t('cart', 'Sorry, but now it is impossible to remove this position from cart now.');
 
