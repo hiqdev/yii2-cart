@@ -11,7 +11,7 @@ use yii\helpers\Url;
 
 $this->registerCss(<<<CSS
 .navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a {
-border-bottom: none;
+    border-bottom: none;
 }
 .cart-row {
     display: flex;
