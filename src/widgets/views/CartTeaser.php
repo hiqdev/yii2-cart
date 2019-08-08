@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * @var \hiqdev\yii2\cart\ShoppingCart $cart
@@ -12,20 +13,23 @@ $this->registerCss(<<<CSS
 .navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a {
 border-bottom: none;
 }
-.cert-row {
+.cart-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     border-bottom: 1px solid #f4f4f4;
 }
-.cert-item {
+.cart-item {
     width: 245px;
 }
-.cert-delete>i {
+.cart-remove>i {
     width: 12px !important;
+    color: grey;
 }
 CSS
 );
+
+$widget->clearCart();
 
 ?>
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -46,14 +50,14 @@ CSS
             <ul class="menu">
                 <?php foreach ($cart->positions as $positionKey => $position) : ?>
                     <?php /** @var \hiqdev\yii2\cart\CartPositionTrait $position */ ?>
-                    <li class="cert-row">
-                        <?= Html::a($position->renderDescription(), [$widget->module->createUrl(), 'id' => $positionKey], ['class' => 'cert-item']) ?>
-                        <?= Html::a('<i class="fa fa-times text-danger"></i>', ['@cart/remove', 'id' => $positionKey], ['class' => 'cert-delete']) ?>
+                    <li class="cart-row">
+                        <?= Html::a($position->renderDescription(), [$widget->module->createUrl(), 'id' => $positionKey], ['class' => 'cart-item']) ?>
+                        <?= Html::a('<i class="fa fa-times"></i>', '#', ['class' => 'cart-remove', 'data-action' => Url::to(['@cart/remove', 'id' => $positionKey])]) ?>
                     </li>
                 <?php endforeach ?>
             </ul>
         </li>
-        <li class="footer"><?= Html::a(Yii::t('cart', 'Clear cart'), ['@cart/clear']) ?></li>
+        <li class="footer"><?= Html::a(Yii::t('cart', 'Clear cart'), '#', ['class' => 'cart-clear', 'data-action' => Url::to('@cart/clear')]) ?></li>
         <li class="footer"><?= Html::a(Yii::t('cart', 'View cart'), $widget->module->createUrl()) ?></li>
     <?php else : ?>
         <li class="header">
