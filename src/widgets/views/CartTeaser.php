@@ -1,6 +1,35 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
+
+/**
+ * @var \hiqdev\yii2\cart\ShoppingCart $cart
+ * @var \hiqdev\yii2\cart\widgets\CartTeaser $widget
+ * @var \yii\web\View $this
+ */
+
+$this->registerCss(<<<CSS
+.navbar-nav > .notifications-menu > .dropdown-menu > li .menu > li > a {
+    border-bottom: none;
+}
+.cart-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #f4f4f4;
+}
+.cart-item {
+    width: 245px;
+}
+.cart-remove > i {
+    width: 12px !important;
+    color: grey;
+}
+CSS
+);
+
+$widget->registerCartClearJs();
 
 ?>
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -19,16 +48,16 @@ use yii\helpers\Html;
         </li>
         <li>
             <ul class="menu">
-                <?php foreach ($cart->positions as $position) : ?>
+                <?php foreach ($cart->positions as $positionKey => $position) : ?>
                     <?php /** @var \hiqdev\yii2\cart\CartPositionTrait $position */ ?>
-                    <li>
-                        <a href="<?= $widget->module->createUrl() ?>">
-                            <?= $position->renderDescription() ?>
-                        </a>
+                    <li class="cart-row">
+                        <?= Html::a($position->renderDescription(), [$widget->module->createUrl(), 'id' => $positionKey], ['class' => 'cart-item']) ?>
+                        <?= Html::a('<i class="fa fa-times"></i>', '#', ['class' => 'cart-remove', 'data-action' => Url::to(['@cart/remove', 'id' => $positionKey])]) ?>
                     </li>
                 <?php endforeach ?>
             </ul>
         </li>
+        <li class="footer"><?= Html::a(Yii::t('cart', 'Clear cart'), '#', ['class' => 'cart-clear', 'data-action' => Url::to('@cart/clear')]) ?></li>
         <li class="footer"><?= Html::a(Yii::t('cart', 'View cart'), $widget->module->createUrl()) ?></li>
     <?php else : ?>
         <li class="header">
