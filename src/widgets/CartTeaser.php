@@ -12,6 +12,7 @@
 namespace hiqdev\yii2\cart\widgets;
 
 use hiqdev\yii2\cart\Module;
+use Yii;
 
 class CartTeaser extends \yii\base\Widget
 {
@@ -29,12 +30,13 @@ class CartTeaser extends \yii\base\Widget
         return Module::getInstance();
     }
 
-    public function clearCart()
+    public function registerCartClearJs()
     {
+        $errorMessage = Yii::t('cart', 'Sorry, but now it is impossible to remove this position from cart now.');
+
         $this->getView()->registerJs(<<<JS
 $('.cart-remove, .cart-clear, .cart-remove > .fa').on('click', function(event) {
-    var url = event.target.dataset.action;
-    (url === undefined) ? (url = $(this).parent().attr('data-action')) : 0;
+    var url = event.target.dataset.action || $(this).parent().attr('data-action');
     $.ajax({
         url: url,
         type: 'POST',
@@ -42,8 +44,8 @@ $('.cart-remove, .cart-clear, .cart-remove > .fa').on('click', function(event) {
         success: function () {
             document.location.reload(true);
         },
-        error: function(xhr, textStatus, thrownError) {
-            console.log(textStatus);
+        error: function() {
+            hipanel.notify.error('$errorMessage');
         }
     });
 });

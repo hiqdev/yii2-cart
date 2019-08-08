@@ -29,7 +29,7 @@ border-bottom: none;
 CSS
 );
 
-$widget->clearCart();
+$widget->registerCartClearJs();
 
 ?>
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
