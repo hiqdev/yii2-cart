@@ -12,6 +12,7 @@
 namespace hiqdev\yii2\cart;
 
 use hipanel\modules\finance\cart\AbstractCartPosition;
+use Money\MoneyParser;
 use Yii;
 use yz\shoppingcart\CartActionEvent;
 
@@ -58,6 +59,13 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     public function getTotal()
     {
         return $this->getCost(true);
+    }
+
+    public function getTotalMoney()
+    {
+        // TODO: decide how to get MoneyParser correctly
+        return Yii::$container->get(MoneyParser::class)
+            ->parse((string)$this->getTotal(), strtoupper($this->getCurrency()));
     }
 
     public function getDiscount()
