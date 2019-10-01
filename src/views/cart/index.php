@@ -54,15 +54,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'name',
                         'format' => 'raw',
                         'label' => Yii::t('cart', 'Description'),
-                        'contentOptions' => ['style' => 'vertical-align: middle'],
+                        'contentOptions' => ['style' => 'vertical-align: middle;', 'width' => '60%'],
                         'value' => function ($model) {
                             /** @var \hiqdev\yii2\cart\CartPositionTrait $model */
-                            return $model->renderDescription();
+                            return $model->renderDescription() . $model->renderBuyMoreLink();
                         },
                     ],
                     [
                         'attribute' => 'quantity',
                         'label' => Yii::t('cart', 'Quantity'),
+                        'contentOptions' => ['style' => 'vertical-align: middle'],
                         'value' => function ($model, $key, $index, $column) {
                             return QuantityCell::widget(['model' => $model]); //, 'type' => 'number'
                         },
@@ -94,11 +95,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <!-- accepted payments column -->
-        <div class="col-xs-6">
+        <div class="col-xs-8">
             <?= $module->paymentMethods ?>
         </div>
         <!-- /.col -->
-        <div class="col-xs-6">
+        <div class="col-xs-4">
             <p class="lead"><?= Yii::t('cart', 'Amount due') ?>:</p>
             <div class="table-responsive">
                 <table class="table">
@@ -137,23 +138,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php if (!empty($cart->positions)) : ?>
             <div class="col-xs-8">
                 <span class="pull-right">
-                    <?php if (class_exists('CheckboxStyleAsset')) : ?>
-                        <?php CheckboxStyleAsset::register($this) ?>
-                    <?php endif ?>
-                    <?php $this->registerJs("
-                            jQuery('#term-of-use').attr('checked', false);
-                            jQuery('#make-order-button').addClass('disabled');
-                            jQuery('#term-of-use').on('click', function() {
-                                jQuery('#make-order-button').toggleClass('disabled');
-                            });"); ?>
-                    <label>
-                        <input class="option-input" type="checkbox" id="term-of-use">
-                        <?php if ($module->termsPage != '') : ?>
-                            &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Html::a(Yii::t('cart', 'terms of use'), $module->termsPage)]) ?>
-                        <?php else: ?>
-                            &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Yii::t('cart', 'terms of use')]) ?>
-                        <?php endif; ?>
-                    </label> &nbsp; &nbsp;
                     <?php if ($module->orderButton) : ?>
                         <?= $module->orderButton ?>
                     <?php else : ?>
