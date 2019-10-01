@@ -101,7 +101,7 @@ trait CartPositionTrait
         return $this->getIcon() . ' ' . $this->getName() . ' ' . Html::tag('span', $this->getDescription(), ['class' => 'text-muted']);
     }
 
-    public function getBuyMoreLink(): array
+    public function getAdditionalLinks(): array
     {
         return [];
     }

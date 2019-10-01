@@ -148,9 +148,13 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
         }
 
         foreach ($positions as $position) {
-            [$url, $label] = $position->getBuyMoreLink();
-            if ($url && $label && !isset($links[$url])) {
-                $links[$url] = $label;
+            $additionalLinks = $position->getAdditionalLinks();
+            if (!empty($additionalLinks)) {
+                foreach ($additionalLinks as $url => $label) {
+                    if ($url && $label && !isset($links[$url])) {
+                        $links[$url] = $label;
+                    }
+                }
             }
         }
 

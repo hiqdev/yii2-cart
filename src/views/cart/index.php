@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <section class="invoice">
     <!-- title row -->
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
             <h2 class="page-header">
                 <i class="fa fa-shopping-cart"></i> &nbsp;
                 <?= Yii::t('cart', 'Your order') ?>:
@@ -30,11 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <!-- Table row -->
     <div class="row">
-        <div class="col-xs-12 table-responsive">
+        <div class="col-md-12">
             <?php
             echo GridView::widget([
                 'dataProvider' => $dataProvider,
                 'layout' => '{items}',
+                'options' => ['class' => 'grid-view table-responsive'],
                 'rowOptions' => function ($model, $key, $index, $grid) {
                     return $model->getRowOptions($key, $index, $grid);
                 },
@@ -103,11 +104,11 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         <?php endif ?>
         <!-- accepted payments column -->
-        <div class="col-xs-8">
+        <div class="col-md-8">
             <?= $module->paymentMethods ?>
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
+        <div class="col-md-4">
             <p class="lead"><?= Yii::t('cart', 'Amount due') ?>:</p>
             <div class="table-responsive">
                 <table class="table">
@@ -137,14 +138,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <!-- this row will not appear when printing -->
     <div class="row no-print">
-        <div class="col-xs-4">
+        <div class="col-md-4 col-xs-12">
             <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('cart', 'Clear cart'), ['clear'], [
                 'class' => 'btn btn-default',
                 'data-ga-clear' => true,
             ]); ?>
         </div>
         <?php if (!empty($cart->positions)) : ?>
-            <div class="col-xs-8">
+            <div class="col-md-8 col-xs-12">
                 <span class="pull-right">
                     <?php if ($module->orderButton) : ?>
                         <?= $module->orderButton ?>
