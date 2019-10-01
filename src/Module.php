@@ -137,7 +137,7 @@ class Module extends \yii\base\Module
         return $this->_paymentMethods instanceof Closure ? call_user_func($this->_paymentMethods, $this) : $this->_paymentMethods;
     }
 
-    public function getBuyMoreLinks(): array
+    public function getAdditionalLinks(): array
     {
         $links = [];
         $positions = $this->getCart()->getPositions();
