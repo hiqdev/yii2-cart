@@ -17,6 +17,7 @@ use hiqdev\yii2\cart\widgets\CartTeaser;
 use Yii;
 use yii\base\ViewContextInterface;
 use yii\data\ArrayDataProvider;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -24,7 +25,7 @@ use yii\web\NotFoundHttpException;
  *
  * @property ShoppingCart $cart The shopping cart instance
  */
-class CartController extends \yii\web\Controller implements ViewContextInterface
+class CartController extends Controller implements ViewContextInterface
 {
     /**
      * @return ShoppingCart

@@ -1,6 +1,5 @@
 <?php
 
-use hipanel\assets\CheckboxStyleAsset;
 use hiqdev\yii2\cart\widgets\QuantityCell;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -12,12 +11,13 @@ $this->params['breadcrumbs'][] = $this->title;
 /** @var \yii\web\View $this */
 /** @var \yii\data\ActiveDataProvider $dataProvider */
 /** @var \hiqdev\yii2\cart\ShoppingCart $cart */
+/** @var \hiqdev\yii2\cart\Module $module */
 ?>
 
 <section class="invoice">
     <!-- title row -->
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
             <h2 class="page-header">
                 <i class="fa fa-shopping-cart"></i> &nbsp;
                 <?= Yii::t('cart', 'Your order') ?>:
@@ -30,11 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <!-- Table row -->
     <div class="row">
-        <div class="col-xs-12 table-responsive">
+        <div class="col-md-12">
             <?php
             echo GridView::widget([
                 'dataProvider' => $dataProvider,
                 'layout' => '{items}',
+                'options' => ['class' => 'grid-view table-responsive'],
                 'rowOptions' => function ($model, $key, $index, $grid) {
                     return $model->getRowOptions($key, $index, $grid);
                 },
@@ -54,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'name',
                         'format' => 'raw',
                         'label' => Yii::t('cart', 'Description'),
-                        'contentOptions' => ['style' => 'vertical-align: middle'],
+                        'contentOptions' => ['style' => 'vertical-align: middle;', 'width' => '60%'],
                         'value' => function ($model) {
                             /** @var \hiqdev\yii2\cart\CartPositionTrait $model */
                             return $model->renderDescription();
@@ -63,6 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'quantity',
                         'label' => Yii::t('cart', 'Quantity'),
+                        'contentOptions' => ['style' => 'vertical-align: middle'],
                         'value' => function ($model, $key, $index, $column) {
                             return QuantityCell::widget(['model' => $model]); //, 'type' => 'number'
                         },
@@ -93,12 +95,20 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
+        <?php if (!empty($module->cart->additionalLinks)) : ?>
+            <div class="col-md-12" style="margin-bottom: 1em;">
+                <?= Html::tag('p', Yii::t('cart', 'Additional Links'), ['class' => 'lead']) ?>
+                <?php foreach ($module->cart->additionalLinks as $url => $label) : ?>
+                    <?= Html::a($label, $url, ['class' => 'btn bg-olive btn-flat']) ?>
+                <?php endforeach ?>
+            </div>
+        <?php endif ?>
         <!-- accepted payments column -->
-        <div class="col-xs-6">
+        <div class="col-md-8">
             <?= $module->paymentMethods ?>
         </div>
         <!-- /.col -->
-        <div class="col-xs-6">
+        <div class="col-md-4">
             <p class="lead"><?= Yii::t('cart', 'Amount due') ?>:</p>
             <div class="table-responsive">
                 <table class="table">
@@ -128,32 +138,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <!-- this row will not appear when printing -->
     <div class="row no-print">
-        <div class="col-xs-4">
+        <div class="col-md-4 col-xs-12">
             <?= Html::a('<i class="fa fa-trash"></i> ' . Yii::t('cart', 'Clear cart'), ['clear'], [
                 'class' => 'btn btn-default',
                 'data-ga-clear' => true,
             ]); ?>
         </div>
         <?php if (!empty($cart->positions)) : ?>
-            <div class="col-xs-8">
+            <div class="col-md-8 col-xs-12">
                 <span class="pull-right">
-                    <?php if (class_exists('CheckboxStyleAsset')) : ?>
-                        <?php CheckboxStyleAsset::register($this) ?>
-                    <?php endif ?>
-                    <?php $this->registerJs("
-                            jQuery('#term-of-use').attr('checked', false);
-                            jQuery('#make-order-button').addClass('disabled');
-                            jQuery('#term-of-use').on('click', function() {
-                                jQuery('#make-order-button').toggleClass('disabled');
-                            });"); ?>
-                    <label>
-                        <input class="option-input" type="checkbox" id="term-of-use">
-                        <?php if ($module->termsPage != '') : ?>
-                            &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Html::a(Yii::t('cart', 'terms of use'), $module->termsPage)]) ?>
-                        <?php else: ?>
-                            &nbsp;<?= Yii::t('cart', 'I have read and agree to the {termsLink}', ['termsLink' => Yii::t('cart', 'terms of use')]) ?>
-                        <?php endif; ?>
-                    </label> &nbsp; &nbsp;
                     <?php if ($module->orderButton) : ?>
                         <?= $module->orderButton ?>
                     <?php else : ?>
