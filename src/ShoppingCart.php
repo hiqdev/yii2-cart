@@ -135,4 +135,25 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
 
         return Yii::$app->params['currency'];
     }
+
+    /**
+     * @return array
+     */
+    public function getAdditionalLinks(): array
+    {
+        $links = [];
+        $positions = $this->_positions;
+        if (empty($positions)) {
+            return $links;
+        }
+
+        foreach ($positions as $position) {
+            [$url, $label] = $position->getBuyMoreLink();
+            if ($url && $label && !isset($links[$url])) {
+                $links[$url] = $label;
+            }
+        }
+
+        return $links;
+    }
 }

@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 /** @var \yii\web\View $this */
 /** @var \yii\data\ActiveDataProvider $dataProvider */
 /** @var \hiqdev\yii2\cart\ShoppingCart $cart */
+/** @var \hiqdev\yii2\cart\Module $module */
 ?>
 
 <section class="invoice">
@@ -93,10 +94,10 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
-        <?php if (!empty($module->additionalLinks)) : ?>
+        <?php if (!empty($module->cart->additionalLinks)) : ?>
             <div class="col-md-12" style="margin-bottom: 1em;">
                 <?= Html::tag('p', Yii::t('cart', 'Additional Links'), ['class' => 'lead']) ?>
-                <?php foreach ($module->additionalLinks as $url => $label) : ?>
+                <?php foreach ($module->cart->additionalLinks as $url => $label) : ?>
                     <?= Html::a($label, $url, ['class' => 'btn bg-olive btn-flat']) ?>
                 <?php endforeach ?>
             </div>
