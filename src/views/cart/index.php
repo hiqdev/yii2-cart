@@ -1,6 +1,5 @@
 <?php
 
-use hipanel\assets\CheckboxStyleAsset;
 use hiqdev\yii2\cart\widgets\QuantityCell;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
@@ -57,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'contentOptions' => ['style' => 'vertical-align: middle;', 'width' => '60%'],
                         'value' => function ($model) {
                             /** @var \hiqdev\yii2\cart\CartPositionTrait $model */
-                            return $model->renderDescription() . $model->renderBuyMoreLink();
+                            return $model->renderDescription();
                         },
                     ],
                     [
@@ -94,6 +93,14 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
+        <?php if (!empty($module->buyMoreLinks)) : ?>
+            <div class="col-md-12" style="margin-bottom: 1em;">
+                <?= Html::tag('p', Yii::t('cart', 'Additional Links'), ['class' => 'lead']) ?>
+                <?php foreach ($module->buyMoreLinks as $url => $label) : ?>
+                    <?= Html::a($label, $url, ['class' => 'btn bg-olive btn-flat']) ?>
+                <?php endforeach ?>
+            </div>
+        <?php endif ?>
         <!-- accepted payments column -->
         <div class="col-xs-8">
             <?= $module->paymentMethods ?>
