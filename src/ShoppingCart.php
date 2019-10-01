@@ -150,7 +150,8 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
         foreach ($positions as $position) {
             $additionalLinks = $position->getAdditionalLinks();
             if (!empty($additionalLinks)) {
-                foreach ($additionalLinks as $url => $label) {
+                foreach ($additionalLinks as $link) {
+                    [$url, $label] = $link;
                     if ($url && $label && !isset($links[$url])) {
                         $links[$url] = $label;
                     }
