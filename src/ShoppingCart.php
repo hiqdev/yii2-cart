@@ -13,6 +13,7 @@ namespace hiqdev\yii2\cart;
 
 use hipanel\modules\finance\cart\AbstractCartPosition;
 use Yii;
+use yii\base\Event;
 use yz\shoppingcart\CartActionEvent;
 
 /**
@@ -160,5 +161,44 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
         }
 
         return $links;
+    }
+
+    /**
+     * @var CartActionEvent[]|null
+     */
+    private $_accumulatedEvents;
+    public function trigger($name, Event $event = null)
+    {
+        if (is_array($this->_accumulatedEvents)) {
+            \Yii::info("Shopping cart accumulates event $name");
+            $this->_accumulatedEvents[] = [$name, $event];
+        } else {
+            parent::trigger($name, $event);
+        }
+    }
+
+    /**
+     * Runs $closure and accumulates all events occurred during $closure run.
+     * Events get released immediately after a success $closure run.
+     *
+     * The method can be used to prevent useless calculations that happen after
+     * bunch of similar updates on a cart.
+     *
+     * @param \Closure $closure
+     */
+    public function accumulateEvents(\Closure $closure): void
+    {
+        $this->_accumulatedEvents = [];
+        try {
+            $closure();
+            $events = $this->_accumulatedEvents;
+            $this->_accumulatedEvents = null;
+            foreach ($events as [$name, $event]) {
+                \Yii::info("Releases event $name");
+                $this->trigger($name, $event);
+            }
+        } finally {
+            $this->_accumulatedEvents = null;
+        }
     }
 }
