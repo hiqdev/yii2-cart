@@ -107,13 +107,17 @@ class AddToCartAction extends \yii\base\Action
 
         if ($this->redirectToCart && !$this->hasErrors) {
             return $this->controller->redirect('@cart');
-        } elseif (isset($request->referrer)) {
-            if (!$this->hasErrors) {
-                Yii::$app->getSession()->setFlash('success', Yii::t('cart', 'Item has been added to cart'));
-            }
-            return $this->controller->redirect($request->referrer);
-        } else {
-            return $this->controller->goHome();
         }
+
+        if (isset($request->referrer)) {
+            if ($this->hasErrors) {
+                return $this->controller->redirect('@cart');
+            }
+
+            Yii::$app->getSession()->setFlash('success', Yii::t('cart', 'Item has been added to cart'));
+            return $this->controller->redirect($request->referrer);
+        }
+
+        return $this->controller->goHome();
     }
 }
