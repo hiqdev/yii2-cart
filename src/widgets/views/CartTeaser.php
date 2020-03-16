@@ -34,7 +34,7 @@ $widget->registerCartClearJs();
 ?>
 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
     <i class="fa fa-shopping-cart fa-lg"></i>
-    <span class="label label-<?= $cart->count ? 'warning' : 'default' ?>"><?= count($cart->positions) ?></span>
+    <span class="label label-<?= $cart->count ? 'warning' : 'default' ?>"><?= $cart->count ?></span>
 </a>
 <ul class="dropdown-menu">
     <?php if ($cart->count) : ?>
@@ -48,7 +48,9 @@ $widget->registerCartClearJs();
         </li>
         <li>
             <ul class="menu">
-                <?php foreach ($cart->positions as $positionKey => $position) : ?>
+                <?php foreach (array_filter($cart->positions, static function (\hiqdev\yii2\cart\CartPositionInterface $position): bool {
+                    return !$position->hasParent();
+                }) as $positionKey => $position) : ?>
                     <?php /** @var \hiqdev\yii2\cart\CartPositionTrait $position */ ?>
                     <li class="cart-row">
                         <?= Html::a($position->renderDescription(), [$widget->module->createUrl(), 'id' => $positionKey], ['class' => 'cart-item']) ?>

@@ -43,17 +43,17 @@ trait CartPositionTrait
     {
         return [
             [['model_id'], 'integer', 'min' => 1],
-            [['name', 'description'], 'string'],
+            [['name', 'description', 'parent_id'], 'string'],
         ];
     }
 
     public function attributeLabels()
     {
         return [
-            'model_id'    => Yii::t('cart', 'ID'),
-            'name'        => Yii::t('cart', 'Name'),
-            'price'       => Yii::t('cart', 'Price'),
-            'quantity'    => Yii::t('cart', 'Quantity'),
+            'model_id' => Yii::t('cart', 'ID'),
+            'name' => Yii::t('cart', 'Name'),
+            'price' => Yii::t('cart', 'Price'),
+            'quantity' => Yii::t('cart', 'Quantity'),
             'description' => Yii::t('cart', 'Description'),
         ];
     }
@@ -62,6 +62,7 @@ trait CartPositionTrait
     {
         return [
             'model_id',
+            'parent_id',
             'name',
             'quantity',
             'description',
@@ -104,6 +105,16 @@ trait CartPositionTrait
     public function getAdditionalLinks(): array
     {
         return [];
+    }
+
+    public function getRelatedPositions(): array
+    {
+        return [];
+    }
+
+    public function hasParent(): bool
+    {
+        return !empty($this->parent_id);
     }
 
     public function getModel()

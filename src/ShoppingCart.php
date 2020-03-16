@@ -36,9 +36,27 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     /**
      * @return integer
      */
-    public function getCount()
+    public function getCount(): int
     {
-        return count($this->_positions);
+        $count = 0;
+        foreach ($this->_positions as $position) {
+            if (!$position->hasParent()) {
+                $count += 1;
+            }
+        }
+
+        return $count;
+    }
+
+    public function findRelatedFor(CartPositionInterface $parent): ?CartPositionInterface
+    {
+        foreach ($this->_positions as $position) {
+            if ($position->hasParent() && $position->parent_id === $parent->getCalculationModel()->calculation_id) {
+                return $position;
+            }
+        }
+
+        return null;
     }
 
     public function getQuantity()
