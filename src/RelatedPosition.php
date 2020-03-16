@@ -12,7 +12,7 @@ class RelatedPosition implements RelatedPositionInterface
     public $widget;
 
     /** @inheritDoc */
-    public function configure($type, array $params = []): RelatedPositionInterface
+    public function setWidget($type, array $params = []): RelatedPositionInterface
     {
         $this->widget = Yii::createObject($type, $params);
 

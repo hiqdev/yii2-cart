@@ -11,7 +11,7 @@ interface RelatedPositionInterface
      * @param array $params
      * @see \Yii::createObject()
      */
-    public function configure($type, array $params = []): RelatedPositionInterface;
+    public function setWidget($type, array $params = []): RelatedPositionInterface;
 
     public function render(): string;
 }
