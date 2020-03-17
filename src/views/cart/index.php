@@ -41,10 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'layout' => '{items}',
                 'options' => ['class' => 'grid-view table-responsive'],
                 'rowOptions' => function (CartPositionInterface $position, $key, $index, $grid) {
-                    if ($position->hasParent()) {
-                        return ['class' => 'hidden'];
-                    }
-
                     return $position->getRowOptions($key, $index, $grid);
                 },
                 'columns' => [

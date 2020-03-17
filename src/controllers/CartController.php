@@ -38,7 +38,9 @@ class CartController extends Controller implements ViewContextInterface
     public function actionIndex()
     {
         $dataProvider = new ArrayDataProvider([
-            'allModels' => $this->getCart()->getPositions(),
+            'allModels' => array_filter($this->getCart()->getPositions(), static function ($position): bool {
+                return !$position->hasParent();
+            }),
             'pagination' => false
         ]);
 
