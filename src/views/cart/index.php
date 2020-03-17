@@ -65,15 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'label' => Yii::t('cart', 'Description'),
                         'contentOptions' => ['style' => 'vertical-align: middle;', 'width' => '60%'],
                         'value' => static function (CartPositionInterface $cartPosition): string {
-                            $description = $cartPosition->renderDescription();
-                            $relatedPostions = [];
-                            if ($postions = $cartPosition->getRelatedPositions()) {
-                                foreach ($postions as $postion) {
-                                    $relatedPostions[] = $postion->render();
-                                }
-                            }
-
-                            return sprintf('%s<br/>%s', $description, implode('<br/>', $relatedPostions));
+                            return $cartPosition->renderDescription();
                         },
                     ],
                     [

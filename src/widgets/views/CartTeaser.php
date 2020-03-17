@@ -53,7 +53,7 @@ $widget->registerCartClearJs();
                 }) as $positionKey => $position) : ?>
                     <?php /** @var \hiqdev\yii2\cart\CartPositionTrait $position */ ?>
                     <li class="cart-row">
-                        <?= Html::a($position->renderDescription(), [$widget->module->createUrl(), 'id' => $positionKey], ['class' => 'cart-item']) ?>
+                        <?= Html::a($position->renderDescription(true), [$widget->module->createUrl(), 'id' => $positionKey], ['class' => 'cart-item']) ?>
                         <?= Html::a('<i class="fa fa-times"></i>', '#', ['class' => 'cart-remove', 'data-action' => Url::to(['@cart/remove', 'id' => $positionKey])]) ?>
                     </li>
                 <?php endforeach ?>

@@ -13,5 +13,7 @@ interface RelatedPositionInterface
      */
     public function setWidget($type, array $params = []): RelatedPositionInterface;
 
+    public function createRelatedPosition(): CartPositionInterface;
+
     public function render(): string;
 }
