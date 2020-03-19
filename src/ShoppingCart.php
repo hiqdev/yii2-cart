@@ -51,12 +51,22 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     public function findRelatedFor(CartPositionInterface $parent): ?CartPositionInterface
     {
         foreach ($this->_positions as $position) {
-            if ($position->hasParent() && $position->parent_id === $parent->getCalculationModel()->calculation_id) {
+            if ($position->hasParent() && $position->parent_id === $parent->getId()) {
                 return $position;
             }
         }
 
         return null;
+    }
+
+    /**
+     * @return CartPositionInterface[]
+     */
+    public function getRootPositions(): array
+    {
+        return array_filter($this->getPositions(), static function (CartPositionInterface $position): bool {
+            return !$position->hasParent();
+        });
     }
 
     public function getQuantity()

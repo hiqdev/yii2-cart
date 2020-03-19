@@ -48,9 +48,7 @@ $widget->registerCartClearJs();
         </li>
         <li>
             <ul class="menu">
-                <?php foreach (array_filter($cart->positions, static function (\hiqdev\yii2\cart\CartPositionInterface $position): bool {
-                    return !$position->hasParent();
-                }) as $positionKey => $position) : ?>
+                <?php foreach ($cart->getRootPositions() as $positionKey => $position) : ?>
                     <?php /** @var \hiqdev\yii2\cart\CartPositionTrait $position */ ?>
                     <li class="cart-row">
                         <?= Html::a($position->renderDescription(true), [$widget->module->createUrl(), 'id' => $positionKey], ['class' => 'cart-item']) ?>

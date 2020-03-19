@@ -37,15 +37,22 @@ class CartController extends Controller implements ViewContextInterface
 
     public function actionIndex()
     {
+        $cart = $this->getCart();
         $dataProvider = new ArrayDataProvider([
-            'allModels' => array_filter($this->getCart()->getPositions(), static function ($position): bool {
-                return !$position->hasParent();
-            }),
+            'allModels' => $cart->getRootPositions(),
             'pagination' => false
         ]);
 
+        if (Yii::$app->request->isAjax) {
+            return $this->renderPartial('index', [
+                'cart' => $cart,
+                'module' => $this->module,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
         return $this->render('index', [
-            'cart' => $this->getCart(),
+            'cart' => $cart,
             'module' => $this->module,
             'dataProvider' => $dataProvider,
         ]);
