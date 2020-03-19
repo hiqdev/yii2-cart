@@ -12,6 +12,7 @@
 namespace hiqdev\yii2\cart;
 
 use hipanel\modules\finance\cart\AbstractCartPosition;
+use hiqdev\yii2\cart\behaviors\EnsureDeleteRelatedPosition;
 use Yii;
 use yii\base\Event;
 use yz\shoppingcart\CartActionEvent;
@@ -32,6 +33,15 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
      * The cart module.
      */
     public $module;
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => EnsureDeleteRelatedPosition::class,
+            ]
+        ];
+    }
 
     /**
      * @return integer
