@@ -1,6 +1,7 @@
 <?php
 
 use hiqdev\yii2\cart\widgets\QuantityCell;
+use hiqdev\yii2\cart\CartPositionInterface;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -14,21 +15,24 @@ $this->params['breadcrumbs'][] = $this->title;
 /** @var \hiqdev\yii2\cart\Module $module */
 ?>
 
-<section class="invoice">
-    <!-- title row -->
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="page-header">
-                <i class="fa fa-shopping-cart"></i> &nbsp;
-                <?= Yii::t('cart', 'Your order') ?>:
-                &nbsp; <?= Yii::t('cart', '{0, plural, one{# position} other{# positions}}', $cart->count) ?>
-                <small class="pull-right"><?= Yii::t('cart', 'Date') ?>
-                    : <?= Yii::$app->formatter->asDate(new DateTime()) ?></small>
-            </h2>
+<section class="box box-widget">
+
+    <div class="invoice-overlay overlay" style="display: none">
+        <i class="fa fa-refresh fa-spin"></i>
+    </div>
+
+    <div class="box-header">
+        <h3 class="box-title">
+            <i class="fa fa-shopping-cart"></i> &nbsp;
+            <?= Yii::t('cart', 'Your order') ?>:
+            &nbsp; <?= Yii::t('cart', '{0, plural, one{# position} other{# positions}}', $cart->count) ?>
+        </h3>
+        <div class="box-tools pull-right">
+            <small><?= Yii::t('cart', 'Date') ?> : <?= Yii::$app->formatter->asDate(new DateTime()) ?></small>
         </div>
     </div>
 
-    <!-- Table row -->
+    <div class="box-body">
     <div class="row">
         <div class="col-md-12">
             <?php
@@ -36,8 +40,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'dataProvider' => $dataProvider,
                 'layout' => '{items}',
                 'options' => ['class' => 'grid-view table-responsive'],
-                'rowOptions' => function ($model, $key, $index, $grid) {
-                    return $model->getRowOptions($key, $index, $grid);
+                'rowOptions' => function (CartPositionInterface $position, $key, $index, $grid) {
+                    return $position->getRowOptions($key, $index, $grid);
                 },
                 'columns' => [
                     [
@@ -56,9 +60,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'raw',
                         'label' => Yii::t('cart', 'Description'),
                         'contentOptions' => ['style' => 'vertical-align: middle;', 'width' => '60%'],
-                        'value' => function ($model) {
-                            /** @var \hiqdev\yii2\cart\CartPositionTrait $model */
-                            return $model->renderDescription();
+                        'value' => static function (CartPositionInterface $cartPosition): string {
+                            return $cartPosition->renderDescription();
                         },
                     ],
                     [
@@ -72,10 +75,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     [
                         'attribute' => 'price',
+                        'format' => 'raw',
                         'label' => Yii::t('cart', 'Price'),
                         'contentOptions' => ['style' => 'vertical-align: middle;white-space: nowrap;'],
-                        'value' => function ($model) use ($cart) {
-                            return $cart->formatCurrency($model->cost, $model->currency);
+                        'value' => static function ($position) use ($cart): string {
+                            $price = $cart->formatCurrency($position->cost, $position->currency);
+                            if ($relatedPostion = $cart->findRelatedFor($position)) {
+                                $price .= sprintf(
+                                    '&nbsp;<span class="text-success text-bold">+ %s</span>',
+                                    $cart->formatCurrency($relatedPostion->cost, $relatedPostion->currency)
+                                );
+                            }
+
+                            return $price;
                         },
                     ],
                     'actions' => [
@@ -159,6 +171,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </span>
             </div>
         <?php endif; ?>
+    </div>
     </div>
 </section>
 

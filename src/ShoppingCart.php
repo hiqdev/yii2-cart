@@ -12,6 +12,7 @@
 namespace hiqdev\yii2\cart;
 
 use hipanel\modules\finance\cart\AbstractCartPosition;
+use hiqdev\yii2\cart\behaviors\EnsureDeleteRelatedPosition;
 use Yii;
 use yii\base\Event;
 use yz\shoppingcart\CartActionEvent;
@@ -33,12 +34,49 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
      */
     public $module;
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => EnsureDeleteRelatedPosition::class,
+            ]
+        ];
+    }
+
     /**
      * @return integer
      */
-    public function getCount()
+    public function getCount(): int
     {
-        return count($this->_positions);
+        $count = 0;
+        foreach ($this->_positions as $position) {
+            if (!$position->hasParent()) {
+                $count += 1;
+            }
+        }
+
+        return $count;
+    }
+
+    public function findRelatedFor(CartPositionInterface $parent): ?CartPositionInterface
+    {
+        foreach ($this->_positions as $position) {
+            if ($position->hasParent() && $position->parent_id === $parent->getId()) {
+                return $position;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return CartPositionInterface[]
+     */
+    public function getRootPositions(): array
+    {
+        return array_filter($this->getPositions(), static function (CartPositionInterface $position): bool {
+            return !$position->hasParent();
+        });
     }
 
     public function getQuantity()
