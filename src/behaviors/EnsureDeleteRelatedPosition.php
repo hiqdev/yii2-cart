@@ -22,7 +22,7 @@ class EnsureDeleteRelatedPosition extends Behavior
         $cart = $event->sender;
         /** @var CartPositionInterface $position */
         $position = $event->position;
-        if ($related = $cart->findRelatedFor($position)) {
+        if ($position && ($related = $cart->findRelatedFor($position))) {
             $cart->remove($related);
         }
     }
