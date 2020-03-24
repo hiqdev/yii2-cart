@@ -11,7 +11,6 @@
 
 namespace hiqdev\yii2\cart;
 
-use hipanel\modules\finance\cart\AbstractCartPosition;
 use hiqdev\yii2\cart\behaviors\EnsureDeleteRelatedPosition;
 use Yii;
 use yii\base\Event;
@@ -19,12 +18,12 @@ use yz\shoppingcart\CartActionEvent;
 
 /**
  * Class ShoppingCart.
- * @property AbstractCartPosition[] $positions
+ * @property CartPositionInterface[] $positions
  */
 class ShoppingCart extends \yz\shoppingcart\ShoppingCart
 {
     /**
-     * @var AbstractCartPosition[]
+     * @var CartPositionInterface[]
      * TODO make local AbstractCartPosition
      */
     protected $_positions = [];
