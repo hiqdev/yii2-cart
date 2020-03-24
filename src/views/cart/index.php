@@ -78,12 +78,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'raw',
                         'label' => Yii::t('cart', 'Price'),
                         'contentOptions' => ['style' => 'vertical-align: middle;white-space: nowrap;'],
-                        'value' => static function ($position) use ($cart): string {
+                        'value' => static function (CartPositionInterface $position) use ($cart): string {
                             $price = $cart->formatCurrency($position->cost, $position->currency);
-                            if ($relatedPostion = $cart->findRelatedFor($position)) {
+                            if ($relatedPosition = $cart->findRelatedFor($position)) {
+                                $relatedPosition->setQuantity($position->getQuantity());
                                 $price .= sprintf(
                                     '&nbsp;<span class="text-success text-bold">+ %s</span>',
-                                    $cart->formatCurrency($relatedPostion->cost, $relatedPostion->currency)
+                                    $cart->formatCurrency($relatedPosition->getCost(false), $relatedPosition->currency)
                                 );
                             }
 
