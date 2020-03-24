@@ -44,7 +44,7 @@ class CartController extends Controller implements ViewContextInterface
         ]);
 
         if (Yii::$app->request->isAjax) {
-            return $this->renderPartial('index', [
+            return $this->renderAjax('index', [
                 'cart' => $cart,
                 'module' => $this->module,
                 'dataProvider' => $dataProvider,
