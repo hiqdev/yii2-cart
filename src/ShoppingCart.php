@@ -156,6 +156,10 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
                     $position->setQuantity(1);
                 }
                 $this->_positions[$position->getId()] = $position;
+                $this->trigger(self::EVENT_POSITION_PUT, new CartActionEvent([
+                    'action' => CartActionEvent::ACTION_POSITION_PUT,
+                    'position' => $position,
+                ]));
             }
         }
 
