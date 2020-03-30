@@ -117,8 +117,13 @@ trait CartPositionTrait
         return !empty($this->parent_id);
     }
 
-    public function getModel()
+    public function getModel(): ?Model
     {
         return $this->_model;
+    }
+
+    public function setModel(Model $model): void
+    {
+        $this->_model = $model;
     }
 }

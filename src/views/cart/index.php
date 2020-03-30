@@ -81,7 +81,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'value' => static function (CartPositionInterface $position) use ($cart): string {
                             $price = $cart->formatCurrency($position->cost, $position->currency);
                             if ($relatedPosition = $cart->findRelatedFor($position)) {
-                                $relatedPosition->setQuantity($position->getQuantity());
                                 $price .= sprintf(
                                     '&nbsp;<span class="text-success text-bold">+ %s</span>',
                                     $cart->formatCurrency($relatedPosition->getCost(false), $relatedPosition->currency)
