@@ -65,7 +65,7 @@ class Module extends \yii\base\Module
         Yii::$app->i18n->translations['cart'] = [
             'class'          => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
-            'basePath'       => '@hiqdev/yii2/cart/messages',
+            'basePath'       => __DIR__ . '/messages',
             'fileMap'        => [
                 'merchant' => 'cart.php',
             ],
