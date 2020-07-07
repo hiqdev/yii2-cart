@@ -4,8 +4,8 @@ return [
     'components' => [
         'themeManager' => [
             'pathMap' => [
-                '@hiqdev/yii2/cart/widgets/views' => '$themedWidgetPaths',
-                '@hiqdev/yii2/cart/views' => '$themedViewPaths',
+                dirname(__DIR__) . '/src/widgets/views' => '$themedWidgetPaths',
+                dirname(__DIR__) . '/src/views' => '$themedViewPaths',
             ],
         ],
         'i18n' => [
@@ -13,7 +13,7 @@ return [
                 'cart' => [
                     'class' => \yii\i18n\PhpMessageSource::class,
                     'sourceLanguage' => 'en-US',
-                    'basePath' => '@hiqdev/yii2/cart/messages',
+                    'basePath' => dirname(__DIR__) . '/src/messages',
                 ],
             ],
         ],
