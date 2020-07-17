@@ -13,6 +13,7 @@ namespace hiqdev\yii2\cart;
 
 use Closure;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\Url;
 
 /**
@@ -125,15 +126,20 @@ class Module extends \yii\base\Module
         return $this->_orderButton instanceof Closure ? call_user_func($this->_orderButton, $this) : $this->_orderButton;
     }
 
-    protected $_paymentMethods;
-
-    public function setPaymentMethods($value)
-    {
-        $this->_paymentMethods = $value;
-    }
+    /**
+     * @var PaymentMethodsProviderInterface|null
+     */
+    public $paymentMethodsProvider;
 
     public function getPaymentMethods()
     {
-        return $this->_paymentMethods instanceof Closure ? call_user_func($this->_paymentMethods, $this) : $this->_paymentMethods;
+        if (empty($this->paymentMethodsProvider)) {
+            return new InvalidConfigException('Payment methods provider must be set');
+        }
+        if (!($this->paymentMethodsProvider instanceof PaymentMethodsProviderInterface)) {
+            return new InvalidConfigException('Payment methods provider are bad configured');
+        }
+
+        return $this->paymentMethodsProvider->getPaymentMethods();
     }
 }
