@@ -131,11 +131,6 @@ class Module extends \yii\base\Module
      */
     public $paymentMethodsProvider;
 
-    public function setPaymentMethods($value)
-    {
-        $this->paymentMethodsProvider = $value;
-    }
-
     public function getPaymentMethods()
     {
         if (empty($this->paymentMethodsProvider)) {
