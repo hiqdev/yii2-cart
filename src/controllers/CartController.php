@@ -60,11 +60,7 @@ class CartController extends Controller implements ViewContextInterface
 
     public function actionTopcart()
     {
-        if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('topcart', ['widgetClass' => CartTeaser::class]);
-        }
-
-        Yii::$app->end();
+        return $this->renderPartial('topcart', ['widgetClass' => CartTeaser::class]);
     }
 
     public function actionRemove($id)
