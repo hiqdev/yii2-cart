@@ -1,5 +1,6 @@
 <?php
 
+use hiqdev\yii2\cart\grid\PriceColumn;
 use hiqdev\yii2\cart\widgets\QuantityCell;
 use hiqdev\yii2\cart\CartPositionInterface;
 use yii\grid\ActionColumn;
@@ -47,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute' => 'no',
                         'label' => '#',
-                        'value' => function ($model) {
+                        'value' => static function () {
                             static $no;
 
                             return ++$no;
@@ -68,27 +69,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'quantity',
                         'label' => Yii::t('cart', 'Quantity'),
                         'contentOptions' => ['style' => 'vertical-align: middle'],
-                        'value' => function ($model, $key, $index, $column) {
-                            return QuantityCell::widget(['model' => $model]); //, 'type' => 'number'
+                        'value' => static function ($model) {
+                            return QuantityCell::widget(['model' => $model]);
                         },
                         'format' => 'raw',
                     ],
                     [
-                        'attribute' => 'price',
-                        'format' => 'raw',
-                        'label' => Yii::t('cart', 'Price'),
-                        'contentOptions' => ['style' => 'vertical-align: middle;white-space: nowrap;'],
-                        'value' => static function (CartPositionInterface $position) use ($cart): string {
-                            $price = $cart->formatCurrency($position->cost, $position->currency);
-                            if ($relatedPosition = $cart->findRelatedFor($position)) {
-                                $price .= sprintf(
-                                    '&nbsp;+&nbsp;<span class="text-success text-bold">%s</span>',
-                                    $cart->formatCurrency($relatedPosition->getCost(), $relatedPosition->currency)
-                                );
-                            }
-
-                            return $price;
-                        },
+                        'class' => PriceColumn::class,
+                        'cart' => $cart,
                     ],
                     'actions' => [
                         'class' => ActionColumn::class,
