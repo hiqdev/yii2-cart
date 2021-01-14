@@ -171,11 +171,12 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
 
     public function getCurrency(): ?string
     {
+        $defaultCurrency = Yii::$app->params['currency'];
         if (!empty($this->_positions)) {
-            return reset($this->_positions)->currency;
+            return reset($this->_positions)->currency ?? $defaultCurrency;
         }
 
-        return Yii::$app->params['currency'];
+        return $defaultCurrency;
     }
 
     /**
