@@ -169,14 +169,31 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
             $this->saveToSession();
     }
 
+
+    /**
+     * This cart does not support multi-currency checkout.
+     *
+     * @return string|null When the cart is empty, returns {@see getDefaultCurrency()}.
+     * When cart has at least one position, returns the first position currency.
+     * Note, that the position currency may be undefined – in this case, `null` will be returned.
+     */
     public function getCurrency(): ?string
     {
-        $defaultCurrency = Yii::$app->params['currency'];
-        if (!empty($this->_positions)) {
-            return reset($this->_positions)->currency ?? $defaultCurrency;
+        if (empty($this->_positions)) {
+            return $this->getDefaultCurrency();
         }
 
-        return $defaultCurrency;
+        return reset($this->_positions)->currency;
+    }
+
+    /**
+     * Returns a default cart currency
+     *
+     * @return string
+     */
+    public function getDefaultCurrency(): string
+    {
+        return Yii::$app->params['currency'];
     }
 
     /**
