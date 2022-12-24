@@ -116,6 +116,15 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
     {
         try {
             parent::setSerialized($serialized);
+            $this->_positions = array_filter($this->_positions, static function ($position) {
+                if (!$position instanceof CartPositionInterface) {
+                    Yii::warning('Position ' . get_class($position) . ' is not instance of CartPositionInterface and was removed from a cart.');
+
+                    return false;
+                }
+
+                return true;
+            });
         } catch (\Exception $e) {
             Yii::error('Failed to unserlialize cart: ' . $e->getMessage(), __METHOD__);
             $this->_positions = [];
