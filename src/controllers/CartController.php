@@ -19,6 +19,7 @@ use yii\base\ViewContextInterface;
 use yii\data\ArrayDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 
 /**
  * Cart controller.
@@ -37,6 +38,11 @@ class CartController extends Controller implements ViewContextInterface
 
     public function actionIndex()
     {
+
+        $user = Yii::$app->user;
+        if (!$user->isGuest && !$user->can('deposit')) {
+            throw new ForbiddenHttpException(Yii::t('yii', 'You are not allowed to perform this action.'));
+        }
         $cart = $this->getCart();
         $dataProvider = new ArrayDataProvider([
             'allModels' => $cart->getRootPositions(),
