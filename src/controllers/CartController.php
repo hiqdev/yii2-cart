@@ -71,8 +71,12 @@ class CartController extends Controller implements ViewContextInterface
 
     public function actionRemove($id)
     {
+        $cart = $this->getCart();
         try {
-            $this->getCart()->removeById($id);
+            // A stale or crawled link can point at a position this session's cart doesn't hold
+            if ($cart->hasPosition($id)) {
+                $cart->removeById($id);
+            }
         } catch (NotPurchasableException $exception) {
             Yii::$app->getSession()->setFlash('error', $exception->getMessage());
             $exception->resolve();
