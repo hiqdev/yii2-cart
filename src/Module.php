@@ -114,6 +114,128 @@ class Module extends \yii\base\Module
      */
     public $orderPage = ['order'];
 
+    /**
+     * @var array agreements the client has to accept before making an order, indexed by name.
+     * An item is either an HTML label or an array:
+     *
+     * - `label`: string, HTML shown next to the checkbox, not encoded; `{language}` is replaced
+     *   with the language code of the application, e.g. `en` for links to localized pages;
+     * - `positions`: string[], optional position classes: the agreement is shown only when
+     *   the cart holds an instance of one of them. Without it it is shown for any cart.
+     *
+     * While the cart needs agreements, the cart page shows them with [[widgets\Agreements]] and its
+     * order button instead of [[orderButton]]: it posts the checked agreements to
+     * `cart/accept-agreements`, which opens [[orderPage]] only when all of them are checked.
+     * The order page has to check [[hasAcceptedAgreements()]] itself.
+     *
+     * ```php
+     * 'agreements' => [
+     *     'terms' => 'I have read and agree to the <a href="/rules">Terms</a>.',
+     *     'withdrawal' => [
+     *         'label' => 'I request that my order be started immediately.',
+     *         'positions' => [DomainProduct::class],
+     *     ],
+     * ],
+     * ```
+     */
+    public $agreements = [];
+
+    /**
+     * @return string[] labels of the agreements needed for the current cart, indexed by name
+     */
+    public function getActiveAgreements(): array
+    {
+        $positions = $this->getCart()->getPositions();
+        if (empty($positions)) {
+            return [];
+        }
+
+        $language = explode('-', Yii::$app->language)[0];
+        $result = [];
+        foreach ($this->agreements as $name => $agreement) {
+            $agreement = is_array($agreement) ? $agreement : ['label' => $agreement];
+            if (empty($agreement['label'])) {
+                continue;
+            }
+            if (!empty($agreement['positions']) && !$this->hasPositionOf($positions, (array) $agreement['positions'])) {
+                continue;
+            }
+            $result[$name] = strtr($agreement['label'], ['{language}' => $language]);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Session key of the accepted agreements: a fingerprint of the cart they were accepted for.
+     */
+    const ACCEPTED_AGREEMENTS_SESSION_KEY = 'cart-accepted-agreements';
+
+    /**
+     * Accepts the agreements for the current cart.
+     * They stay accepted while the cart holds the same positions.
+     *
+     * @param string[] $names names of the checked agreements
+     * @return bool whether every agreement needed for the current cart is among them
+     */
+    public function acceptAgreements(array $names): bool
+    {
+        $missing = array_diff(array_map('strval', array_keys($this->getActiveAgreements())), array_map('strval', $names));
+        if (!empty($missing)) {
+            $this->forgetAcceptedAgreements();
+
+            return false;
+        }
+        Yii::$app->getSession()->set(static::ACCEPTED_AGREEMENTS_SESSION_KEY, $this->getAgreementsFingerprint());
+
+        return true;
+    }
+
+    /**
+     * @return bool whether the order can be made: the cart needs no agreements,
+     * or they were accepted for exactly the positions it holds now
+     */
+    public function hasAcceptedAgreements(): bool
+    {
+        if (empty($this->getActiveAgreements())) {
+            return true;
+        }
+        $accepted = Yii::$app->getSession()->get(static::ACCEPTED_AGREEMENTS_SESSION_KEY);
+
+        return is_string($accepted) && hash_equals($accepted, $this->getAgreementsFingerprint());
+    }
+
+    /**
+     * Makes the client accept the agreements again for the next order.
+     */
+    public function forgetAcceptedAgreements(): void
+    {
+        Yii::$app->getSession()->remove(static::ACCEPTED_AGREEMENTS_SESSION_KEY);
+    }
+
+    private function getAgreementsFingerprint(): string
+    {
+        $ids = array_map('strval', array_keys($this->getCart()->getPositions()));
+        $names = array_map('strval', array_keys($this->getActiveAgreements()));
+        sort($ids);
+        sort($names);
+
+        return hash('sha256', json_encode([$ids, $names]));
+    }
+
+    private function hasPositionOf(array $positions, array $classes): bool
+    {
+        foreach ($positions as $position) {
+            foreach ($classes as $class) {
+                if ($position instanceof $class) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     protected $_orderButton;
 
     public function setOrderButton($value)

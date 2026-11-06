@@ -27,6 +27,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Please accept all the agreements to make the order' => 'Чтобы сделать заказ, примите все соглашения',
     'Sum' => 'Сумма',
     'Date' => 'Дата',
     'Cart' => 'Корзина',
