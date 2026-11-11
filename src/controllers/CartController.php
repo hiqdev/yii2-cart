@@ -17,6 +17,7 @@ use hiqdev\yii2\cart\widgets\CartTeaser;
 use Yii;
 use yii\base\ViewContextInterface;
 use yii\data\ArrayDataProvider;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\ForbiddenHttpException;
@@ -28,6 +29,18 @@ use yii\web\ForbiddenHttpException;
  */
 class CartController extends Controller implements ViewContextInterface
 {
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(), [
+            'verbs' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'accept-agreements' => ['post'],
+                ],
+            ],
+        ]);
+    }
+
     /**
      * @return ShoppingCart
      */
@@ -62,6 +75,21 @@ class CartController extends Controller implements ViewContextInterface
             'module' => $this->module,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    /**
+     * Accepts the agreements checked on the cart page and goes on to the order page.
+     */
+    public function actionAcceptAgreements()
+    {
+        $checked = array_filter((array) Yii::$app->request->post('agreements', []), 'is_string');
+        if (!$this->module->acceptAgreements($checked)) {
+            Yii::$app->getSession()->setFlash('error', Yii::t('cart', 'Please accept all the agreements to make the order'));
+
+            return $this->redirect(['index']);
+        }
+
+        return $this->redirect($this->module->orderPage);
     }
 
     public function actionTopcart()

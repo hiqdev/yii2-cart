@@ -1,6 +1,7 @@
 <?php
 
 use hiqdev\yii2\cart\grid\PriceColumn;
+use hiqdev\yii2\cart\widgets\Agreements;
 use hiqdev\yii2\cart\widgets\QuantityCell;
 use hiqdev\yii2\cart\CartPositionInterface;
 use yii\grid\ActionColumn;
@@ -136,6 +137,15 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <!-- /.row -->
 
+    <?php $agreementsNeeded = Agreements::isNeeded($module) ?>
+    <?php if ($agreementsNeeded) : ?>
+        <div class="row no-print">
+            <div class="col-md-12">
+                <?= Agreements::widget(['module' => $module]) ?>
+            </div>
+        </div>
+    <?php endif ?>
+
     <!-- this row will not appear when printing -->
     <div class="row no-print">
         <div class="col-md-4 col-xs-12">
@@ -147,7 +157,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php if (!empty($cart->positions)) : ?>
             <div class="col-md-8 col-xs-12">
                 <span class="pull-right">
-                    <?php if ($module->orderButton) : ?>
+                    <?php if ($agreementsNeeded) : ?>
+                        <?= Agreements::orderButton('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), [
+                            'class' => 'btn btn-success',
+                            'data-ga-confirm' => true,
+                        ]) ?>
+                    <?php elseif ($module->orderButton) : ?>
                         <?= $module->orderButton ?>
                     <?php else : ?>
                         <?= Html::a('<i class="fa fa-credit-card"></i> ' . Yii::t('cart', 'Make order'), $module->orderPage, [
