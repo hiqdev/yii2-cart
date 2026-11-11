@@ -77,7 +77,9 @@ class Agreements extends Widget
 
         $items = [];
         foreach ($agreements as $name => $label) {
-            $checkbox = Html::checkbox('agreements[' . $name . ']', false, [
+            // The name goes in the value: as a part of the field name PHP would mangle names like `a[b]`
+            $checkbox = Html::checkbox('agreements[]', false, [
+                'value' => (string) $name,
                 'class' => 'cart-agreement',
                 'autocomplete' => 'off',
                 'form' => self::FORM_ID,

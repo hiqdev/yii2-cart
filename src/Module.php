@@ -173,7 +173,7 @@ class Module extends \yii\base\Module
 
     /**
      * Accepts the agreements for the current cart.
-     * They stay accepted while the cart holds the same positions.
+     * They stay accepted while the cart holds the same positions in the same quantities.
      *
      * @param string[] $names names of the checked agreements
      * @return bool whether every agreement needed for the current cart is among them
@@ -193,7 +193,7 @@ class Module extends \yii\base\Module
 
     /**
      * @return bool whether the order can be made: the cart needs no agreements,
-     * or they were accepted for exactly the positions it holds now
+     * or they were accepted for exactly the positions and quantities it holds now
      */
     public function hasAcceptedAgreements(): bool
     {
@@ -215,12 +215,16 @@ class Module extends \yii\base\Module
 
     private function getAgreementsFingerprint(): string
     {
-        $ids = array_map('strval', array_keys($this->getCart()->getPositions()));
+        // Quantities too: a changed period of a position is a changed order
+        $quantities = [];
+        foreach ($this->getCart()->getPositions() as $id => $position) {
+            $quantities[(string) $id] = (string) $position->getQuantity();
+        }
         $names = array_map('strval', array_keys($this->getActiveAgreements()));
-        sort($ids);
+        ksort($quantities, SORT_STRING);
         sort($names);
 
-        return hash('sha256', json_encode([$ids, $names]));
+        return hash('sha256', json_encode([$quantities, $names]));
     }
 
     private function hasPositionOf(array $positions, array $classes): bool

@@ -82,7 +82,7 @@ class CartController extends Controller implements ViewContextInterface
      */
     public function actionAcceptAgreements()
     {
-        $checked = array_keys(array_filter((array) Yii::$app->request->post('agreements', [])));
+        $checked = array_filter((array) Yii::$app->request->post('agreements', []), 'is_string');
         if (!$this->module->acceptAgreements($checked)) {
             Yii::$app->getSession()->setFlash('error', Yii::t('cart', 'Please accept all the agreements to make the order'));
 
