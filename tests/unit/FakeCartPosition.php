@@ -21,6 +21,7 @@ class FakeCartPosition extends \yii\base\BaseObject implements CartPositionInter
     public $id;
     public $price;
     public $discount;
+    public $currency = 'USD';
 
     public function getId()
     {
