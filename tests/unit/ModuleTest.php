@@ -12,8 +12,10 @@
 namespace hiqdev\yii2\cart\tests\unit;
 
 use hiqdev\yii2\cart\Module;
+use hiqdev\yii2\cart\PaymentMethodsProviderInterface;
 use hiqdev\yii2\cart\ShoppingCart;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\helpers\Url;
 use yii\web\Application;
 
@@ -27,7 +29,7 @@ class ModuleTest extends \PHPUnit\Framework\TestCase
      */
     protected $object;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $application = new Application([
             'id'       => 'mock',
@@ -47,7 +49,7 @@ class ModuleTest extends \PHPUnit\Framework\TestCase
         $this->object = Yii::$app->getModule('cart');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
     }
 
@@ -84,9 +86,18 @@ class ModuleTest extends \PHPUnit\Framework\TestCase
 
     public function testPaymentMethods()
     {
-        $this->object->setPaymentMethods($this->testString);
-        $this->assertSame($this->testString, $this->object->getPaymentMethods());
-        $this->object->setPaymentMethods(function () { return $this->testString; });
+        $this->assertInstanceOf(InvalidConfigException::class, $this->object->getPaymentMethods());
+
+        $this->object->paymentMethodsProvider = new class($this->testString) implements PaymentMethodsProviderInterface {
+            public function __construct(private string $methods)
+            {
+            }
+
+            public function getPaymentMethods()
+            {
+                return $this->methods;
+            }
+        };
         $this->assertSame($this->testString, $this->object->getPaymentMethods());
     }
 }

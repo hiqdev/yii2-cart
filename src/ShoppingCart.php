@@ -235,7 +235,7 @@ class ShoppingCart extends \yz\shoppingcart\ShoppingCart
      * @var CartActionEvent[]|null
      */
     private $_accumulatedEvents;
-    public function trigger($name, Event $event = null)
+    public function trigger($name, ?Event $event = null)
     {
         if (is_array($this->_accumulatedEvents)) {
             \Yii::info("Shopping cart accumulates event $name");
